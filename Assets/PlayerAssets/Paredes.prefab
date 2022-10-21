@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6535203637694938289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6535203637694938288}
+  - component: {fileID: 6535203637694938295}
+  m_Layer: 0
+  m_Name: Paredes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6535203637694938288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535203637694938289}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.5, y: 209, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8398893089946151178}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6535203637694938295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535203637694938289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70868f769484e54bbd8facb65d2da2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parede: {fileID: 5333357619412567419}
+  parede_ataque: {fileID: 0}
+  player: {fileID: 0}
+  inputController: {fileID: 0}
+  qtd_mana: {fileID: 0}
+  imagem_tempo: {fileID: 0}
+--- !u!1001 &2712803126528831709
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6535203637694938288}
+    m_Modifications:
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045175428499142054, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_Name
+      value: ParededePedra
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045175428499142054, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+--- !u!1 &5333357619412567419 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8045175428499142054, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+  m_PrefabInstance: {fileID: 2712803126528831709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8398893089946151178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5848782654650505687, guid: f5dc86d9f141ede4a93bbc6f194d392f, type: 3}
+  m_PrefabInstance: {fileID: 2712803126528831709}
+  m_PrefabAsset: {fileID: 0}
