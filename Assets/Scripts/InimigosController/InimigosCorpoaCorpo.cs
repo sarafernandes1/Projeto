@@ -72,6 +72,18 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
+        Ray inimigo_ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward * 6.0f));
+
+        if (Physics.Raycast(inimigo_ray, 6.0f))
+        {
+            speed = 5.0f;
+        }
+
+        if (Physics.Raycast(inimigo_ray, 2.0f))
+        {
+            speed = 1.0f;
+        }
+
         if (distanceToPlayer <= dist_max && inimigo1)
         {
             Perseguir();

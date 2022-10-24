@@ -11,10 +11,11 @@ public class BossController : MonoBehaviour
     public Collider ataque_collider;
     public Slider qtd_vida;
     public ParticleSystem particle1;
+    bool segunda_parte;
     float speed = 1.0f;
     int n_inimigos, p_numero=1;
-    float cooldownTime = 10, cooldownAtaque = 6, cooldownAE=2;
-    float nextFireTime = 0, nextenemy = 0, nexTimetAE=0;
+    float cooldownTime = 10, cooldownAtaque = 6, cooldownAE=10;
+    float nextFireTime = 0, nextenemy = 0, nexTimetAE=4;
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class BossController : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-        transform.LookAt(player.transform);
+        transform.LookAt(player.transform.position);
         if (distanceToPlayer <= 40.0f)
         {
             if (Time.time > nextFireTime)
@@ -54,9 +55,10 @@ public class BossController : MonoBehaviour
 
 
         GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
-        if (qtd_vida.value<=0.5f && inimigos==null){
+        if (inimigos==null){
 
-            transform.position += transform.forward * speed * Time.deltaTime;
+            //transform.position += transform.forward * speed * Time.deltaTime;
+            segunda_parte = true;
         }
 
         if (distanceToPlayer <= 70.0f)
@@ -81,7 +83,7 @@ public class BossController : MonoBehaviour
     {
         Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         var projectile = Instantiate(ataque_especial, position,transform.rotation);
-        projectile.velocity =transform.forward* 10;
+        projectile.velocity =transform.forward* 80;
 
         nexTimetAE = Time.time + cooldownAE;
     }

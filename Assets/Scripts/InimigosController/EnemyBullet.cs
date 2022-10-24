@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    bool ataque_alcance, ataque_boss;
+    bool ataque_alcance, ataque_boss, segunda_parte;
     float damage;
 
     void Start()
@@ -23,6 +23,22 @@ public class EnemyBullet : MonoBehaviour
 
     void Update()
     {
+        if (ataque_boss) {
+            GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
+            if (inimigos == null)
+            {
+                segunda_parte = true;
+            }
+
+            if (!segunda_parte)
+            {
+                damage = 8.0f;
+            }
+            else
+            {
+                damage = 12.0f;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -7,6 +7,7 @@ public class HealthPlayer : MonoBehaviour
 {
     public Slider qtd_vida;
     public bool isdead;
+    bool segunda_parte;
 
     void Start()
     {
@@ -15,6 +16,12 @@ public class HealthPlayer : MonoBehaviour
 
     void Update()
     {
+        GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
+        if (inimigos == null)
+        {
+            segunda_parte = true;
+        }
+
         if (qtd_vida.value <= 0)
         {
             isdead = true;
@@ -31,7 +38,14 @@ public class HealthPlayer : MonoBehaviour
     {
         if (other.name == "Fogo")
         {
-            qtd_vida.value -= 0.01f * Time.deltaTime;
+            if (!segunda_parte)
+            {
+                qtd_vida.value -= 0.01f * Time.deltaTime;
+            }
+            else
+            {
+                qtd_vida.value -= 0.05f * Time.deltaTime;
+            }
         }
     }
 
