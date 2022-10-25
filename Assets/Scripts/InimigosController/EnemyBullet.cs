@@ -32,11 +32,11 @@ public class EnemyBullet : MonoBehaviour
 
             if (!segunda_parte)
             {
-                damage = 8.0f;
+                damage = 1.0f;
             }
             else
             {
-                damage = 12.0f;
+                damage =2.0f;
             }
         }
     }

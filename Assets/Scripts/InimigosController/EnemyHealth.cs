@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public float vida = 100;
     public ParticleSystem explosao;
-    bool isdead = false, explosao_play;
+    bool isdead = false;
     bool inimigo1, inimigo2, inimigo3;
     public bool a;
     //public GameObject drop;
@@ -22,12 +22,12 @@ public class EnemyHealth : MonoBehaviour
         if (transform.tag == "InimigoAlcance")
         {
             inimigo2 = true;
-            vida = 200;
+            vida = 120;
         }
 
         if (transform.tag == "InimigoBoss")
         {
-            vida = 200;
+            vida = 150;
             inimigo3 = true;
         }
     }
@@ -38,20 +38,6 @@ public class EnemyHealth : MonoBehaviour
         {
             isdead = true;
             IsDead();
-        }
-
-        //Quando bola de fogo explode, tira vida aos outros inimigos
-        float distanceToExplosion = Vector3.Distance(transform.position, explosao.transform.position);
-        if (explosao.isEmitting)
-        {
-            explosao_play = true;
-        }
-        if (explosao_play)
-        {
-            if (distanceToExplosion < 5.0f)
-            {
-                Explosao();
-            }
         }
     }
 
@@ -117,10 +103,12 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void Explosao()
+    private void OnTriggerEnter(Collider other)
     {
-        explosao_play = false;
-        vida -= 5*Time.deltaTime;
+        if (other.name == "Explosao")
+        {
+            vida -= 20 * Time.deltaTime;
+        }
     }
 
     public void RajadaVento(GameObject vento)

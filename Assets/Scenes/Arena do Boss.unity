@@ -11359,7 +11359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6931201406775291788, guid: 760495cf63ebb2e44bf36c28885470af, type: 3}
       propertyPath: simulationSpeed
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6931201406775291788, guid: 760495cf63ebb2e44bf36c28885470af, type: 3}
       propertyPath: ShapeModule.alignToDirection
