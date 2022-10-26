@@ -33,7 +33,6 @@ public class HealthPlayer : MonoBehaviour
         qtd_vida.value -= damage * Time.deltaTime;
     }
 
-
     private void OnTriggerStay(Collider other)
     {
         if (other.name == "Fogo")
@@ -46,6 +45,11 @@ public class HealthPlayer : MonoBehaviour
             {
                 qtd_vida.value -= 0.05f * Time.deltaTime;
             }
+        }
+
+        if (other.tag == "Vida")
+        {
+            qtd_vida.value += 0.05f * Time.deltaTime;
         }
     }
 

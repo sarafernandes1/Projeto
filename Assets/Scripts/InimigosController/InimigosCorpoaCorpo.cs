@@ -8,7 +8,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     public Rigidbody bulletPrefab;
     public GameObject player;
     float speed, dist_max;
-    public Rigidbody rigidbody_enemy;
     bool inimigo1, inimigo2, player_in_area, inimigo3;
 
     float cooldownTime = 2;
@@ -109,7 +108,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     {
         var projectile = Instantiate(bulletPrefab, transform.position, transform.rotation);
         projectile.velocity = transform.forward * 50;
-
         nextFireTime = Time.time + cooldownTime;
     }
 

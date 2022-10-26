@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class BossController : MonoBehaviour
 {
     public GameObject player;
-    public GameObject[] poscionamento_inimigo;
+    public GameObject[] pocisionamento_inimigo;
     public Rigidbody enemy, ataque_especial;
     public Collider ataque_collider;
     public Slider qtd_vida;
     public ParticleSystem particle1;
+
     bool segunda_parte;
-    float speed = 1.0f;
-    int n_inimigos, p_numero=1;
-    float cooldownTime = 10, cooldownAtaque = 6, cooldownAE=10;
+    float distanceToPlayer;
+    int n_inimigos, p_numero=0;
+    float cooldownTime = 10, cooldownAtaque = 6, cooldownAE=8;
     float nextFireTime = 0, nextenemy = 0, nexTimetAE=4;
 
     void Start()
@@ -24,10 +25,28 @@ public class BossController : MonoBehaviour
 
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        Vector3 lookAt = player.transform.position;
+        lookAt.y = transform.position.y;
+        transform.LookAt(lookAt);
 
-        transform.LookAt(player.transform.position);
-        if (distanceToPlayer <= 40.0f)
+        distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        if(distanceToPlayer<=80.0f)
+        {
+            qtd_vida.gameObject.SetActive(true);
+            GameObject parede = GameObject.Find("ParedeCave");
+            Collider collider=parede.transform.GetComponent<Collider>();
+            collider.enabled = true;
+            if (Time.time > nextenemy && n_inimigos <= 4)
+            {
+                PosicionarInimigo();
+                p_numero++;
+                if (p_numero >= 5) p_numero = 1;
+            }
+        }
+
+        
+        if (distanceToPlayer <= 60.0f)
         {
             if (Time.time > nextFireTime)
             {
@@ -43,31 +62,11 @@ public class BossController : MonoBehaviour
         if (particle1.isEmitting == false) ataque_collider.enabled = false;
 
 
-        if (distanceToPlayer <= 80.0f)
-        {
-            if (Time.time > nextenemy && n_inimigos <= 4)
-            {
-                PosicionarInimigo();
-                p_numero++;
-                if (p_numero >= 5) p_numero = 1;
-            }
-        }
-
-
         GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
-        if (inimigos==null){
-
+        if (inimigos==null)
+        {
             //transform.position += transform.forward * speed * Time.deltaTime;
             segunda_parte = true;
-        }
-
-        if (distanceToPlayer <= 70.0f)
-        {
-            qtd_vida.gameObject.SetActive(true);
-        }
-        else
-        {
-            qtd_vida.gameObject.SetActive(false);
         }
 
     }
@@ -81,20 +80,26 @@ public class BossController : MonoBehaviour
 
     void AtaqueEspecial()
     {
+        transform.LookAt(player.transform.position);
+
         Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         var projectile = Instantiate(ataque_especial, position,transform.rotation);
         projectile.velocity =transform.forward* 80;
-
+      
         nexTimetAE = Time.time + cooldownAE;
     }
 
     void PosicionarInimigo()
     {
-        var inimigo_chamdo1 = Instantiate(enemy, poscionamento_inimigo[p_numero].transform.position, poscionamento_inimigo[p_numero].transform.rotation);
-        var inimigo_chamdo2 = Instantiate(enemy, poscionamento_inimigo[p_numero].transform.position, poscionamento_inimigo[p_numero].transform.rotation);
         n_inimigos += 2;
+
+        Vector3 posicao = pocisionamento_inimigo[p_numero].transform.position;
+        Quaternion rotacao = pocisionamento_inimigo[p_numero].transform.rotation;
+        var inimigo_chamdo1 = Instantiate(enemy, posicao,rotacao);
+        var inimigo_chamdo2 = Instantiate(enemy, posicao,rotacao);
         inimigo_chamdo1.velocity = transform.forward * 20;
         inimigo_chamdo2.velocity = transform.forward * 30;
+
         nextenemy = Time.time + cooldownTime;
     }
 }

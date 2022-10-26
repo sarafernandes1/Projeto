@@ -12,7 +12,7 @@ public class EnemyBullet : MonoBehaviour
         if (gameObject.tag == "AtaqueInimigo")
         {
             ataque_alcance = true;
-            damage = 5.0f;
+            damage = 2.0f;
         }
         else
         {
@@ -23,7 +23,8 @@ public class EnemyBullet : MonoBehaviour
 
     void Update()
     {
-        if (ataque_boss) {
+        if (ataque_boss) 
+        {
             GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
             if (inimigos == null)
             {

@@ -17,12 +17,24 @@ public class EnemyHealth : MonoBehaviour
         if (transform.tag == "InimigoCorpoaCorpo")
         {
             inimigo1 = true;
+            if (gameObject.name == "Cylinder" || gameObject.name == "Cylinder (1)")
+            {
+                vida = 20;
+            }
         }
 
         if (transform.tag == "InimigoAlcance")
         {
-            inimigo2 = true;
-            vida = 120;
+            if (gameObject.name == "Cylinder (2)" || gameObject.name == "Cylinder (3)")
+            {
+                inimigo2 = true;
+                vida = 40;
+            }
+            else
+            {
+                inimigo2 = true;
+                vida = 120;
+            }
         }
 
         if (transform.tag == "InimigoBoss")
