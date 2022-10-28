@@ -8,9 +8,9 @@ public class EnemyHealth : MonoBehaviour
     public float vida = 100;
     public ParticleSystem explosao;
     bool isdead = false;
-    bool inimigo1, inimigo2, inimigo3;
+    bool inimigo1, inimigo1_1, inimigo2, inimigo3;
     public bool a;
-    //public GameObject drop;
+    public GameObject cube;
 
     void Start()
     {
@@ -20,6 +20,8 @@ public class EnemyHealth : MonoBehaviour
             if (gameObject.name == "Cylinder" || gameObject.name == "Cylinder (1)")
             {
                 vida = 20;
+                inimigo1 = false;
+                inimigo1_1 = true;
             }
         }
 
@@ -42,6 +44,8 @@ public class EnemyHealth : MonoBehaviour
             vida = 150;
             inimigo3 = true;
         }
+
+
     }
 
     void Update()
@@ -55,8 +59,19 @@ public class EnemyHealth : MonoBehaviour
 
     public void IsDead()
     {
-        //drop.SetActive(true);
-        //drop.transform.position = gameObject.transform.position;
+        if (inimigo1 || inimigo3)
+        {
+            var drop = Instantiate(cube, new Vector3(transform.position.x, 1.0f, transform.position.z), transform.rotation);
+            float numero_random = Random.value;
+            if (numero_random < 0.5f)
+            {
+                drop.tag = "Vida";
+            }
+            else
+            {
+                drop.tag = "Recurso";
+            }
+        }
         GameObject.Destroy(gameObject);
     }
 

@@ -8,6 +8,7 @@ public class BossController : MonoBehaviour
     public GameObject player;
     public GameObject[] pocisionamento_inimigo;
     public Rigidbody enemy, ataque_especial;
+    public GameObject enemy_alcance;
     public Collider ataque_collider;
     public Slider qtd_vida;
     public ParticleSystem particle1;
@@ -44,7 +45,6 @@ public class BossController : MonoBehaviour
                 if (p_numero >= 5) p_numero = 1;
             }
         }
-
         
         if (distanceToPlayer <= 60.0f)
         {
@@ -65,7 +65,7 @@ public class BossController : MonoBehaviour
         GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
         if (inimigos==null)
         {
-            //transform.position += transform.forward * speed * Time.deltaTime;
+            transform.position += transform.forward * 1.0f * Time.deltaTime;
             segunda_parte = true;
         }
 
@@ -96,9 +96,8 @@ public class BossController : MonoBehaviour
         Vector3 posicao = pocisionamento_inimigo[p_numero].transform.position;
         Quaternion rotacao = pocisionamento_inimigo[p_numero].transform.rotation;
         var inimigo_chamdo1 = Instantiate(enemy, posicao,rotacao);
-        var inimigo_chamdo2 = Instantiate(enemy, posicao,rotacao);
+        var inimigo_chamdo2 = Instantiate(enemy_alcance, posicao,rotacao);
         inimigo_chamdo1.velocity = transform.forward * 20;
-        inimigo_chamdo2.velocity = transform.forward * 30;
 
         nextenemy = Time.time + cooldownTime;
     }

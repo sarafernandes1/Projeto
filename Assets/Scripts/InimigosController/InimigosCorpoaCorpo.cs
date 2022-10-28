@@ -8,7 +8,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     public Rigidbody bulletPrefab;
     public GameObject player;
     float speed, dist_max;
-    bool inimigo1, inimigo2, player_in_area, inimigo3;
+    bool inimigo1, inimigo2, player_in_area, inimigo3, inimigo4;
 
     float cooldownTime = 2;
     float nextFireTime = 0;
@@ -28,6 +28,13 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             speed = 0.6f;
             dist_max = 16.0f;
             inimigo2 = true;
+            if (transform.name == "AlcanceInimigo(Clone)")
+            {
+                inimigo2 = false;
+                inimigo4 = true;
+                speed = 1.0f;
+            }
+
         }
 
         if (transform.tag == "InimigoBoss")
@@ -59,6 +66,14 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             }
         }
 
+        if (inimigo4 )
+        {
+            if (Time.time > nextFireTime && player_in_area)
+            {
+                AtaqueAlcance();
+            }
+            Perseguir();
+        }
 
         //Inimigo área boss
         if (inimigo3)
