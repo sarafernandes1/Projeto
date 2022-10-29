@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class MudarCena : MonoBehaviour
 {
     public static bool cena_boss;
-    public GameObject guardar;
+    public GameObject guardar, update;
+    public InputController inputController;
 
     void Start()
     {
@@ -21,8 +22,9 @@ public class MudarCena : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GuardarInformacao.SaveDadosPlayer();
-        Cursor.visible = false;
         DontDestroyOnLoad(guardar);
+        DontDestroyOnLoad(update);
+        DontDestroyOnLoad(inputController);
         SceneManager.LoadScene(2);
         cena_boss = true;
     }

@@ -63,14 +63,14 @@ public class EnemyHealth : MonoBehaviour
         {
             var drop = Instantiate(cube, new Vector3(transform.position.x, 1.0f, transform.position.z), transform.rotation);
             float numero_random = Random.value;
-            if (numero_random < 0.5f)
-            {
-                drop.tag = "Vida";
-            }
-            else
-            {
+            //if (numero_random < 0.5f)
+            //{
+            //    drop.tag = "Vida";
+            //}
+            //else
+            //{
                 drop.tag = "Recurso";
-            }
+           // }
         }
         GameObject.Destroy(gameObject);
     }
@@ -84,7 +84,7 @@ public class EnemyHealth : MonoBehaviour
         if (other.gameObject.name == "Boladefogo")
         {
             AtaqueBolaFogo(other);
-            other.SetActive(true);
+            explosao.gameObject.SetActive(true);
         }
         if (other.gameObject.name == "RaioEletrico")
         {

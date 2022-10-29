@@ -11,6 +11,8 @@ TagManager:
   - Vida
   - AtaqueInimigo
   - InimigoBoss
+  - ManaSlider
+  - BolaFogoExplosao
   layers:
   - Default
   - TransparentFX

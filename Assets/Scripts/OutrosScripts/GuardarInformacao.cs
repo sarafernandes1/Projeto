@@ -22,15 +22,12 @@ public class GuardarInformacao : MonoBehaviour
         PlayerPrefs.SetInt("recursos",numero_recursos);
     }
 
+
     public static void GetDados()
     {
         vida = PlayerPrefs.GetFloat("vida");
         speed = PlayerPrefs.GetFloat("manaspeed");
         recursos = PlayerPrefs.GetInt("recursos");
     }
-
-
-
-
 
 }

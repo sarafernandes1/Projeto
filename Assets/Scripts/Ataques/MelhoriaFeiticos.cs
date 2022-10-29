@@ -12,17 +12,24 @@ public class MelhoriaFeiticos : MonoBehaviour
     public SphereCollider explosao_collider;
     public Button[] buttons;
 
-    int qtd_recursos;
+    public int qtd_recursos;
+    public int a;
 
     void Start()
     {
-
+       
     }
 
     void Update()
     {
-        qtd_recursos = int.Parse(recursos.text.ToString());
+        if (recursos==null)
+        {
+            recursos = GameObject.FindGameObjectWithTag("Recurso").GetComponent<Text>();
+            qtd_mana = GameObject.FindGameObjectWithTag("ManaSlider").GetComponent<Slider>();
+            explosao_collider = GameObject.FindGameObjectWithTag("BolaFogoExplosao").GetComponent<ParticleSystem>().GetComponent<SphereCollider>();
+        }
 
+        qtd_recursos = int.Parse(recursos.text.ToString());
         if (inputController.GetMelhoria())
         {
             melhoria_canvas.enabled = !melhoria_canvas.enabled;
@@ -37,11 +44,18 @@ public class MelhoriaFeiticos : MonoBehaviour
             }
         }
 
-        if (qtd_recursos <= 0)
+        if (qtd_recursos < 2)
         {
             foreach(var numero in buttons)
             {
-                numero.interactable = false;
+              if(numero.name!="bloqueado")  numero.interactable = false;
+            }
+        }
+        else
+        {
+            foreach (var numero in buttons)
+            {
+                if (numero.name != "bloqueado") numero.interactable = true;
             }
         }
     }
@@ -53,7 +67,11 @@ public class MelhoriaFeiticos : MonoBehaviour
             ataquenormal.value -= 0.5f;
             EnemyHealth.dano_atqnormal += 1; // aumentar dano do ataque
         }
-        if (ataquenormal.value == 0) buttons[0].interactable = false;
+        if (ataquenormal.value == 0)
+        {
+            buttons[0].interactable = false;
+            buttons[0].name = "bloqueado";
+        }
 
     }
 
@@ -63,9 +81,11 @@ public class MelhoriaFeiticos : MonoBehaviour
         {
             //Bola de fogo
             bolafogo.value -= 0.5f;
-            explosao_collider.radius += 1.0f; // aumentar raio de dano
+           explosao_collider.radius += 1.0f; // aumentar raio de dano
         }
-        if (bolafogo.value == 0) buttons[1].interactable = false;
+        if (bolafogo.value == 0) { buttons[1].interactable = false;
+            buttons[1].name = "bloqueado";
+                }
 
     }
 
@@ -78,7 +98,11 @@ public class MelhoriaFeiticos : MonoBehaviour
             RaioEletrico.mana_gasto -= 0.1f; // diminuir a mana necessária
         }
 
-        if (raio.value == 0) buttons[2].interactable = false;
+        if (raio.value == 0)
+        {
+            buttons[2].interactable = false;
+            buttons[2].name = "bloqueado";
+        }
 
     }
 
@@ -90,7 +114,11 @@ public class MelhoriaFeiticos : MonoBehaviour
             parede.value -= 0.5f;
             ParededePedra.cooldownTime -= 0.2f;
         }
-        if (parede.value == 0) buttons[3].interactable = false;
+        if (parede.value == 0)
+        {
+            buttons[3].interactable = false;
+            buttons[3].name = "bloqueado";
+        }
 
     }
 
@@ -103,7 +131,11 @@ public class MelhoriaFeiticos : MonoBehaviour
             Rajadadevento.mana_necessario -= 0.1f;
         }
 
-        if (rajada.value == 0) buttons[4].interactable = false;
+        if (rajada.value == 0)
+        {
+            buttons[4].interactable = false;
+            buttons[4].name = "bloqueado";
+        }
     }
 
     public void ButtonF5()
@@ -114,7 +146,11 @@ public class MelhoriaFeiticos : MonoBehaviour
             furia.value -= 0.5f;
             FuriaAncestral.cooldownTime -= 0.2f; // diminuir tempo de cooldown
         }
-        if (furia.value == 0) buttons[5].interactable = false;
+        if (furia.value == 0)
+        {
+            buttons[5].interactable = false;
+            buttons[5].name = "bloqueado";
+        }
 
     }
 
@@ -127,7 +163,11 @@ public class MelhoriaFeiticos : MonoBehaviour
             ManaControlador.speed += 0.1f;
         }
 
-        if (mana.value == 0) buttons[6].interactable = false;
+        if (mana.value == 0)
+        {
+            buttons[6].interactable = false;
+            buttons[6].name = "bloqueado";
+        }
 
     }
 

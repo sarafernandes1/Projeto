@@ -58,7 +58,7 @@ public class BoladeFogo : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        sistema_particulas.gameObject.SetActive(false);
+        //sistema_particulas.gameObject.SetActive(false);
         explosao.gameObject.SetActive(true);
         explosao.Play();
         explosao.transform.position = other.transform.position;
