@@ -12,7 +12,7 @@ public class FuriaAncestral : MonoBehaviour
 
     public Image imagem_tempo;
 
-    float cooldownTime = 4;
+    public static float cooldownTime = 4;
     float nextFireTime = 0;
 
     void Start()

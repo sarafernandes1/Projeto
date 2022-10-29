@@ -7,6 +7,8 @@ public class ManaControlador : MonoBehaviour
 {
     public Slider mana_slider;
     public InputController inputController;
+    float speed = 0.1f;
+    
 
     void Start()
     {
@@ -15,8 +17,6 @@ public class ManaControlador : MonoBehaviour
 
     void Update()
     {
-
-        if(mana_slider.value<1) mana_slider.value += 0.1f*Time.deltaTime;
-       
+        if(mana_slider.value<1) mana_slider.value += speed*Time.deltaTime;
     }
 }

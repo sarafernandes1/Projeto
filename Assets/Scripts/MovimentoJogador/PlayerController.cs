@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()

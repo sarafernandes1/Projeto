@@ -116,6 +116,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AbrirMelhoria"",
+                    ""type"": ""Button"",
+                    ""id"": ""590ef187-e60d-4a5b-8c7a-2adf2b62731f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""AtaqueNormal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2e2aae7-91cb-44c1-aced-75edd71c2824"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AbrirMelhoria"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -290,6 +310,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Feiticos4 = m_Player.FindAction("Feiticos4", throwIfNotFound: true);
         m_Player_Feiticos5 = m_Player.FindAction("Feiticos5", throwIfNotFound: true);
         m_Player_AtaqueNormal = m_Player.FindAction("AtaqueNormal", throwIfNotFound: true);
+        m_Player_AbrirMelhoria = m_Player.FindAction("AbrirMelhoria", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -359,6 +380,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Feiticos4;
     private readonly InputAction m_Player_Feiticos5;
     private readonly InputAction m_Player_AtaqueNormal;
+    private readonly InputAction m_Player_AbrirMelhoria;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -373,6 +395,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Feiticos4 => m_Wrapper.m_Player_Feiticos4;
         public InputAction @Feiticos5 => m_Wrapper.m_Player_Feiticos5;
         public InputAction @AtaqueNormal => m_Wrapper.m_Player_AtaqueNormal;
+        public InputAction @AbrirMelhoria => m_Wrapper.m_Player_AbrirMelhoria;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -412,6 +435,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @AtaqueNormal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAtaqueNormal;
                 @AtaqueNormal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAtaqueNormal;
                 @AtaqueNormal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAtaqueNormal;
+                @AbrirMelhoria.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbrirMelhoria;
+                @AbrirMelhoria.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbrirMelhoria;
+                @AbrirMelhoria.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbrirMelhoria;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -446,6 +472,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @AtaqueNormal.started += instance.OnAtaqueNormal;
                 @AtaqueNormal.performed += instance.OnAtaqueNormal;
                 @AtaqueNormal.canceled += instance.OnAtaqueNormal;
+                @AbrirMelhoria.started += instance.OnAbrirMelhoria;
+                @AbrirMelhoria.performed += instance.OnAbrirMelhoria;
+                @AbrirMelhoria.canceled += instance.OnAbrirMelhoria;
             }
         }
     }
@@ -462,5 +491,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnFeiticos4(InputAction.CallbackContext context);
         void OnFeiticos5(InputAction.CallbackContext context);
         void OnAtaqueNormal(InputAction.CallbackContext context);
+        void OnAbrirMelhoria(InputAction.CallbackContext context);
     }
 }

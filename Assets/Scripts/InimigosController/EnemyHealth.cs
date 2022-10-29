@@ -7,10 +7,11 @@ public class EnemyHealth : MonoBehaviour
 {
     public float vida = 100;
     public ParticleSystem explosao;
-    bool isdead = false;
     bool inimigo1, inimigo1_1, inimigo2, inimigo3;
     public bool a;
     public GameObject cube;
+
+    public static int dano_atqnormal=2;
 
     void Start()
     {
@@ -52,7 +53,6 @@ public class EnemyHealth : MonoBehaviour
     {
         if (vida <= 0)
         {
-            isdead = true;
             IsDead();
         }
     }
@@ -79,7 +79,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.gameObject.name == "AtaqueNormal")
         {
-            vida -= 2;
+            vida -= dano_atqnormal;
         }
         if (other.gameObject.name == "Boladefogo")
         {

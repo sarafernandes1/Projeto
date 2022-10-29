@@ -10,10 +10,13 @@ public class RaioEletrico : MonoBehaviour
     public Slider qtd_mana;
     bool can_atack, cooldown;
 
+    public static float mana_gasto=0.35f;
+
     public Image imagem_tempo;
 
     float cooldownTime = 2;
     float nextFireTime = 0;
+
     void Start()
     {
         imagem_tempo.fillAmount = 0;
@@ -48,7 +51,7 @@ public class RaioEletrico : MonoBehaviour
     void Ataque()
     {
         sistema_particulas.Play();
-        qtd_mana.value -= 0.35f;
+        qtd_mana.value -= mana_gasto;
 
         nextFireTime = Time.time + cooldownTime;
     }

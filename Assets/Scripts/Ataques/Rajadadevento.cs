@@ -10,6 +10,8 @@ public class Rajadadevento : MonoBehaviour
     public Slider qtd_mana;
     bool can_atack, cooldown;
 
+    public static float mana_necessario = 0.45f;
+
     public Image imagem_tempo;
 
     float cooldownTime = 2;
@@ -49,7 +51,7 @@ public class Rajadadevento : MonoBehaviour
     void Ataque()
     {
         sistema_particulas.Play();
-        qtd_mana.value -= 0.45f;
+        qtd_mana.value -= mana_necessario;
 
         nextFireTime = Time.time + cooldownTime;
     }

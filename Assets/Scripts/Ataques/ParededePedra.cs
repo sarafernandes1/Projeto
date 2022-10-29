@@ -13,7 +13,8 @@ public class ParededePedra : MonoBehaviour
     bool can_atack, cooldown;
     public Image imagem_tempo;
 
-    float cooldownTime = 4;
+    public static float cooldownTime = 4;
+    
     float nextFireTime = 0;
 
     void Start()

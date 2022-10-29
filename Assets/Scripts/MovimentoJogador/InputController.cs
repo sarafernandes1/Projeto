@@ -49,6 +49,11 @@ public class InputController : MonoBehaviour
         else return -1;
     }
 
+    public bool GetMelhoria()
+    {
+        return _playerControls.Player.AbrirMelhoria.triggered;
+    }
+
 
     private void OnDisable()
     {
