@@ -13,8 +13,6 @@ public class MelhoriaFeiticos : MonoBehaviour
     public Button[] buttons;
 
     int qtd_recursos;
-    bool mana_aumentada;
-    float speed_mana;
 
     void Start()
     {
@@ -37,11 +35,6 @@ public class MelhoriaFeiticos : MonoBehaviour
             {
                 Time.timeScale = 1.0f;
             }
-        }
-
-        if (mana_aumentada)
-        {
-            if (qtd_mana.value < 1) qtd_mana.value += speed_mana * Time.deltaTime;
         }
 
         if (qtd_recursos <= 0)
@@ -131,8 +124,7 @@ public class MelhoriaFeiticos : MonoBehaviour
         if (RecursosSuficientes(2,6))
         {
             mana.value -= 0.5f;
-            mana_aumentada = true;
-            speed_mana += 0.05f;
+            ManaControlador.speed += 0.1f;
         }
 
         if (mana.value == 0) buttons[6].interactable = false;

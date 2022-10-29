@@ -6,16 +6,24 @@ using UnityEngine.UI;
 public class HealthPlayer : MonoBehaviour
 {
     public Slider qtd_vida;
+    public static float vida;
+    public Text recursos_text;
     public bool isdead;
     bool segunda_parte;
 
     void Start()
     {
-        
+        if (MudarCena.cena_boss)
+        {
+            GuardarInformacao.GetDados();
+            vida = GuardarInformacao.vida;
+            qtd_vida.value = vida;
+        }
     }
 
     void Update()
     {
+        vida = qtd_vida.value;
         GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
         if (inimigos == null)
         {

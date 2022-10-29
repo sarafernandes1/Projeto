@@ -7,12 +7,15 @@ public class ManaControlador : MonoBehaviour
 {
     public Slider mana_slider;
     public InputController inputController;
-    float speed = 0.1f;
+    public static float speed = 0.1f;
     
-
     void Start()
     {
-        
+        if (MudarCena.cena_boss)
+        {
+            GuardarInformacao.GetDados();
+            speed = GuardarInformacao.speed;
+        }
     }
 
     void Update()
