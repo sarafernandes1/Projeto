@@ -382,7 +382,6 @@ RectTransform:
   - {fileID: 923892019}
   - {fileID: 764912537}
   - {fileID: 2140049708}
-  - {fileID: 619176890}
   - {fileID: 797071096}
   - {fileID: 1707035504}
   m_Father: {fileID: 800846412}
@@ -7935,7 +7934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68, y: -113.6}
+  m_AnchoredPosition: {x: -68, y: -139}
   m_SizeDelta: {x: 268.3995, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &556616003
@@ -7971,7 +7970,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Clica no ESPA\xC7O para sair do tutorial\nw"
+  m_Text: "Clica no ESPA\xC7O para sair do tutorial\n"
 --- !u!222 &556616004
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8982,85 +8981,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &619176889
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 619176890}
-  - component: {fileID: 619176892}
-  - component: {fileID: 619176891}
-  m_Layer: 5
-  m_Name: Text (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &619176890
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619176889}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7883119}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3, y: 87.4}
-  m_SizeDelta: {x: 246, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &619176891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619176889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "Estes inimigos s\xE3o de corpo a corpo\n"
---- !u!222 &619176892
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619176889}
-  m_CullTransparentMesh: 1
 --- !u!1 &620562125
 GameObject:
   m_ObjectHideFlags: 0
@@ -11072,12 +10992,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7883119}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22, y: -55.8}
-  m_SizeDelta: {x: 275.1036, y: 49.1931}
+  m_AnchoredPosition: {x: 7, y: 52}
+  m_SizeDelta: {x: 301.852, y: 72.3683}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797071097
 MonoBehaviour:
@@ -11112,8 +11032,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Para os derrotar podes usar o Ataque normal, clica no bot\xE3o esquerdo
-    do rato\n"
+  m_Text: "Para derrotar os primeiros inimigos de corpo a corpo, podes usar o Ataque
+    normal, clica no bot\xE3o esquerdo do rato\n"
 --- !u!222 &797071098
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35718,8 +35638,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14.588409, y: 8.312083, z: 17.723621}
-  m_Center: {x: 1.8639069, y: 0.42030382, z: 7.078745}
+  m_Size: {x: 14.588409, y: 8.312083, z: 34.979813}
+  m_Center: {x: 1.8639069, y: 0.42030382, z: -1.5493484}
 --- !u!4 &1625367628
 Transform:
   m_ObjectHideFlags: 0
@@ -35728,7 +35648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625367625}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -233.4, y: -246.95265, z: 120.2}
+  m_LocalPosition: {x: -161, y: -246.95265, z: 36.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 800846412}
@@ -39177,7 +39097,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7883119}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -42398,8 +42318,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42, y: -29}
-  m_SizeDelta: {x: 309.6118, y: 30}
+  m_AnchoredPosition: {x: -66, y: -105}
+  m_SizeDelta: {x: 309.6118, y: 122.1516}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1927024360
 MonoBehaviour:
@@ -42434,7 +42354,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nos cones podes recuperar vida
+  m_Text: "Podes abrir com TAB o menu que vai te permitir melhorar os feiti\xE7os
+    ou a mana, a partir de recursos que inimigos mortos deixam e nos cones podes
+    recuperar vida."
 --- !u!222 &1927024361
 CanvasRenderer:
   m_ObjectHideFlags: 0

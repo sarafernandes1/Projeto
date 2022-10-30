@@ -65,7 +65,7 @@ public class BossController : MonoBehaviour
         GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
         if (inimigos==null)
         {
-            transform.position += transform.forward * 1.0f * Time.deltaTime;
+            //transform.position += transform.forward * 1.0f * Time.deltaTime;
             segunda_parte = true;
         }
 
