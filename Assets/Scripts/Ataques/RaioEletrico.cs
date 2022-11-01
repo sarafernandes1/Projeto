@@ -34,6 +34,7 @@ public class RaioEletrico : MonoBehaviour
             {
                 Ataque();
                 cooldown = true;
+
             }
         }
 
@@ -52,7 +53,6 @@ public class RaioEletrico : MonoBehaviour
     {
         sistema_particulas.Play();
         qtd_mana.value -= mana_gasto;
-
         nextFireTime = Time.time + cooldownTime;
     }
 }

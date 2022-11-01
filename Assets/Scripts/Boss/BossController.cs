@@ -32,11 +32,11 @@ public class BossController : MonoBehaviour
 
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-        if(distanceToPlayer<=80.0f)
+        GameObject parede = GameObject.Find("ParedeCave");
+        Collider collider = parede.transform.GetComponent<Collider>();
+        if (distanceToPlayer<=80.0f)
         {
             qtd_vida.gameObject.SetActive(true);
-            GameObject parede = GameObject.Find("ParedeCave");
-            Collider collider=parede.transform.GetComponent<Collider>();
             collider.enabled = true;
             if (Time.time > nextenemy && n_inimigos <= 4)
             {
@@ -61,11 +61,9 @@ public class BossController : MonoBehaviour
 
         if (particle1.isEmitting == false) ataque_collider.enabled = false;
 
-
-        GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
-        if (inimigos==null)
+        if (qtd_vida.value<=0.5f && collider.enabled)
         {
-            //transform.position += transform.forward * 1.0f * Time.deltaTime;
+            transform.position += transform.forward * 1.0f * Time.deltaTime;
             segunda_parte = true;
         }
 

@@ -2403,6 +2403,8 @@ MonoBehaviour:
   - {fileID: 1850170801965901193}
   - {fileID: 1850170803077821921}
   - {fileID: 1850170802660385468}
+  qtd_recursos: 0
+  a: 0
 --- !u!1 &1850170802499521514
 GameObject:
   m_ObjectHideFlags: 0

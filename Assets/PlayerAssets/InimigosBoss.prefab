@@ -830,7 +830,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 0}
   player: {fileID: 3895865957201750378, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
-  rigidbody_enemy: {fileID: 8886909051071089729}
 --- !u!114 &2228343917273898982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,3 +845,4 @@ MonoBehaviour:
   vida: 100
   explosao: {fileID: 606837559990806207, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
   a: 0
+  cube: {fileID: 4460689768607613617, guid: 56d9e81c18ecde74f9e474e31709cc95, type: 3}

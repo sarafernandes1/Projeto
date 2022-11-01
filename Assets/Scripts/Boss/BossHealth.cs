@@ -25,11 +25,11 @@ public class BossHealth : MonoBehaviour
     {
         if (other.gameObject.name == "AtaqueNormal")
         {
-            qtd_vida.value -= 0.01f;
+            qtd_vida.value -= 0.03f;
         }
         if (other.gameObject.name == "Boladefogo")
         {
-            qtd_vida.value -= 0.01f;
+            qtd_vida.value -= 0.03f;
             other.SetActive(true);
         }
         if (other.gameObject.name == "RaioEletrico")
@@ -41,7 +41,7 @@ public class BossHealth : MonoBehaviour
         if (Vector3.Distance(transform.position, other.transform.position) <= 20.0f && other.name == "Rajadadevento")
         {
             transform.position -= transform.forward * 2.0f * 2.0f;
-            qtd_vida.value -= 0.03f;
+            qtd_vida.value -= 0.04f;
         }
 
     }

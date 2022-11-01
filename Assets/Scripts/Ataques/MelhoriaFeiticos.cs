@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class MelhoriaFeiticos : MonoBehaviour
     public Slider mana, qtd_mana, parede, furia, ataquenormal, bolafogo, raio, rajada;
     public SphereCollider explosao_collider;
     public Button[] buttons;
+    public GameObject rajada_particle;
+    public ParticleSystem rajada_;
 
     public int qtd_recursos;
     public int a;
@@ -27,6 +30,8 @@ public class MelhoriaFeiticos : MonoBehaviour
             recursos = GameObject.FindGameObjectWithTag("Recurso").GetComponent<Text>();
             qtd_mana = GameObject.FindGameObjectWithTag("ManaSlider").GetComponent<Slider>();
             explosao_collider = GameObject.FindGameObjectWithTag("BolaFogoExplosao").GetComponent<ParticleSystem>().GetComponent<SphereCollider>();
+            rajada_particle = GameObject.FindGameObjectWithTag("Rajada");
+            rajada_ = GameObject.FindGameObjectWithTag("Rajada").GetComponent<ParticleSystem>();
         }
 
         qtd_recursos = int.Parse(recursos.text.ToString());
@@ -77,15 +82,17 @@ public class MelhoriaFeiticos : MonoBehaviour
 
     public void ButtonF1()
     {
-        if (RecursosSuficientes(2,1))
+        if (RecursosSuficientes(2, 1))
         {
             //Bola de fogo
             bolafogo.value -= 0.5f;
-           explosao_collider.radius += 1.0f; // aumentar raio de dano
+            explosao_collider.radius += 1.0f; // aumentar raio de dano
         }
-        if (bolafogo.value == 0) { buttons[1].interactable = false;
+        if (bolafogo.value == 0)
+        {
+            buttons[1].interactable = false;
             buttons[1].name = "bloqueado";
-                }
+        }
 
     }
 
@@ -128,7 +135,8 @@ public class MelhoriaFeiticos : MonoBehaviour
         {
             //Rajada de vento
             rajada.value -= 0.5f;
-            Rajadadevento.mana_necessario -= 0.1f;
+            rajada_particle.transform.localScale +=new Vector3( 10.0f,10.0f,10.0f); //aumenta raio 
+            rajada_.startSpeed -= 4.0f;
         }
 
         if (rajada.value == 0)
@@ -144,7 +152,7 @@ public class MelhoriaFeiticos : MonoBehaviour
         {
             //Fúria ancestral
             furia.value -= 0.5f;
-            FuriaAncestral.cooldownTime -= 0.2f; // diminuir tempo de cooldown
+            FuriaAncestral.cooldownTime += 0.3f; // aumentar tempo de duração
         }
         if (furia.value == 0)
         {

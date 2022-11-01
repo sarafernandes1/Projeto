@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float vida = 100;
+    public float vida = 15;
     public ParticleSystem explosao;
-    bool inimigo1, inimigo1_1, inimigo2, inimigo3;
+    bool inimigo1,inimigo1_1, inimigo2, inimigo3;
     public bool a;
     public GameObject cube;
-
     public static int dano_atqnormal=2;
 
     void Start()
@@ -18,9 +17,10 @@ public class EnemyHealth : MonoBehaviour
         if (transform.tag == "InimigoCorpoaCorpo")
         {
             inimigo1 = true;
+            vida = 15;
             if (gameObject.name == "Cylinder" || gameObject.name == "Cylinder (1)")
             {
-                vida = 20;
+                vida = 15;
                 inimigo1 = false;
                 inimigo1_1 = true;
             }
@@ -31,18 +31,18 @@ public class EnemyHealth : MonoBehaviour
             if (gameObject.name == "Cylinder (2)" || gameObject.name == "Cylinder (3)")
             {
                 inimigo2 = true;
-                vida = 40;
+                vida = 10;
             }
             else
             {
                 inimigo2 = true;
-                vida = 120;
+                vida = 30;
             }
         }
 
         if (transform.tag == "InimigoBoss")
         {
-            vida = 150;
+            vida = 40;
             inimigo3 = true;
         }
 
@@ -55,6 +55,7 @@ public class EnemyHealth : MonoBehaviour
         {
             IsDead();
         }
+
     }
 
     public void IsDead()
@@ -63,14 +64,7 @@ public class EnemyHealth : MonoBehaviour
         {
             var drop = Instantiate(cube, new Vector3(transform.position.x, 1.0f, transform.position.z), transform.rotation);
             float numero_random = Random.value;
-            //if (numero_random < 0.5f)
-            //{
-            //    drop.tag = "Vida";
-            //}
-            //else
-            //{
                 drop.tag = "Recurso";
-           // }
         }
         GameObject.Destroy(gameObject);
     }
@@ -93,7 +87,7 @@ public class EnemyHealth : MonoBehaviour
         }
         if (other.gameObject.name == "Rajadadevento")
         {
-            vida -= 30;
+            vida -= 3;
         }
 
     }
@@ -113,7 +107,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void AtaqueEletrico(GameObject raioeletrico)
     {
-        vida -= 20;
+        vida -= 6;
         raioeletrico.SetActive(false);
     }
 
@@ -121,12 +115,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if (inimigo1)
         {
-            vida -= 6;
+            vida -= 4;
         }
 
         if (inimigo2 && inimigo3)
         {
-            vida-=5;
+            vida-=7;
         }
     }
 
@@ -136,16 +130,12 @@ public class EnemyHealth : MonoBehaviour
         {
             vida -= 20 * Time.deltaTime;
         }
-    }
 
-    public void RajadaVento(GameObject vento)
-    {
-        float distanceToVento = Vector3.Distance(vento.transform.position, transform.position);
-
-        if (distanceToVento < 12.0f)
+        if (other.name == "Rajadadevento")
         {
-            vida -= 10;
+            vida -= 5 * Time.deltaTime;
         }
     }
+
 
 }

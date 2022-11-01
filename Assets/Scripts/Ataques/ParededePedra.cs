@@ -63,7 +63,7 @@ public class ParededePedra : MonoBehaviour
         Vector3 playerPosition = player.transform.position;
         Vector3 playerDirection = player.transform.forward;
         Quaternion playerRotation = player.transform.rotation;
-        float spawnDistance = 0.7f;
+        float spawnDistance = 5.0f;
         Vector3 posicao_parede = playerPosition + playerDirection * spawnDistance;
         transform.rotation = playerRotation;
         transform.position = posicao_parede;

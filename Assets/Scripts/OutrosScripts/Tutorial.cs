@@ -6,10 +6,11 @@ public class Tutorial : MonoBehaviour
 {
     public Canvas canvas;
     public InputController InputController;
+    GameObject parede;
 
     void Start()
     {
-        
+        parede = GameObject.Find("ParedeTutorial");
     }
 
 
@@ -20,6 +21,11 @@ public class Tutorial : MonoBehaviour
             Time.timeScale = 1.0f;
             canvas.enabled = false;
             Destroy(gameObject);
+        }
+
+        if (GameObject.Find("Cylinder") == null && GameObject.Find("Cylinder (1)"))
+        {
+            Destroy(parede.gameObject);
         }
     }
 

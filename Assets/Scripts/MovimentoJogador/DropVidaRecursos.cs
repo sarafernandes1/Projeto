@@ -29,10 +29,6 @@ public class DropVidaRecursos : MonoBehaviour
     {
         if (other.name == "Cube(Clone)")
         {
-            //if (other.tag == "Vida")
-            //{
-            //    qtd_vida.value += 0.1f * Time.deltaTime;
-            //}
             if (other.tag == "Recurso")
             {
                 recursos++;

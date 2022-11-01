@@ -50,7 +50,6 @@ public class FuriaAncestral : MonoBehaviour
 
     public void Ataque()
     {
-
         sistema_particulas.Play();
         qtd_mana.value -= 0.5f;
        
