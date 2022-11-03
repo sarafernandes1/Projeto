@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931201405431678411}
-  m_LocalRotation: {x: 1e-45, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.506, z: -2.06}
+  m_LocalRotation: {x: 1e-45, y: -0.16171585, z: -0, w: 0.9868374}
+  m_LocalPosition: {x: 3.5665817, y: 1.0855004, z: 16.68927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6931201406030043559}
   m_Father: {fileID: 6931201405891906655}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -18.613, z: 0}
 --- !u!114 &6931201405431678409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +268,7 @@ Transform:
   - {fileID: 6931201406775291791}
   - {fileID: 6931201407116249069}
   - {fileID: 6931201406284092767}
+  - {fileID: 8731417290350905040}
   m_Father: {fileID: 6931201406673752382}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -297,13 +298,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931201406284092704}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.07087067, z: 0, w: 0.9974855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6931201406114533127}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 8.128, z: 0}
 --- !u!198 &6931201406284092764
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -313,7 +314,7 @@ ParticleSystem:
   m_GameObject: {fileID: 6931201406284092704}
   serializedVersion: 7
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 4
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -387,7 +388,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5176,13 +5177,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931201406299138011}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.07087067, z: 0, w: 0.9974855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6931201406114533127}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 8.128, z: 0}
 --- !u!198 &6931201406299138007
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5192,7 +5193,7 @@ ParticleSystem:
   m_GameObject: {fileID: 6931201406299138011}
   serializedVersion: 7
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 4
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -5266,7 +5267,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10027,6 +10028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputController: {fileID: 0}
   sistema_particulas: {fileID: 6931201406299138007}
+  explosao: {fileID: 8731417290350905042}
   qtd_mana: {fileID: 0}
   imagem_tempo: {fileID: 0}
 --- !u!1 &6931201406673752322
@@ -10055,14 +10057,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931201406673752322}
-  m_LocalRotation: {x: -0.5380261, y: 0.5349992, z: -0.51039034, w: 0.40472907}
-  m_LocalPosition: {x: 0.334, y: -0.218, z: 0.341}
+  m_LocalRotation: {x: -0.4914047, y: 0.47488692, z: -0.57628024, w: 0.4482242}
+  m_LocalPosition: {x: 0.421, y: -0.218, z: 0.45}
   m_LocalScale: {x: 0.12448206, y: 0.33662, z: 0.109048754}
   m_Children:
   - {fileID: 6931201406114533127}
   m_Father: {fileID: 6931201406860149611}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 6.35, y: 98.762, z: -95.771}
+  m_LocalEulerAnglesHint: {x: 6.132, y: 86.193, z: -98.511}
 --- !u!33 &6931201406673752383
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10152,13 +10154,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931201406775291792}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.07087067, z: 0, w: 0.9974855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6931201406114533127}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 8.128, z: 0}
 --- !u!198 &6931201406775291788
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -10168,7 +10170,7 @@ ParticleSystem:
   m_GameObject: {fileID: 6931201406775291792}
   serializedVersion: 7
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 4
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -10242,7 +10244,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10295,7 +10297,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -15031,14 +15033,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931201406860149614}
-  m_LocalRotation: {x: -0, y: -0.6975748, z: -0, w: 0.71651196}
-  m_LocalPosition: {x: -54.4, y: 7.4, z: 32.6}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.5665817, y: 1.0855004, z: 16.68927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6931201406673752382}
   m_Father: {fileID: 6931201405891906655}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 2.228, z: 0}
 --- !u!20 &6931201406860149612
 Camera:
   m_ObjectHideFlags: 0
@@ -15136,6 +15138,7 @@ GameObject:
   - component: {fileID: 6931201407116249067}
   - component: {fileID: 6931201407116249068}
   - component: {fileID: 6931201407116249066}
+  - component: {fileID: 380434408}
   m_Layer: 0
   m_Name: Rajadadevento
   m_TagString: Untagged
@@ -15150,13 +15153,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931201407116249070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.07087067, z: 0, w: 0.9974855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6931201406114533127}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 8.128, z: 0}
 --- !u!198 &6931201407116249067
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -15166,7 +15169,7 @@ ParticleSystem:
   m_GameObject: {fileID: 6931201407116249070}
   serializedVersion: 7
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 4
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -15240,7 +15243,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -20002,7 +20005,21 @@ MonoBehaviour:
   inputController: {fileID: 0}
   sistema_particulas: {fileID: 6931201407116249067}
   qtd_mana: {fileID: 0}
+  collider_particle: {fileID: 380434408}
   imagem_tempo: {fileID: 0}
+--- !u!135 &380434408
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931201407116249070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 3}
 --- !u!1 &6931201407173852658
 GameObject:
   m_ObjectHideFlags: 0
@@ -20029,13 +20046,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931201407173852658}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.07087067, z: 0, w: 0.9974855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6931201406114533127}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 8.128, z: 0}
 --- !u!198 &6931201407173852654
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -20045,7 +20062,7 @@ ParticleSystem:
   m_GameObject: {fileID: 6931201407173852658}
   serializedVersion: 7
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 4
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -20119,7 +20136,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -24881,3 +24898,94 @@ MonoBehaviour:
   inputController: {fileID: 0}
   sistema_particulas: {fileID: 6931201407173852654}
   imagem_tempo: {fileID: 0}
+--- !u!1001 &8162724056690073709
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6931201406114533127}
+    m_Modifications:
+    - target: {fileID: 606837559990806194, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 606837559990806205, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 606837559990806207, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 606837559990806207, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 606837559990806207, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 606837559990806207, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800990, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162724056995800991, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+      propertyPath: m_Name
+      value: Explosao
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+--- !u!4 &8731417290350905040 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 606837559990806205, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+  m_PrefabInstance: {fileID: 8162724056690073709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8731417290350905042 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 606837559990806207, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
+  m_PrefabInstance: {fileID: 8162724056690073709}
+  m_PrefabAsset: {fileID: 0}

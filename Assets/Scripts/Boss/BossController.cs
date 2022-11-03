@@ -17,7 +17,7 @@ public class BossController : MonoBehaviour
     float distanceToPlayer;
     int n_inimigos, p_numero=0;
     float cooldownTime = 10, cooldownAtaque = 6, cooldownAE=8;
-    float nextFireTime = 0, nextenemy = 0, nexTimetAE=4;
+    float nextFireTime = 0, nextenemy = 0, nexTimetAE=3;
 
     void Start()
     {

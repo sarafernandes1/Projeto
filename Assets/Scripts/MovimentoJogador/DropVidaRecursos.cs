@@ -22,7 +22,7 @@ public class DropVidaRecursos : MonoBehaviour
 
     void Update()
     {
-
+        recursos = int.Parse(qtd_recurso.text.ToString());
     }
 
     private void OnTriggerEnter(Collider other)

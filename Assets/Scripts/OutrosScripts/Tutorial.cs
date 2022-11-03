@@ -23,7 +23,7 @@ public class Tutorial : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (GameObject.Find("Cylinder") == null && GameObject.Find("Cylinder (1)"))
+        if (GameObject.Find("Cylinder") == null && GameObject.Find("Cylinder (1)")==null)
         {
             Destroy(parede.gameObject);
         }

@@ -8,9 +8,8 @@ public class EnemyHealth : MonoBehaviour
     public float vida = 15;
     public ParticleSystem explosao;
     bool inimigo1,inimigo1_1, inimigo2, inimigo3;
-    public bool a;
     public GameObject cube;
-    public static int dano_atqnormal=2;
+    public static float dano_atqnormal=2;
 
     void Start()
     {
@@ -62,7 +61,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (inimigo1 || inimigo3)
         {
-            var drop = Instantiate(cube, new Vector3(transform.position.x, 1.0f, transform.position.z), transform.rotation);
+            var drop = Instantiate(cube, new Vector3(transform.position.x, 2.0f, transform.position.z), transform.rotation);
             float numero_random = Random.value;
                 drop.tag = "Recurso";
         }

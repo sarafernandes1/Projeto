@@ -13,9 +13,12 @@ public class AtaqueNormal : MonoBehaviour
     float cooldownTime = 0.8f;
     float nextFireTime = 0;
 
+    GameObject bastao;
+
     void Start()
     {
         imagem_tempo.fillAmount = 0;
+        bastao = GameObject.Find("Bastão");
     }
 
     void Update()

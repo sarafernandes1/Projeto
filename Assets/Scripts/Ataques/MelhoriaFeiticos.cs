@@ -32,6 +32,7 @@ public class MelhoriaFeiticos : MonoBehaviour
             explosao_collider = GameObject.FindGameObjectWithTag("BolaFogoExplosao").GetComponent<ParticleSystem>().GetComponent<SphereCollider>();
             rajada_particle = GameObject.FindGameObjectWithTag("Rajada");
             rajada_ = GameObject.FindGameObjectWithTag("Rajada").GetComponent<ParticleSystem>();
+
         }
 
         qtd_recursos = int.Parse(recursos.text.ToString());
@@ -70,7 +71,7 @@ public class MelhoriaFeiticos : MonoBehaviour
         if (RecursosSuficientes(2,0))
         {
             ataquenormal.value -= 0.5f;
-            EnemyHealth.dano_atqnormal += 1; // aumentar dano do ataque
+            EnemyHealth.dano_atqnormal += 0.5f; // aumentar dano do ataque
         }
         if (ataquenormal.value == 0)
         {

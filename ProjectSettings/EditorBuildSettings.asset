@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 67c806ad4f4045b4bb2eb034d2703da3
   - enabled: 1
-    path: Assets/Scenes/Cena Teste.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Nivel Pricipal.unity
+    guid: 52dac92651fe5ac4ea269525310caf17
   - enabled: 1
     path: Assets/Scenes/Arena do Boss.unity
     guid: df9c0e20575262940a127d2287728de4

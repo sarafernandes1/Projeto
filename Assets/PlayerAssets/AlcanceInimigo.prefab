@@ -810,8 +810,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: -0.5, y: 1, z: 0}
+  m_Size: {x: 1, y: 2, z: 0.8321705}
+  m_Center: {x: 0, y: 0, z: -0.20834064}
 --- !u!114 &4390116926307204747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,6 +826,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: -1632672647080203213, guid: 3843b8ca953e90645a70e6022c353e84, type: 3}
   player: {fileID: 0}
+  a: 0
+  thrust: 0
 --- !u!114 &3510224472664161660
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,13 +8,14 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     public Rigidbody bulletPrefab;
     public GameObject player;
     float speed, dist_max;
-    bool inimigo1, inimigo2, player_in_area, inimigo3, inimigo4, rajada_on;
-    public bool a;
+    bool inimigo_corpoacorpo, inimigo_alcance, inimigo_corpoBoss, inimigo_alcanceBoss;
+    bool player_in_area, rajada_on;
 
     Rigidbody rigidbody_;
+    Vector3 inicial_position;
 
     float cooldownTime = 2, tempo_rajada = 1.0f;
-    public float thrust=0.0f;
+    float thrust=0.0f;
     float nextFireTime = 0, timer=0;
 
     void Start()
@@ -22,20 +23,20 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         player = GameObject.Find("Player");
         if (transform.tag == "InimigoCorpoaCorpo")
         {
-            speed = 2.0f;
-            dist_max = 14.0f;
-            inimigo1 = true;
+            speed = 3.0f;
+            dist_max = 20.0f;
+            inimigo_corpoacorpo = true;
         }
 
         if (transform.tag == "InimigoAlcance")
         {
             speed = 0.6f;
-            dist_max = 16.0f;
-            inimigo2 = true;
+            dist_max = 22.0f;
+            inimigo_alcance = true;
             if (transform.name == "AlcanceInimigo(Clone)")
             {
-                inimigo2 = false;
-                inimigo4 = true;
+                inimigo_alcance = false;
+                inimigo_alcanceBoss = true;
                 speed = 1.0f;
             }
 
@@ -43,16 +44,18 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
         if (transform.tag == "InimigoBoss")
         {
-            inimigo3 = true;
-            inimigo1 = false;
-            inimigo2 = false;
+            inimigo_corpoBoss = true;
+            inimigo_corpoacorpo = false;
+            inimigo_alcance = false;
             speed = 3.0f;
         }
 
-        if (inimigo1 || inimigo3)
+        if (inimigo_corpoacorpo || inimigo_corpoBoss)
         {
             rigidbody_ = gameObject.GetComponent<Rigidbody>();
         }
+
+        inicial_position = transform.position;
 
     }
 
@@ -61,15 +64,14 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     {
         transform.LookAt(player.transform);
 
-
         //Inimigo Corpo a Corpo
-        if (inimigo1)
+        if (inimigo_corpoacorpo)
         {
             AtaqueCorpoaCorpo();
         }
 
         //Inimigo Alcance
-        if (inimigo2 && player_in_area)
+        if (inimigo_alcance && player_in_area)
         {
             if (Time.time > nextFireTime)
             {
@@ -77,7 +79,13 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             }
         }
 
-        if (inimigo4 )
+        //Inimigo área boss
+        if (inimigo_corpoBoss)
+        {
+            Perseguir();
+        }
+
+        if (inimigo_alcanceBoss)
         {
             if (Time.time > nextFireTime && player_in_area)
             {
@@ -86,24 +94,26 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             Perseguir();
         }
 
-        //Inimigo área boss
-        if (inimigo3)
-        {
-            Perseguir();
-        }
 
-        if (inimigo1 || inimigo3)
+        if (inimigo_corpoacorpo || inimigo_corpoBoss)
         {
-            rigidbody_.AddForce(-Vector3.right * thrust);
+            Vector3 forward = new Vector3(-transform.forward.x, 0.0f, -transform.forward.z);
+            rigidbody_.AddForce(forward * thrust*Time.deltaTime);
             if (rajada_on)
             {
-                thrust = 5.0f;
+                thrust = 1000.0f;
                 if (Time.time > timer)
                 {
                     thrust = 0.0f;
                     rajada_on = false;
                 };
             }
+        }
+
+        //Inimigos voltam à sua posição original, quando player morre
+        if (HealthPlayer.vida<=0)
+        {
+            transform.position = inicial_position;
         }
     }
 
@@ -113,7 +123,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
         Ray inimigo_ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward * 6.0f));
 
-        if (Physics.Raycast(inimigo_ray, 6.0f))
+        if (Physics.Raycast(inimigo_ray, 8.0f))
         {
             speed = 5.0f;
         }
@@ -123,7 +133,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             speed = 1.0f;
         }
 
-        if (distanceToPlayer <= dist_max && inimigo1)
+        if (distanceToPlayer <= dist_max && inimigo_corpoacorpo)
         {
             Perseguir();
         }
@@ -146,9 +156,17 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     void AtaqueAlcance()
     {
-        var projectile = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        projectile.velocity = transform.forward * 100;
-        nextFireTime = Time.time + cooldownTime;
+        //Ray ray = new Ray(transform.position, transform.forward*8.0f);
+        //RaycastHit hitData;
+        //if (Physics.Raycast(ray, out hitData))
+        //{
+        //    if (hitData.transform.tag == "Player")
+        //    {
+                var projectile = Instantiate(bulletPrefab, transform.position, transform.rotation);
+                projectile.velocity = transform.forward * 100;
+                nextFireTime = Time.time + cooldownTime;
+            //}
+      //  }
     }
 
     private void OnParticleCollision(GameObject other)
@@ -165,9 +183,8 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         if (other.gameObject.tag == "Player") player_in_area = true;
         if (other.gameObject.name == "Rajadadevento")
         {
-            thrust = 4.0f;
+            thrust = 800.0f;
         }
-        
     }
 
     private void OnTriggerExit(Collider other)

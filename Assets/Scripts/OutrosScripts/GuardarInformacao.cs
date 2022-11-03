@@ -10,6 +10,7 @@ public class GuardarInformacao : MonoBehaviour
     public static int numero_recursos;
     public Text qtd_recursos;
 
+
     private void Update()
     {
         numero_recursos = int.Parse(qtd_recursos.text.ToString());
@@ -29,5 +30,6 @@ public class GuardarInformacao : MonoBehaviour
         speed = PlayerPrefs.GetFloat("manaspeed");
         recursos = PlayerPrefs.GetInt("recursos");
     }
+
 
 }

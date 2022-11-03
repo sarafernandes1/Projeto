@@ -6,10 +6,15 @@ using UnityEngine.UI;
 public class HealthPlayer : MonoBehaviour
 {
     public Slider qtd_vida;
-    public static float vida;
+    Transform player;
     public Text recursos_text;
-    public bool isdead;
-    bool segunda_parte;
+    Canvas canvas_defeat;
+    public Transform[] pontos_respawn;
+
+    Vector3 position=new Vector3();
+
+    bool isdead, segunda_parte;
+    public static float vida;
 
     void Start()
     {
@@ -19,6 +24,8 @@ public class HealthPlayer : MonoBehaviour
             vida = GuardarInformacao.vida;
             qtd_vida.value = vida;
         }
+        player = GameObject.Find("Player").GetComponent<Transform>();
+        canvas_defeat = GameObject.Find("GameOver").GetComponent<Canvas>();
     }
 
     void Update()
@@ -32,8 +39,37 @@ public class HealthPlayer : MonoBehaviour
 
         if (qtd_vida.value <= 0)
         {
+            isDead();
             isdead = true;
         }
+
+        if (isdead)
+        {
+            float min_dist = 10000;
+            foreach (Transform pontos in pontos_respawn)
+            {
+                float distancia;
+                distancia = Vector3.Distance(transform.position, pontos.position);
+                if (distancia < min_dist)
+                {
+                    position = pontos.position;
+                    min_dist = distancia;
+                }
+            }
+            position = new Vector3(position.x, 1.0f, position.z);
+            GetComponent<CharacterController>().enabled = false;
+            transform.position = position;
+            //transform.rotation = respawnTransform.rotation;
+            GetComponent<CharacterController>().enabled = true;
+            isdead = false;
+        }
+    }
+
+
+    public void isDead()
+    {
+        canvas_defeat.enabled = true;
+        Cursor.visible = true;
     }
 
     public void TakeDamage(float damage)
@@ -61,6 +97,12 @@ public class HealthPlayer : MonoBehaviour
         }
     }
 
-   
+    public void ButtonRestart()
+    {
+        qtd_vida.value = 1.0f;
+        canvas_defeat.enabled = false;
+        Cursor.visible = false;
+
+    }
 
 }
