@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8376094106055372634}
   - component: {fileID: 4390116926307204747}
   - component: {fileID: 3510224472664161660}
+  - component: {fileID: 587422744156154813}
   m_Layer: 3
   m_Name: AlcanceInimigo
   m_TagString: InimigoAlcance
@@ -826,8 +827,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: -1632672647080203213, guid: 3843b8ca953e90645a70e6022c353e84, type: 3}
   player: {fileID: 0}
-  a: 0
-  thrust: 0
 --- !u!114 &3510224472664161660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,5 +841,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 100
   explosao: {fileID: 606837559990806207, guid: 826b213c70d9d3a45a36ff41f85187d7, type: 3}
-  a: 0
   cube: {fileID: 0}
+--- !u!114 &587422744156154813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370016011530047649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manageVisibility: 1
