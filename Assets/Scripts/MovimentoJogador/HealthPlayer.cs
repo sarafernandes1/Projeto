@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthPlayer : MonoBehaviour
 {
-    public Slider qtd_vida;
+    public static Slider qtd_vida;
     Transform player;
     public Text recursos_text;
     Canvas canvas_defeat;
@@ -25,6 +25,7 @@ public class HealthPlayer : MonoBehaviour
             qtd_vida.value = vida;
         }
         player = GameObject.Find("Player").GetComponent<Transform>();
+        qtd_vida = GameObject.Find("HealthBar").GetComponent<Slider>();
         canvas_defeat = GameObject.Find("GameOver").GetComponent<Canvas>();
     }
 
@@ -72,7 +73,7 @@ public class HealthPlayer : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void TakeDamage(float damage)
+    public static void TakeDamage(float damage)
     {
         qtd_vida.value -= damage * Time.deltaTime;
     }

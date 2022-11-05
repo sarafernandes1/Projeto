@@ -14,9 +14,9 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     Rigidbody rigidbody_;
     Vector3 inicial_position;
 
-    float cooldownTime = 2, tempo_rajada = 1.0f;
+    float cooldownTime = 2, tempo_rajada = 1.0f, cooldownataque=3; //tempo de animação ataque
     float thrust=0.0f;
-    float nextFireTime = 0, timer=0;
+    float nextFireTime = 0, timer=0, timer_ataque=0;
 
     void Start()
     {
@@ -83,6 +83,10 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         if (inimigo_corpoBoss)
         {
             Perseguir();
+            if (Time.time > timer_ataque)
+            {
+                Ataque();
+            }
         }
 
         if (inimigo_alcanceBoss)
@@ -131,6 +135,16 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         if (Physics.Raycast(inimigo_ray, 2.0f))
         {
             speed = 1.0f;
+
+        }
+
+        if (Physics.Raycast(inimigo_ray, 2.0f))
+        {
+
+            if (Time.time > timer_ataque)
+            {
+                Ataque();
+            }
         }
 
         if (distanceToPlayer <= dist_max && inimigo_corpoacorpo)
@@ -141,6 +155,21 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         {
             Normal();
         }
+    }
+
+    void Ataque()
+    {
+        RaycastHit hit;
+        Ray inimigo_ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward * 2.0f));
+            if (Physics.Raycast(inimigo_ray, out hit))
+            {
+                if (hit.collider.tag == "Player")
+                {
+                    HealthPlayer.TakeDamage(2.0f);
+                    timer_ataque = Time.time + cooldownataque;
+                }
+            }
+        
     }
 
     void Perseguir()

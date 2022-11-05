@@ -97,11 +97,6 @@ public class EnemyHealth : MonoBehaviour
         {
             vida -= (1.5f * Time.deltaTime);
         }
-        if (collision.transform.tag == "Player")
-        {
-            HealthPlayer healthPlayer = collision.transform.GetComponent<HealthPlayer>();
-            healthPlayer.TakeDamage(0.1f);
-        }
     }
 
     public void AtaqueEletrico(GameObject raioeletrico)
