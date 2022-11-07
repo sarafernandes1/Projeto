@@ -49,6 +49,14 @@ public class RaioEletrico : MonoBehaviour
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.layer == 7 || other.layer == 8)
+        {
+            sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+    }
+
     void Ataque()
     {
         sistema_particulas.Play();

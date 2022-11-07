@@ -10,7 +10,7 @@ public class MelhoriaFeiticos : MonoBehaviour
     public Text recursos;
     public InputController inputController;
     public Slider mana, qtd_mana, parede, furia, ataquenormal, bolafogo, raio, rajada;
-    public SphereCollider explosao_collider;
+    public SphereCollider explosao_collider, rajada_collider;
     public Button[] buttons;
     public GameObject rajada_particle;
     public ParticleSystem rajada_;
@@ -32,6 +32,7 @@ public class MelhoriaFeiticos : MonoBehaviour
             explosao_collider = GameObject.FindGameObjectWithTag("BolaFogoExplosao").GetComponent<ParticleSystem>().GetComponent<SphereCollider>();
             rajada_particle = GameObject.FindGameObjectWithTag("Rajada");
             rajada_ = GameObject.FindGameObjectWithTag("Rajada").GetComponent<ParticleSystem>();
+            rajada_collider = GameObject.FindGameObjectWithTag("Rajada").GetComponent<SphereCollider>();
 
         }
 
@@ -136,8 +137,8 @@ public class MelhoriaFeiticos : MonoBehaviour
         {
             //Rajada de vento
             rajada.value -= 0.5f;
-            rajada_particle.transform.localScale +=new Vector3( 10.0f,10.0f,10.0f); //aumenta raio 
-            rajada_.startSpeed -= 4.0f;
+            rajada_collider.radius += 1;
+            rajada_collider.center =new Vector3(rajada_collider.center.x, rajada_collider.center.y, rajada_collider.center.z+0.5f);
         }
 
         if (rajada.value == 0)

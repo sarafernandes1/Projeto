@@ -62,5 +62,10 @@ public class BoladeFogo : MonoBehaviour
         explosao.gameObject.SetActive(true);
         explosao.Play();
         explosao.transform.position = other.transform.position;
+
+        if (other.layer == 7 || other.layer == 8)
+        {
+            sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
     }
 }

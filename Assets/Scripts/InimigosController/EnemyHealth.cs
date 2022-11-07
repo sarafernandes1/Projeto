@@ -73,6 +73,8 @@ public class EnemyHealth : MonoBehaviour
         if (other.gameObject.name == "AtaqueNormal")
         {
             vida -= dano_atqnormal;
+            AtaqueNormal(other);
+            other.SetActive(true);
         }
         if (other.gameObject.name == "Boladefogo")
         {
@@ -98,6 +100,13 @@ public class EnemyHealth : MonoBehaviour
             vida -= (1.5f * Time.deltaTime);
         }
     }
+
+    public void AtaqueNormal(GameObject ataque)
+    {
+        ataque.SetActive(false);
+    }
+
+    
 
     public void AtaqueEletrico(GameObject raioeletrico)
     {
