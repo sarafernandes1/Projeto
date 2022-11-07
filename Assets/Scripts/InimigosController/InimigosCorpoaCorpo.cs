@@ -210,9 +210,10 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player") player_in_area = true;
-        if (other.gameObject.name == "Rajadadevento")
+        if (other.gameObject.name == "Rajadadevento" && !rajada_on)
         {
-            thrust = 800.0f;
+            rajada_on = true;
+            timer = Time.time + tempo_rajada;
         }
     }
 

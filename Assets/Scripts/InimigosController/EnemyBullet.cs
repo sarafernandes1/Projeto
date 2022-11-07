@@ -40,6 +40,16 @@ public class EnemyBullet : MonoBehaviour
                 damage =2.0f;
             }
         }
+
+        Ray ray = new Ray(transform.position, transform.forward * 2.0f);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.tag == "InimigoBoss")
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

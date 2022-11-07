@@ -61,7 +61,7 @@ public class Rajadadevento : MonoBehaviour
         qtd_mana.value -= mana_necessario;
         collider_particle.enabled = true;
         nextFireTime = Time.time + cooldownTime;
-        timer = Time.time + 0.3f;
+        timer = Time.time + 0.05f;
     }
 
 }
