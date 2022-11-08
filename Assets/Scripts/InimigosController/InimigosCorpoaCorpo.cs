@@ -23,14 +23,14 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         player = GameObject.Find("Player");
         if (transform.tag == "InimigoCorpoaCorpo")
         {
-            speed = 3.0f;
-            dist_max = 20.0f;
+            speed = 3.2f;
+            dist_max = 22.0f;
             inimigo_corpoacorpo = true;
         }
 
         if (transform.tag == "InimigoAlcance")
         {
-            speed = 0.6f;
+            speed = 0.7f;
             dist_max = 22.0f;
             inimigo_alcance = true;
             if (transform.name == "AlcanceInimigo(Clone)")
@@ -161,15 +161,15 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     {
         RaycastHit hit;
         Ray inimigo_ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward * 2.0f));
-            if (Physics.Raycast(inimigo_ray, out hit))
+        if (Physics.Raycast(inimigo_ray, out hit))
+        {
+            if (hit.collider.tag == "Player")
             {
-                if (hit.collider.tag == "Player")
-                {
-                    HealthPlayer.TakeDamage(2.0f);
-                    timer_ataque = Time.time + cooldownataque;
-                }
+                HealthPlayer.TakeDamage(2.0f);
+                timer_ataque = Time.time + cooldownataque;
             }
-        
+        }
+
     }
 
     void Perseguir()
@@ -185,17 +185,9 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     void AtaqueAlcance()
     {
-        //Ray ray = new Ray(transform.position, transform.forward*8.0f);
-        //RaycastHit hitData;
-        //if (Physics.Raycast(ray, out hitData))
-        //{
-        //    if (hitData.transform.tag == "Player")
-        //    {
-                var projectile = Instantiate(bulletPrefab, transform.position, transform.rotation);
-                projectile.velocity = transform.forward * 100;
-                nextFireTime = Time.time + cooldownTime;
-            //}
-      //  }
+        var projectile = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        projectile.velocity = transform.forward * 100;
+        nextFireTime = Time.time + cooldownTime;
     }
 
     private void OnParticleCollision(GameObject other)

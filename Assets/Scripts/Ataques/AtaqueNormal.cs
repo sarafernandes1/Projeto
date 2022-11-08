@@ -41,7 +41,6 @@ public class AtaqueNormal : MonoBehaviour
                 cooldown = false;
             }
         }
-      
     }
 
     private void OnParticleCollision(GameObject other)
