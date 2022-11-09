@@ -14,7 +14,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     Rigidbody rigidbody_;
     Vector3 inicial_position;
 
-    float cooldownTime = 2, tempo_rajada = 1.0f, cooldownataque=3; //tempo de animação ataque
+    float cooldownTime = 2, tempo_rajada = 1.0f, cooldownataque=2; //tempo de animação ataque
     float thrust=0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
 
@@ -47,7 +47,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             inimigo_corpoBoss = true;
             inimigo_corpoacorpo = false;
             inimigo_alcance = false;
-            speed = 3.0f;
+            speed = 3.5f;
         }
 
         if (inimigo_corpoacorpo || inimigo_corpoBoss)
@@ -62,7 +62,9 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(player.transform);
+        Vector3 look = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        if (inimigo_alcance) look = player.transform.position;
+        transform.LookAt(look);
 
         //Inimigo Corpo a Corpo
         if (inimigo_corpoacorpo)
@@ -165,7 +167,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         {
             if (hit.collider.tag == "Player")
             {
-                HealthPlayer.TakeDamage(2.0f);
+                HealthPlayer.TakeDamage(2.5f);
                 timer_ataque = Time.time + cooldownataque;
             }
         }

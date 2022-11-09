@@ -16,7 +16,7 @@ public class BossController : MonoBehaviour
     bool segunda_parte;
     float distanceToPlayer;
     int n_inimigos, p_numero=0;
-    float cooldownTime = 10, cooldownAtaque = 6, cooldownAE=8;
+    float cooldownTime = 10, cooldownAtaque = 6, cooldownAE=6;
     float nextFireTime = 0, nextenemy = 0, nexTimetAE=3;
 
     void Start()
@@ -34,6 +34,15 @@ public class BossController : MonoBehaviour
 
         GameObject parede = GameObject.Find("ParedeCave");
         Collider collider = parede.transform.GetComponent<Collider>();
+        //if(!GameObject.Find("Cylinder (61)") && !GameObject.Find("Cylinder (62)") && !GameObject.Find("Cylinder (63)"))
+        //{
+        //    collider.enabled = false;
+        //}
+        //else
+        //{
+        //    collider.enabled = true;
+        //}
+
         if (distanceToPlayer<=80.0f)
         {
             qtd_vida.gameObject.SetActive(true);

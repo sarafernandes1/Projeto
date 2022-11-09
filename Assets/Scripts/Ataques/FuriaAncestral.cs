@@ -18,7 +18,6 @@ public class FuriaAncestral : MonoBehaviour
     void Start()
     {
         imagem_tempo.fillAmount = 0;
-
     }
 
     void Update()
@@ -30,6 +29,7 @@ public class FuriaAncestral : MonoBehaviour
 
             if (inputController.GetFeiticoNumber() == 5 && can_atack)
             {
+                LuzBastao.numero_feitico = 5;
                 Ataque();
                 cooldown = true;
             }
@@ -38,12 +38,12 @@ public class FuriaAncestral : MonoBehaviour
         if (cooldown)
         {
             imagem_tempo.fillAmount += 1 / cooldownTime * Time.deltaTime;
-
             if(qtd_mana.value<1) qtd_mana.value += 0.6f * Time.deltaTime;
             if (imagem_tempo.fillAmount >= 1)
             {
                 imagem_tempo.fillAmount = 0;
                 cooldown = false;
+                LuzBastao.numero_feitico = -2;
             }
         }
     }

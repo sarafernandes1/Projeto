@@ -25,8 +25,10 @@ public class AtaqueNormal : MonoBehaviour
     {
         if (Time.time > nextFireTime)
         {
-            if (inputController.GetFeiticoNumber() == 0)
+            if (inputController.GetFeiticoNumber() == 0 && LuzBastao.numero_feitico==-1
+                || inputController.GetFeiticoNumber()==0 && LuzBastao.numero_feitico==5)
             {
+              if(LuzBastao.numero_feitico!=5 ) LuzBastao.numero_feitico = 0;
                 Ataque();
                 cooldown = true;
             }
@@ -35,8 +37,10 @@ public class AtaqueNormal : MonoBehaviour
         if (cooldown)
         {
             imagem_tempo.fillAmount += 1 / cooldownTime * Time.deltaTime;
+            
             if (imagem_tempo.fillAmount >= 1)
             {
+                if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
                 imagem_tempo.fillAmount = 0;
                 cooldown = false;
             }

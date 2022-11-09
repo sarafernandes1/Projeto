@@ -31,9 +31,12 @@ public class ParededePedra : MonoBehaviour
             if (qtd_mana.value > 0.4f) can_atack = true;
             else can_atack = false;
 
-            if (inputController.GetFeiticoNumber() == 3 && !parede_ativa && qtd_mana.value >= 0.4f)
+            if (inputController.GetFeiticoNumber() == 3 && !parede_ativa && qtd_mana.value >= 0.4f && LuzBastao.numero_feitico == -1
+                    || inputController.GetFeiticoNumber() == 3 && !parede_ativa && qtd_mana.value >= 0.4f && LuzBastao.numero_feitico == 5)
             {
+                if(LuzBastao.numero_feitico!=5) LuzBastao.numero_feitico = 3;
                 AtivarParede();
+                if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
                 cooldown = true;
             }
         }
@@ -41,6 +44,7 @@ public class ParededePedra : MonoBehaviour
         if (cooldown)
         {
             imagem_tempo.fillAmount += 1 / cooldownTime * Time.deltaTime;
+
             if (imagem_tempo.fillAmount >= 1)
             {
                 imagem_tempo.fillAmount = 0;
@@ -50,8 +54,6 @@ public class ParededePedra : MonoBehaviour
                 parede_ataque.SetActive(false);
             }
         }
-       
-
     }
 
     void AtivarParede()
@@ -63,7 +65,7 @@ public class ParededePedra : MonoBehaviour
         Vector3 playerPosition = player.transform.position;
         Vector3 playerDirection = player.transform.forward;
         Quaternion playerRotation = player.transform.rotation;
-        float spawnDistance = 3.0f;
+        float spawnDistance = 4.0f;
         Vector3 posicao_parede = playerPosition + playerDirection * spawnDistance;
         transform.rotation = playerRotation;
         transform.position = posicao_parede;

@@ -31,8 +31,10 @@ public class Rajadadevento : MonoBehaviour
             if (qtd_mana.value > 0.45f) can_atack = true;
             else can_atack = false;
 
-            if (inputController.GetFeiticoNumber() == 4 && can_atack)
+            if (inputController.GetFeiticoNumber() == 4 && can_atack && LuzBastao.numero_feitico==-1
+                || inputController.GetFeiticoNumber() == 4 && LuzBastao.numero_feitico == 5)
             {
+                if ( LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = 4;
                 Ataque();
                 cooldown = true;
             }
@@ -47,8 +49,10 @@ public class Rajadadevento : MonoBehaviour
         if (cooldown)
         {
             imagem_tempo.fillAmount += 1 / cooldownTime * Time.deltaTime;
+           
             if (imagem_tempo.fillAmount >= 1)
             {
+                if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
                 imagem_tempo.fillAmount = 0;
                 cooldown = false;
             }

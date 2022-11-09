@@ -35,13 +35,13 @@ public class EnemyHealth : MonoBehaviour
             else
             {
                 inimigo2 = true;
-                vida = 30;
+                vida = 25;
             }
         }
 
         if (transform.tag == "InimigoBoss")
         {
-            vida = 40;
+            vida = 30;
             inimigo3 = true;
         }
 
@@ -61,6 +61,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (inimigo1 || inimigo3)
         {
+            MudarCena.n_inimigos += 1;
             var drop = Instantiate(cube, new Vector3(transform.position.x, 2.0f, transform.position.z), transform.rotation);
             float numero_random = Random.value;
                 drop.tag = "Recurso";
@@ -105,8 +106,6 @@ public class EnemyHealth : MonoBehaviour
     {
         ataque.SetActive(false);
     }
-
-    
 
     public void AtaqueEletrico(GameObject raioeletrico)
     {

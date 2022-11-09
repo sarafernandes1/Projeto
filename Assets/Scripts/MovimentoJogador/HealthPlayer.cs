@@ -13,6 +13,8 @@ public class HealthPlayer : MonoBehaviour
 
     Vector3 position=new Vector3();
 
+    public Canvas boss_vida;
+
     bool isdead, segunda_parte;
     public static float vida;
 
@@ -23,10 +25,13 @@ public class HealthPlayer : MonoBehaviour
             GuardarInformacao.GetDados();
             vida = GuardarInformacao.vida;
             qtd_vida.value = vida;
+
         }
         player = GameObject.Find("Player").GetComponent<Transform>();
         qtd_vida = GameObject.Find("HealthBar").GetComponent<Slider>();
+       if(vida>0) qtd_vida.value = vida;
         canvas_defeat = GameObject.Find("GameOver").GetComponent<Canvas>();
+
     }
 
     void Update()
@@ -60,7 +65,6 @@ public class HealthPlayer : MonoBehaviour
             position = new Vector3(position.x, 1.0f, position.z);
             GetComponent<CharacterController>().enabled = false;
             transform.position = position;
-            //transform.rotation = respawnTransform.rotation;
             GetComponent<CharacterController>().enabled = true;
             isdead = false;
         }
@@ -69,6 +73,7 @@ public class HealthPlayer : MonoBehaviour
 
     public void isDead()
     {
+        if(MudarCena.cena_boss) boss_vida.enabled = false;
         canvas_defeat.enabled = true;
         Cursor.visible = true;
     }
@@ -104,6 +109,7 @@ public class HealthPlayer : MonoBehaviour
         canvas_defeat.enabled = false;
         Cursor.visible = false;
 
+        if(MudarCena.cena_boss) boss_vida.enabled = true;
     }
 
 }

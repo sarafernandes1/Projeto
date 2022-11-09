@@ -27,8 +27,10 @@ public class BoladeFogo : MonoBehaviour
             if (qtd_mana.value > 0.3f) can_atack = true;
             else can_atack = false;
 
-            if (inputController.GetFeiticoNumber() == 1 && can_atack)
+            if (inputController.GetFeiticoNumber() == 1 && can_atack && LuzBastao.numero_feitico == -1
+                || inputController.GetFeiticoNumber() == 1 && LuzBastao.numero_feitico == 5)
             {
+                if (LuzBastao.numero_feitico != 5 ) LuzBastao.numero_feitico = 1;
                 Ataque();
                 cooldown = true;
             }
@@ -37,8 +39,10 @@ public class BoladeFogo : MonoBehaviour
         if (cooldown)
         {
             imagem_tempo.fillAmount += 1 / cooldownTime * Time.deltaTime;
+            
             if (imagem_tempo.fillAmount >= 1)
             {
+                if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
                 imagem_tempo.fillAmount = 0;
                 cooldown = false;
             }
