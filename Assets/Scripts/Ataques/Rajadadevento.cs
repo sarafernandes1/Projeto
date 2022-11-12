@@ -57,6 +57,7 @@ public class Rajadadevento : MonoBehaviour
                 cooldown = false;
             }
         }
+
     }
 
     private void OnParticleCollision(GameObject other)
@@ -66,6 +67,7 @@ public class Rajadadevento : MonoBehaviour
             sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
     }
+
 
     void Ataque()
     {

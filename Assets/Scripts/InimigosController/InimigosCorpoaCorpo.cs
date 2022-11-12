@@ -63,7 +63,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     void Update()
     {
         Vector3 look = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        if (inimigo_alcance) look = player.transform.position;
+        if (inimigo_alcance || inimigo_alcanceBoss) look = player.transform.position;
         transform.LookAt(look);
 
         //Inimigo Corpo a Corpo
@@ -187,8 +187,10 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     void AtaqueAlcance()
     {
-        var projectile = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        projectile.velocity = transform.forward * 100;
+        Vector3 position=transform.position;
+        Vector3 forward = transform.forward;
+        var projectile = Instantiate(bulletPrefab, position, transform.rotation);
+        projectile.velocity = forward * 100;
         nextFireTime = Time.time + cooldownTime;
     }
 

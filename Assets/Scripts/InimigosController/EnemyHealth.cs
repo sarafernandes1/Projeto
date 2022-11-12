@@ -77,7 +77,7 @@ public class EnemyHealth : MonoBehaviour
             AtaqueNormal(other);
             other.SetActive(true);
         }
-        if (other.gameObject.name == "Boladefogo")
+        if (other.gameObject.name == "Boladefogo(Clone")
         {
             AtaqueBolaFogo(other);
             explosao.gameObject.SetActive(true);

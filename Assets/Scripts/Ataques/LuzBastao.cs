@@ -12,7 +12,7 @@ public class LuzBastao : MonoBehaviour
 
     void Start()
     {
-        luz = GameObject.Find("LuzBastao").GetComponent<MeshRenderer>();
+        luz = GameObject.Find("Gema").GetComponent<MeshRenderer>();
         numero_feitico = -1;
     }
 
