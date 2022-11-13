@@ -24,6 +24,11 @@ public class BoladeFogo : MonoBehaviour
             if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = 1;
             Ataque();
         }
+
+        if (sistema_particulas.isPlaying)
+        {
+            StartCoroutine(espera());
+        }
     }
 
     void Ataque()
@@ -33,30 +38,39 @@ public class BoladeFogo : MonoBehaviour
         nextFireTime = Time.time + cooldownTime;
     }
 
+    IEnumerator espera()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(this.gameObject);
+    }
+
+    IEnumerator waiter(ParticleSystem explosion)
+    {
+        //Wait for 2 seconds
+        yield return new WaitForSeconds(1);
+        
+        Destroy(explosion.gameObject);
+        Destroy(this.gameObject);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        //explosao.gameObject.SetActive(true);
-        explosao.transform.position = collision.gameObject.transform.position;
+        sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
-        explosao.Play();
-        if (collision.gameObject.layer == 7 || collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 9)
         {
-            sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            Destroy(this.gameObject);
+        }
+        else
+        {
+
+            var explosion = Instantiate(explosao, transform.position, transform.rotation);
+            explosion.gameObject.SetActive(true);
+
+            explosion.Play();
+
+            StartCoroutine(waiter(explosion));
         }
     }
 
-    //private void OnParticleCollision(GameObject other)
-    //{
-    //    //sistema_particulas.gameObject.SetActive(false);
-    //    explosao.gameObject.SetActive(true);
-    //    explosao.Play();
-    //    explosao.transform.position = other.transform.position;
-
-    //    if (other.layer == 7 || other.layer == 8)
-    //    {
-    //        sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-    //    }
-    //}
-
-    
 }

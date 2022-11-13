@@ -32,7 +32,7 @@ public class Feiticos : MonoBehaviour
             {
                 var projectile = Instantiate(bolafogo, bolafogo.gameObject.transform.position, bolafogo.gameObject.transform.rotation);
                 projectile.gameObject.SetActive(true);
-                projectile.AddForce(transform.forward * 100);
+                projectile.AddForce(bolafogo.gameObject.transform.forward * 100);
                 projectile.gameObject.GetComponent<ParticleSystem>().Play();
                 nextFireTime = Time.time + cooldownTime;
                 cooldown = true;

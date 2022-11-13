@@ -34,7 +34,7 @@ public class LigarDesligarLuz : MonoBehaviour
             vento_ativo = true;
         }
 
-        if (other.gameObject.name == "Boladefogo")
+        if (other.gameObject.name == "Boladefogo(Clone)")
         {
             bola_luz = true;
         }

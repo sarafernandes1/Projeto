@@ -77,11 +77,6 @@ public class EnemyHealth : MonoBehaviour
             AtaqueNormal(other);
             other.SetActive(true);
         }
-        if (other.gameObject.name == "Boladefogo(Clone")
-        {
-            AtaqueBolaFogo(other);
-            explosao.gameObject.SetActive(true);
-        }
         if (other.gameObject.name == "RaioEletrico")
         {
             AtaqueEletrico(other);
@@ -91,7 +86,16 @@ public class EnemyHealth : MonoBehaviour
         {
             vida -= 3;
         }
+        
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Boladefogo(Clone)")
+        {
+            AtaqueBolaFogo(collision.gameObject);
+            explosao.gameObject.SetActive(true);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -109,7 +113,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void AtaqueEletrico(GameObject raioeletrico)
     {
-        vida -= 6;
+        vida -= 4;
         raioeletrico.SetActive(false);
     }
 
@@ -117,18 +121,18 @@ public class EnemyHealth : MonoBehaviour
     {
         if (inimigo1)
         {
-            vida -= 4;
+            vida -= 2;
         }
 
         if (inimigo2 && inimigo3)
         {
-            vida-=7;
+            vida-=3;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Explosao")
+        if (other.name == "Explosao(Clone)")
         {
             vida -= 20 * Time.deltaTime;
         }
