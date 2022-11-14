@@ -165,7 +165,7 @@ MonoBehaviour:
   inputController: {fileID: 0}
   cameraTransform: {fileID: 0}
   playerSpeed: 8
-  jumpHeight: 3
+  jumpHeight: 1
   gravityValue: -9.81
 --- !u!114 &3895865957201750369
 MonoBehaviour:
@@ -207,4 +207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabe75d69013e61459dbff396c5d5b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qtd_vida: {fileID: 0}
+  recursos_text: {fileID: 0}
+  pontos_respawn: []
+  boss_vida: {fileID: 0}

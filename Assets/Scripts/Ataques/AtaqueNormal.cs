@@ -7,59 +7,44 @@ public class AtaqueNormal : MonoBehaviour
 {
     public InputController inputController;
     public ParticleSystem sistema_particulas;
-    bool cooldown;
-    public Image imagem_tempo;
+
+    public static bool ataque;
 
     float cooldownTime = 0.8f;
     float nextFireTime = 0;
 
-    GameObject bastao;
-
     void Start()
     {
-        imagem_tempo.fillAmount = 0;
-        bastao = GameObject.Find("Bastão");
     }
 
     void Update()
     {
-        if (Time.time > nextFireTime)
+        if (ataque)
         {
-            if (inputController.GetFeiticoNumber() == 0 && LuzBastao.numero_feitico==-1
-                || inputController.GetFeiticoNumber()==0 && LuzBastao.numero_feitico==5)
-            {
-              if(LuzBastao.numero_feitico!=5 ) LuzBastao.numero_feitico = 0;
-                Ataque();
-                cooldown = true;
-            }
+            if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = 0;
+            Ataque();
         }
 
-        if (cooldown)
+        if (sistema_particulas.isPlaying)
         {
-            imagem_tempo.fillAmount += 1 / cooldownTime * Time.deltaTime;
-            
-            if (imagem_tempo.fillAmount >= 1)
-            {
-                if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
-                imagem_tempo.fillAmount = 0;
-                cooldown = false;
-            }
-        }
-    }
-
-    private void OnParticleCollision(GameObject other)
-    {
-        if (other.layer == 7 || other.layer == 8)
-        {
-            sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            StartCoroutine(espera());
         }
     }
 
     void Ataque()
     {
-        sistema_particulas.Play();
         nextFireTime = Time.time + cooldownTime;
     }
 
+    IEnumerator espera()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(this.gameObject);
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+    }
 
 }

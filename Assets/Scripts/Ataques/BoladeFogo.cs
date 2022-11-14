@@ -34,7 +34,6 @@ public class BoladeFogo : MonoBehaviour
     void Ataque()
     {
         explosao.gameObject.SetActive(false);
-        sistema_particulas.gameObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0,0,10));
         nextFireTime = Time.time + cooldownTime;
     }
 
@@ -63,7 +62,6 @@ public class BoladeFogo : MonoBehaviour
         }
         else
         {
-
             var explosion = Instantiate(explosao, transform.position, transform.rotation);
             explosion.gameObject.SetActive(true);
 

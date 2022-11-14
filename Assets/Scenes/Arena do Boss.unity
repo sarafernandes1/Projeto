@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 633a1a07ed22912439aeeb3489e87264, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 633a1a07ed22912439aeeb3489e87264, type: 3}
       propertyPath: m_LocalScale.x
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 80109031}
   - component: {fileID: 80109030}
   - component: {fileID: 80109029}
+  - component: {fileID: 80109033}
   m_Layer: 9
   m_Name: Luz (11)
   m_TagString: Untagged
@@ -377,8 +378,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &80109033
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80109026}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &89372452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1088,7 @@ GameObject:
   - component: {fileID: 147103064}
   - component: {fileID: 147103063}
   - component: {fileID: 147103062}
+  - component: {fileID: 147103066}
   m_Layer: 9
   m_Name: Luz (3)
   m_TagString: Untagged
@@ -1226,8 +1244,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &147103066
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147103059}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &168008164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1276,7 @@ GameObject:
   - component: {fileID: 168008169}
   - component: {fileID: 168008168}
   - component: {fileID: 168008167}
+  - component: {fileID: 168008171}
   m_Layer: 9
   m_Name: Luz (9)
   m_TagString: Untagged
@@ -1397,8 +1432,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &168008171
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168008164}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &197360029 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2832875546615470051, guid: dec998e57b2559f45ac260626ba99d11, type: 3}
@@ -2530,6 +2581,7 @@ GameObject:
   - component: {fileID: 381117912}
   - component: {fileID: 381117911}
   - component: {fileID: 381117910}
+  - component: {fileID: 381117914}
   m_Layer: 9
   m_Name: Luz (10)
   m_TagString: Untagged
@@ -2685,8 +2737,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &381117914
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381117907}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &397144634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1412764788483217348, guid: b26d8850a52ce4e4d863ce9355f553c5, type: 3}
@@ -2705,7 +2773,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
-  explosao: {fileID: 1065942297}
   cube: {fileID: 0}
 --- !u!43 &454357227
 Mesh:
@@ -3283,7 +3350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3895865957201750374, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 65.3
+      value: 63.89999
       objectReference: {fileID: 0}
     - target: {fileID: 3895865957201750374, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3404,11 +3471,6 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3895865957201750374, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
   m_PrefabInstance: {fileID: 697311706}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &801489893 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4780031627373029588, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
-  m_PrefabInstance: {fileID: 2045510008}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &819938545 stripped
 GameObject:
@@ -3792,6 +3854,7 @@ GameObject:
   - component: {fileID: 877541265}
   - component: {fileID: 877541264}
   - component: {fileID: 877541263}
+  - component: {fileID: 877541267}
   m_Layer: 9
   m_Name: Luz (7)
   m_TagString: Untagged
@@ -3947,8 +4010,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &877541267
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877541260}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &906755282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4186,7 +4265,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
-  explosao: {fileID: 801489893}
   cube: {fileID: 4460689768607613617, guid: 56d9e81c18ecde74f9e474e31709cc95, type: 3}
 --- !u!1001 &964518262
 PrefabInstance:
@@ -4302,7 +4380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
-  explosao: {fileID: 801489893}
   cube: {fileID: 4460689768607613617, guid: 56d9e81c18ecde74f9e474e31709cc95, type: 3}
 --- !u!54 &965771658
 Rigidbody:
@@ -4347,6 +4424,7 @@ GameObject:
   - component: {fileID: 973161429}
   - component: {fileID: 973161428}
   - component: {fileID: 973161427}
+  - component: {fileID: 973161431}
   m_Layer: 9
   m_Name: Luz (6)
   m_TagString: Untagged
@@ -4502,8 +4580,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &973161431
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973161424}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1065942294
 GameObject:
   m_ObjectHideFlags: 0
@@ -9756,6 +9850,7 @@ GameObject:
   - component: {fileID: 1174795925}
   - component: {fileID: 1174795929}
   - component: {fileID: 1174795928}
+  - component: {fileID: 1174795927}
   m_Layer: 9
   m_Name: Luz (2)
   m_TagString: Untagged
@@ -9850,7 +9945,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1174795926
 MonoBehaviour:
@@ -9864,6 +9959,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5902a072d50c74a40a7371db3e2618a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1174795927
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174795922}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!33 &1174795928
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10109,7 +10220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
-  explosao: {fileID: 801489893}
   cube: {fileID: 4460689768607613617, guid: 56d9e81c18ecde74f9e474e31709cc95, type: 3}
 --- !u!54 &1207977372
 Rigidbody:
@@ -11047,7 +11157,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh379262
+  m_Name: pb_Mesh218856
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13300,11 +13410,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1412764788643194579, guid: b26d8850a52ce4e4d863ce9355f553c5, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1412764788643194580, guid: b26d8850a52ce4e4d863ce9355f553c5, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412764788643194580, guid: b26d8850a52ce4e4d863ce9355f553c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1412764788643194580, guid: b26d8850a52ce4e4d863ce9355f553c5, type: 3}
       propertyPath: m_TagString
@@ -13894,7 +14008,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
-  explosao: {fileID: 801489893}
   cube: {fileID: 4460689768607613617, guid: 56d9e81c18ecde74f9e474e31709cc95, type: 3}
 --- !u!1 &1631321747
 GameObject:
@@ -14799,10 +14912,22 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1435859772, guid: 55caf27152d6ddf45bf09e228c5eaae3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1435859773, guid: 55caf27152d6ddf45bf09e228c5eaae3, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1435859773, guid: 55caf27152d6ddf45bf09e228c5eaae3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435859774, guid: 55caf27152d6ddf45bf09e228c5eaae3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1870444596, guid: 55caf27152d6ddf45bf09e228c5eaae3, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -15095,6 +15220,7 @@ GameObject:
   - component: {fileID: 1889493635}
   - component: {fileID: 1889493634}
   - component: {fileID: 1889493633}
+  - component: {fileID: 1889493637}
   m_Layer: 9
   m_Name: Luz (4)
   m_TagString: Untagged
@@ -15250,8 +15376,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1889493637
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889493630}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1895039101
 GameObject:
   m_ObjectHideFlags: 0
@@ -15399,7 +15541,7 @@ Transform:
   - {fileID: 1467726989}
   - {fileID: 829259947}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1951780494
 PrefabInstance:
@@ -15719,6 +15861,7 @@ GameObject:
   - component: {fileID: 2030414166}
   - component: {fileID: 2030414165}
   - component: {fileID: 2030414164}
+  - component: {fileID: 2030414168}
   m_Layer: 9
   m_Name: Luz (8)
   m_TagString: Untagged
@@ -15874,8 +16017,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2030414168
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030414161}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2045510008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15905,7 +16064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3030196936912262671, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.59999
+      value: -23
       objectReference: {fileID: 0}
     - target: {fileID: 3030196936912262671, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16037,6 +16196,14 @@ PrefabInstance:
       objectReference: {fileID: 1868104814}
     - target: {fileID: 5349712289922079217, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: imagem_tempo
+      value: 
+      objectReference: {fileID: 1868104819}
+    - target: {fileID: 5349712289922079217, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
+      propertyPath: imagem_tempo_AN
+      value: 
+      objectReference: {fileID: 1868104821}
+    - target: {fileID: 5349712289922079217, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
+      propertyPath: imagem_tempo_BF
       value: 
       objectReference: {fileID: 1868104819}
     - target: {fileID: 5349712289922079217, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
@@ -16699,6 +16866,7 @@ GameObject:
   - component: {fileID: 2140539095}
   - component: {fileID: 2140539094}
   - component: {fileID: 2140539093}
+  - component: {fileID: 2140539097}
   m_Layer: 9
   m_Name: Luz (5)
   m_TagString: Untagged
@@ -16854,5 +17022,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2140539097
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140539090}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

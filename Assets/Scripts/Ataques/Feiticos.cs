@@ -6,46 +6,94 @@ using UnityEngine.UI;
 public class Feiticos : MonoBehaviour
 {
     public InputController inputController;
-    public Rigidbody bolafogo;
-
+    public Rigidbody bolafogo, ataquenormal;
+    public Transform ponto;
+    public Camera camera;
     public Slider qtd_mana;
-    public Image imagem_tempo;
+    public Image imagem_tempo_BF, imagem_tempo_AN;
 
-    float cooldownTime = 2;
-    public static float nextFireTime = 0;
+    Vector3 destination;
+    float cooldownTime_bolafogo = 2, cooldownTime_ataquenormal=0.8f;
+    public static float nextFireTime_bolafogo = 0, nextFireTime_ataquenormal=0.0f;
     bool can_atack, cooldown;
+    bool can_ataque_an, cooldown_an; // ataque normal
 
     void Start()
     {
-        imagem_tempo.fillAmount = 0;
+        imagem_tempo_BF.fillAmount = 0;
+        imagem_tempo_AN.fillAmount = 0;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        if (Time.time > nextFireTime)
+        destination= DestinoFeitico(destination);
+
+        if (Time.time > nextFireTime_bolafogo)
         {
             PodesAtacar(0.3f);
 
             if (inputController.GetFeiticoNumber() == 1 && can_atack && LuzBastao.numero_feitico == -1
                 || inputController.GetFeiticoNumber() == 1 && LuzBastao.numero_feitico == 5)
             {
-                var projectile = Instantiate(bolafogo, bolafogo.gameObject.transform.position, bolafogo.gameObject.transform.rotation);
-                projectile.gameObject.SetActive(true);
-                projectile.AddForce(bolafogo.gameObject.transform.forward * 100);
-                projectile.gameObject.GetComponent<ParticleSystem>().Play();
-                nextFireTime = Time.time + cooldownTime;
-                cooldown = true;
                 qtd_mana.value -= 0.3f;
-                BoladeFogo.ataque = true;
-            }
 
+                nextFireTime_bolafogo = Time.time + cooldownTime_bolafogo;
+                cooldown = true;
+                BoladeFogo.ataque = true;
+                DispararFeitico(bolafogo,1);
+            }
         }
 
         if (cooldown)
         {
-            BoladeFogo.ataque = ImagemCooldown();
+            imagem_tempo_BF.fillAmount += 1 / cooldownTime_bolafogo * Time.deltaTime;
+
+            if (imagem_tempo_BF.fillAmount >= 1)
+            {
+                if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
+                imagem_tempo_BF.fillAmount = 0;
+                cooldown = false;
+            }
+            BoladeFogo.ataque = false;
         }
+
+        if (Time.time > nextFireTime_ataquenormal)
+        {
+            if (inputController.GetFeiticoNumber() == 0 && LuzBastao.numero_feitico == -1
+                || inputController.GetFeiticoNumber() == 0 && LuzBastao.numero_feitico == 5)
+            {
+                nextFireTime_ataquenormal = Time.time + cooldownTime_ataquenormal;
+                cooldown_an = true;
+                AtaqueNormal.ataque = true;
+                DispararFeitico(ataquenormal,0);
+            }
+        }
+
+        if (cooldown_an)
+        {
+            imagem_tempo_AN.fillAmount += 1 / cooldownTime_ataquenormal * Time.deltaTime;
+
+            if (imagem_tempo_AN.fillAmount >= 1)
+            {
+                if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
+                imagem_tempo_AN.fillAmount = 0;
+                cooldown_an = false;
+            }
+            AtaqueNormal.ataque = false;
+        }
+    }
+
+    public Vector3 DestinoFeitico(Vector3 destination)
+    {
+        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        RaycastHit hit;
+        destination = Vector3.zero;
+
+        if (Physics.Raycast(ray, out hit)) destination = hit.point;
+        else destination = ray.GetPoint(1000);
+
+        return destination;
     }
 
     public void PodesAtacar(float mana_necessaria)
@@ -54,21 +102,15 @@ public class Feiticos : MonoBehaviour
         else can_atack = false;
     }
 
-    public bool ImagemCooldown()
+    public void DispararFeitico(Rigidbody rigidbody, int num_feitico)
     {
-        imagem_tempo.fillAmount += 1 / cooldownTime * Time.deltaTime;
+        if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = num_feitico;
 
-        if (imagem_tempo.fillAmount >= 1)
-        {
-            if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
-            imagem_tempo.fillAmount = 0;
-            cooldown = false;
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        var projectile = Instantiate(rigidbody, ponto.position, Quaternion.identity);
+        projectile.gameObject.SetActive(true);
+        projectile.gameObject.GetComponent<ParticleSystem>().Play();
+        projectile.velocity = (destination - ponto.position).normalized * 30.0f;
+
     }
   
 }

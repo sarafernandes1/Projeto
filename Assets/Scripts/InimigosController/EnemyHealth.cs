@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     public float vida = 15;
-    public ParticleSystem explosao;
     bool inimigo1,inimigo1_1, inimigo2, inimigo3;
     public GameObject cube;
     public static float dano_atqnormal=2;
@@ -70,13 +69,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void OnParticleCollision(GameObject other)
-    {
-        if (other.gameObject.name == "AtaqueNormal")
-        {
-            vida -= dano_atqnormal;
-            AtaqueNormal(other);
-            other.SetActive(true);
-        }
+    { 
         if (other.gameObject.name == "RaioEletrico")
         {
             AtaqueEletrico(other);
@@ -86,15 +79,17 @@ public class EnemyHealth : MonoBehaviour
         {
             vida -= 3;
         }
-        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.name == "AtaqueNormal(Clone)")
+        {
+            vida -= dano_atqnormal;
+        }
         if (collision.gameObject.name == "Boladefogo(Clone)")
         {
             AtaqueBolaFogo(collision.gameObject);
-            explosao.gameObject.SetActive(true);
         }
     }
 
@@ -104,11 +99,6 @@ public class EnemyHealth : MonoBehaviour
         {
             vida -= (1.5f * Time.deltaTime);
         }
-    }
-
-    public void AtaqueNormal(GameObject ataque)
-    {
-        ataque.SetActive(false);
     }
 
     public void AtaqueEletrico(GameObject raioeletrico)
