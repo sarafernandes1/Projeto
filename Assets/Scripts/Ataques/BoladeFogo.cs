@@ -8,6 +8,8 @@ public class BoladeFogo : MonoBehaviour
     public InputController inputController;
     public ParticleSystem sistema_particulas, explosao;
 
+    AudioSource audio;
+
     public static bool ataque;
 
     float cooldownTime = 2;
@@ -15,6 +17,8 @@ public class BoladeFogo : MonoBehaviour
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
+        audio.Play();
     }
 
     void Update()

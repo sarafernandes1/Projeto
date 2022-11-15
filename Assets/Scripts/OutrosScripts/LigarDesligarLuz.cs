@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LigarDesligarLuz : MonoBehaviour
 {
-   Light luz_tocha;
+    Light luz_tocha;
     bool vento_ativo, bola_luz;
+    public ParticleSystem fogo, fumo;
 
     void Start()
     {
@@ -17,12 +18,16 @@ public class LigarDesligarLuz : MonoBehaviour
         if (vento_ativo)
         {
             luz_tocha.enabled = false;
+            fogo.Stop();
+            fumo.Play();
             vento_ativo = false;
         }
 
         if (bola_luz)
         {
             luz_tocha.enabled = true;
+            fumo.Stop();
+            fogo.Play();
             bola_luz = false;
         }
     }

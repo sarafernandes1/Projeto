@@ -8,6 +8,8 @@ public class AtaqueNormal : MonoBehaviour
     public InputController inputController;
     public ParticleSystem sistema_particulas;
 
+    AudioSource audio;
+
     public static bool ataque;
 
     float cooldownTime = 0.8f;
@@ -15,6 +17,8 @@ public class AtaqueNormal : MonoBehaviour
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
+        audio.Play();
     }
 
     void Update()
