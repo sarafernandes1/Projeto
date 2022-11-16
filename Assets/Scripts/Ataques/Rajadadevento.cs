@@ -10,8 +10,6 @@ public class Rajadadevento : MonoBehaviour
     public Slider qtd_mana;
     bool can_atack, cooldown;
 
-    public SphereCollider collider_particle;
-
     public static float mana_necessario = 0.45f;
 
     public Image imagem_tempo;
@@ -38,12 +36,6 @@ public class Rajadadevento : MonoBehaviour
                 Ataque();
                 cooldown = true;
             }
-        }
-
-        float distance = Vector3.Distance(sistema_particulas.transform.position, collider_particle.transform.position);
-        if (Time.time > timer)
-        {
-            collider_particle.enabled = false;
         }
 
         if (cooldown)
@@ -73,7 +65,6 @@ public class Rajadadevento : MonoBehaviour
     {
         sistema_particulas.Play();
         qtd_mana.value -= mana_necessario;
-        collider_particle.enabled = true;
         nextFireTime = Time.time + cooldownTime;
         timer = Time.time + 0.05f;
     }

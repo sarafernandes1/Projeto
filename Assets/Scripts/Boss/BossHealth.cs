@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossHealth : MonoBehaviour
 {
     public Slider qtd_vida;
-    bool isdead;
+    public static bool isdead;
 
     void Start()
     {
@@ -21,29 +21,38 @@ public class BossHealth : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "AtaqueNormal(Clone)")
+        {
+            qtd_vida.value -= 0.1f;
+        }
+        if (collision.gameObject.name == "Boladefogo(Clone)")
+        {
+            qtd_vida.value -= 0.1f;
+
+        }
+        if (collision.gameObject.name == "RaioEletrico(Clone)")
+        {
+            qtd_vida.value -= 0.1f;
+        }
+    }
+
+
     private void OnParticleCollision(GameObject other)
     {
-        if (other.gameObject.name == "AtaqueNormal")
+        if (other.gameObject.name == "Rajadadevento")
         {
-            qtd_vida.value -= 0.03f;
+            qtd_vida.value -= 0.3f*Time.deltaTime;
         }
-        if (other.gameObject.name == "Boladefogo")
-        {
-            qtd_vida.value -= 0.03f;
-            other.SetActive(true);
-        }
-        if (other.gameObject.name == "RaioEletrico")
-        {
-            qtd_vida.value -= 0.04f;
-            other.SetActive(true);
-        }
+    }
 
-        if (Vector3.Distance(transform.position, other.transform.position) <= 20.0f && other.name == "Rajadadevento")
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Explosao(Clone)")
         {
-            transform.position -= transform.forward * 2.0f * 2.0f;
-            qtd_vida.value -= 0.04f;
+            qtd_vida.value -= 0.3f * Time.deltaTime;
         }
-
     }
 
 

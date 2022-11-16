@@ -13,6 +13,7 @@ public class BoladeFogo : MonoBehaviour
     public static bool ataque;
 
     float cooldownTime = 2;
+    bool explosion_active = false;
     public static float nextFireTime = 0;
 
     void Start()
@@ -66,12 +67,15 @@ public class BoladeFogo : MonoBehaviour
         }
         else
         {
-            var explosion = Instantiate(explosao, transform.position, transform.rotation);
-            explosion.gameObject.SetActive(true);
+            if (!explosion_active)
+            {
+                var explosion = Instantiate(explosao, transform.position, transform.rotation);
+                explosion.gameObject.SetActive(true);
+                explosion_active = true;
+                explosion.Play();
 
-            explosion.Play();
-
-            StartCoroutine(waiter(explosion));
+                StartCoroutine(waiter(explosion));
+            }
         }
     }
 

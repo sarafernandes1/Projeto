@@ -26,9 +26,9 @@ public class BossController : MonoBehaviour
 
     void Update()
     {
-        Vector3 lookAt = player.transform.position;
-        lookAt.y = transform.position.y;
-        transform.LookAt(lookAt);
+        //Vector3 lookAt = player.transform.position;
+        //lookAt.y = transform.position.y;
+        //transform.LookAt(lookAt);
 
         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
@@ -46,7 +46,7 @@ public class BossController : MonoBehaviour
         if (distanceToPlayer<=80.0f)
         {
             qtd_vida.gameObject.SetActive(true);
-            collider.enabled = true;
+           // collider.enabled = true;
             if (Time.time > nextenemy && n_inimigos <= 4)
             {
                 PosicionarInimigo();
@@ -55,26 +55,26 @@ public class BossController : MonoBehaviour
             }
         }
         
-        if (distanceToPlayer <= 60.0f)
-        {
-            if (Time.time > nextFireTime)
-            {
-                Ataque();
+        //if (distanceToPlayer <= 60.0f)
+        //{
+        //    if (Time.time > nextFireTime)
+        //    {
+        //        Ataque();
                
-            }
-            if (Time.time > nexTimetAE)
-            {
-                AtaqueEspecial();
-            }
-        }
+        //    }
+        //    if (Time.time > nexTimetAE)
+        //    {
+        //        AtaqueEspecial();
+        //    }
+        //}
 
-        if (particle1.isEmitting == false) ataque_collider.enabled = false;
+        //if (particle1.isEmitting == false) ataque_collider.enabled = false;
 
-        if (qtd_vida.value<=0.5f && collider.enabled)
-        {
-            transform.position += transform.forward * 1.0f * Time.deltaTime;
-            segunda_parte = true;
-        }
+        //if (qtd_vida.value<=0.5f && collider.enabled)
+        //{
+        //    transform.position += transform.forward * 1.0f * Time.deltaTime;
+        //    segunda_parte = true;
+        //}
 
     }
 

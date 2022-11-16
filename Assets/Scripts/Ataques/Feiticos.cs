@@ -6,22 +6,24 @@ using UnityEngine.UI;
 public class Feiticos : MonoBehaviour
 {
     public InputController inputController;
-    public Rigidbody bolafogo, ataquenormal;
+    public Rigidbody bolafogo, ataquenormal, raioeletico;
     public Transform ponto;
     public Camera camera;
     public Slider qtd_mana;
-    public Image imagem_tempo_BF, imagem_tempo_AN;
+    public Image imagem_tempo_BF, imagem_tempo_AN, imagem_tempo_RE;
 
     Vector3 destination;
-    float cooldownTime_bolafogo = 2, cooldownTime_ataquenormal=0.8f;
-    public static float nextFireTime_bolafogo = 0, nextFireTime_ataquenormal=0.0f;
+    float cooldownTime_bolafogo = 2, cooldownTime_ataquenormal = 0.8f, cooldownTime_raioeletrico;
+    public static float nextFireTime_bolafogo = 0, nextFireTime_ataquenormal = 0.0f, nextFireTime_raioeletrico=0;
     bool can_atack, cooldown;
     bool can_ataque_an, cooldown_an; // ataque normal
+    bool can_atack_re, cooldown_re; //raio elétrico
 
     void Start()
     {
         imagem_tempo_BF.fillAmount = 0;
         imagem_tempo_AN.fillAmount = 0;
+        imagem_tempo_RE.fillAmount = 0;
     }
 
 
@@ -58,6 +60,35 @@ public class Feiticos : MonoBehaviour
             BoladeFogo.ataque = false;
         }
 
+        if (Time.time > nextFireTime_raioeletrico)
+        {
+            PodesAtacar(0.35f);
+
+            if (inputController.GetFeiticoNumber() == 2 && can_atack && LuzBastao.numero_feitico == -1
+                || inputController.GetFeiticoNumber() == 2 && LuzBastao.numero_feitico == 5)
+            {
+                qtd_mana.value -= 0.35f;
+
+                nextFireTime_raioeletrico = Time.time + cooldownTime_raioeletrico;
+                cooldown_re = true;
+                RaioEletrico.ataque = true;
+                DispararFeitico(raioeletico, 2);
+            }
+        }
+
+        if (cooldown_re)
+        {
+            imagem_tempo_RE.fillAmount += 1 / cooldownTime_raioeletrico * Time.deltaTime;
+
+            if (imagem_tempo_RE.fillAmount >= 1)
+            {
+                if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
+                imagem_tempo_RE.fillAmount = 0;
+                cooldown_re = false;
+            }
+            RaioEletrico.ataque = false;
+        }
+
         if (Time.time > nextFireTime_ataquenormal)
         {
             if (inputController.GetFeiticoNumber() == 0 && LuzBastao.numero_feitico == -1
@@ -82,6 +113,8 @@ public class Feiticos : MonoBehaviour
             }
             AtaqueNormal.ataque = false;
         }
+
+      
     }
 
     public Vector3 DestinoFeitico(Vector3 destination)

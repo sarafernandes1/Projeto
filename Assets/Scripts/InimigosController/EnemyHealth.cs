@@ -70,14 +70,9 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     { 
-        if (other.gameObject.name == "RaioEletrico")
-        {
-            AtaqueEletrico(other);
-            other.SetActive(true);
-        }
         if (other.gameObject.name == "Rajadadevento")
         {
-            vida -= 3;
+            vida -= 10*Time.deltaTime;
         }
     }
 
@@ -90,6 +85,10 @@ public class EnemyHealth : MonoBehaviour
         if (collision.gameObject.name == "Boladefogo(Clone)")
         {
             AtaqueBolaFogo(collision.gameObject);
+        }
+        if (collision.gameObject.name == "RaioEletrico(Clone)")
+        {
+            vida -= 4;
         }
     }
 
@@ -125,11 +124,6 @@ public class EnemyHealth : MonoBehaviour
         if (other.name == "Explosao(Clone)")
         {
             vida -= 20 * Time.deltaTime;
-        }
-
-        if (other.name == "Rajadadevento")
-        {
-            vida -= 5 * Time.deltaTime;
         }
     }
 

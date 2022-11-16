@@ -14,13 +14,16 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     Rigidbody rigidbody_;
     Vector3 inicial_position;
 
-    float cooldownTime = 2, tempo_rajada = 1.0f, cooldownataque=2; //tempo de animação ataque
-    float thrust=0.0f;
+    float cooldownTime = 2, tempo_rajada = 0.5f, cooldownataque=2; //tempo de animação ataque
+    public static float thrust=500.0f;
+    float thrust_inicial = 0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
 
     void Start()
     {
         player = GameObject.Find("Player");
+        inicial_position = transform.position;
+
         if (transform.tag == "InimigoCorpoaCorpo")
         {
             speed = 3.2f;
@@ -39,7 +42,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
                 inimigo_alcanceBoss = true;
                 speed = 1.0f;
             }
-
         }
 
         if (transform.tag == "InimigoBoss")
@@ -47,16 +49,13 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             inimigo_corpoBoss = true;
             inimigo_corpoacorpo = false;
             inimigo_alcance = false;
-            speed = 3.5f;
+            speed = 3.2f;
         }
 
         if (inimigo_corpoacorpo || inimigo_corpoBoss)
         {
             rigidbody_ = gameObject.GetComponent<Rigidbody>();
         }
-
-        inicial_position = transform.position;
-
     }
 
 
@@ -81,7 +80,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             }
         }
 
-        //Inimigo área boss
+        // Inimigo Corpo a corpo área boss
         if (inimigo_corpoBoss)
         {
             Perseguir();
@@ -90,7 +89,8 @@ public class InimigosCorpoaCorpo : MonoBehaviour
                 Ataque();
             }
         }
-
+        
+        //Inimigo alcance área boss
         if (inimigo_alcanceBoss)
         {
             if (Time.time > nextFireTime && player_in_area)
@@ -100,14 +100,14 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             Perseguir();
         }
 
-
+        //Impacto Vento
         if (inimigo_corpoacorpo || inimigo_corpoBoss)
         {
             Vector3 forward = new Vector3(-transform.forward.x, 0.0f, -transform.forward.z);
-            rigidbody_.AddForce(forward * thrust*Time.deltaTime);
+            rigidbody_.AddForce(forward * thrust_inicial*Time.deltaTime);
             if (rajada_on)
             {
-                thrust = 1000.0f;
+                thrust_inicial = thrust;
                 if (Time.time > timer)
                 {
                     thrust = 0.0f;
@@ -137,12 +137,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         if (Physics.Raycast(inimigo_ray, 2.0f))
         {
             speed = 1.0f;
-
-        }
-
-        if (Physics.Raycast(inimigo_ray, 2.0f))
-        {
-
             if (Time.time > timer_ataque)
             {
                 Ataque();
@@ -171,7 +165,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
                 timer_ataque = Time.time + cooldownataque;
             }
         }
-
     }
 
     void Perseguir()
@@ -182,7 +175,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     void Normal()
     {
         transform.position += transform.forward * 0 * Time.deltaTime;
-        transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     void AtaqueAlcance()
@@ -217,6 +210,4 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     {
         if (other.gameObject.tag == "Player") player_in_area = false;
     }
-
-   
 }

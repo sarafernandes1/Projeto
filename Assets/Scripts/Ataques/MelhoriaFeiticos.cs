@@ -137,8 +137,7 @@ public class MelhoriaFeiticos : MonoBehaviour
         {
             //Rajada de vento
             rajada.value -= 0.5f;
-            rajada_collider.radius += 1;
-            rajada_collider.center =new Vector3(rajada_collider.center.x, rajada_collider.center.y, rajada_collider.center.z+10.0f);
+            InimigosCorpoaCorpo.thrust += 100+500;
         }
 
         if (rajada.value == 0)
