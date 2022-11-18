@@ -72,7 +72,7 @@ public class Feiticos : MonoBehaviour
                 nextFireTime_raioeletrico = Time.time + cooldownTime_raioeletrico;
                 cooldown_re = true;
                 RaioEletrico.ataque = true;
-                DispararFeitico(raioeletico, 2);
+                DispararFeitico(raioeletico, 2, 65.0f);
             }
         }
 
@@ -135,14 +135,14 @@ public class Feiticos : MonoBehaviour
         else can_atack = false;
     }
 
-    public void DispararFeitico(Rigidbody rigidbody, int num_feitico)
+    public void DispararFeitico(Rigidbody rigidbody, int num_feitico, float speed=30.0f)
     {
         if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = num_feitico;
 
         var projectile = Instantiate(rigidbody, ponto.position, Quaternion.identity);
         projectile.gameObject.SetActive(true);
         projectile.gameObject.GetComponent<ParticleSystem>().Play();
-        projectile.velocity = (destination - ponto.position).normalized * 30.0f;
+        projectile.velocity = (destination - ponto.position).normalized * speed;
 
     }
   

@@ -10,6 +10,8 @@ public class FuriaAncestral : MonoBehaviour
     public ParticleSystem sistema_particulas;
     bool can_atack, cooldown;
 
+    AudioSource audio;
+
     public Image imagem_tempo;
 
     public static float cooldownTime = 4;
@@ -18,6 +20,7 @@ public class FuriaAncestral : MonoBehaviour
     void Start()
     {
         imagem_tempo.fillAmount = 0;
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -52,7 +55,7 @@ public class FuriaAncestral : MonoBehaviour
     {
         sistema_particulas.Play();
         qtd_mana.value -= 0.5f;
-       
+        audio.Play();
         nextFireTime = Time.time + cooldownTime;
     }
 }

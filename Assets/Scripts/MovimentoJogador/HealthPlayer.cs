@@ -115,6 +115,12 @@ public class HealthPlayer : MonoBehaviour
             qtd_vida.value -= 0.05f;
 
         }
+
+        if (collision.gameObject.name == "AtaqueFogo")
+        {
+            qtd_vida.value -= 0.05f;
+
+        }
     }
 
     public void ButtonRestart()

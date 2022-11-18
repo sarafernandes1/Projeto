@@ -33360,33 +33360,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1183075851247112439, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9421167525509164ca73c1fc22a9f5b6, type: 2}
-    - target: {fileID: 1472554956455409057, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5333357619412567419, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5333357619412567419, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6535203637694938288, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6535203637694938288, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3692
-      objectReference: {fileID: 0}
-    - target: {fileID: 6535203637694938288, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.6694473
       objectReference: {fileID: 0}
     - target: {fileID: 6535203637694938288, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33432,10 +33408,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paredes
       objectReference: {fileID: 0}
-    - target: {fileID: 6535203637694938289, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6535203637694938295, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
       propertyPath: player
       value: 
@@ -33449,23 +33421,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 976291161}
     - target: {fileID: 6535203637694938295, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
-      propertyPath: parede_ataque
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6535203637694938295, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
       propertyPath: inputController
       value: 
       objectReference: {fileID: 1557652614}
-    - target: {fileID: 8398893089946151178, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.584597
-      objectReference: {fileID: 0}
-    - target: {fileID: 8398893089946151178, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.6928355
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1463174040683622042, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
 --- !u!1 &1403243195
 GameObject:
@@ -45422,11 +45381,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086133952}
   m_CullTransparentMesh: 1
---- !u!54 &2139961566 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 667033843307206465, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
-  m_PrefabInstance: {fileID: 5349712289030073684}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2140049707
 GameObject:
   m_ObjectHideFlags: 0
@@ -45915,14 +45869,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1557652614}
     - target: {fileID: 5349712289473616993, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
-      propertyPath: qtd_mana
-      value: 
-      objectReference: {fileID: 976291155}
-    - target: {fileID: 5349712289473616993, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
-      propertyPath: imagem_tempo
-      value: 
-      objectReference: {fileID: 976291159}
-    - target: {fileID: 5349712289473616993, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: inputController
       value: 
       objectReference: {fileID: 1557652614}
@@ -45946,10 +45892,6 @@ PrefabInstance:
       propertyPath: qtd_mana
       value: 
       objectReference: {fileID: 976291155}
-    - target: {fileID: 5349712289922079217, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
-      propertyPath: raioeletico
-      value: 
-      objectReference: {fileID: 2139961566}
     - target: {fileID: 5349712289922079217, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: imagem_tempo_AN
       value: 

@@ -11,42 +11,19 @@ public class RaioEletrico : MonoBehaviour
     public static float mana_gasto=0.35f;
     public static bool ataque;
 
+    AudioSource audio;
+
     float cooldownTime = 2;
     float nextFireTime = 0;
 
     void Start()
     {
-
+        audio = GetComponent<AudioSource>();
+        audio.Play();
     }
 
     void Update()
     {
-        //if (Time.time > nextFireTime)
-        //{
-        //    if (qtd_mana.value > 0.35f) can_atack = true;
-        //    else can_atack = false;
-
-        //    if (inputController.GetFeiticoNumber() == 2 && can_atack && LuzBastao.numero_feitico==-1
-        //        || inputController.GetFeiticoNumber() == 2 && LuzBastao.numero_feitico == 5)
-        //    {
-        //        if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = 2;
-        //        Ataque();
-        //        cooldown = true;
-        //    }
-        //}
-
-        //if (cooldown)
-        //{
-        //    imagem_tempo.fillAmount += 1 / cooldownTime * Time.deltaTime;
-
-        //    if (imagem_tempo.fillAmount >= 1)
-        //    {
-        //        if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
-        //        imagem_tempo.fillAmount = 0;
-        //        cooldown = false;
-        //    }
-        //}
-
         if (ataque)
         {
             if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = 2;

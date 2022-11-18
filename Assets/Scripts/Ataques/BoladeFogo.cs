@@ -8,7 +8,7 @@ public class BoladeFogo : MonoBehaviour
     public InputController inputController;
     public ParticleSystem sistema_particulas, explosao;
 
-    AudioSource audio;
+    public AudioSource audio_bolafogo, audio_explosao;
 
     public static bool ataque;
 
@@ -18,8 +18,7 @@ public class BoladeFogo : MonoBehaviour
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
-        audio.Play();
+        audio_bolafogo.Play();
     }
 
     void Update()
@@ -73,7 +72,7 @@ public class BoladeFogo : MonoBehaviour
                 explosion.gameObject.SetActive(true);
                 explosion_active = true;
                 explosion.Play();
-
+                audio_explosao.Play();
                 StartCoroutine(waiter(explosion));
             }
         }

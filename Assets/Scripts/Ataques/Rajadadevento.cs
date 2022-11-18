@@ -11,6 +11,7 @@ public class Rajadadevento : MonoBehaviour
     bool can_atack, cooldown;
 
     public static float mana_necessario = 0.45f;
+    AudioSource audio;
 
     public Image imagem_tempo;
 
@@ -20,6 +21,8 @@ public class Rajadadevento : MonoBehaviour
     void Start()
     {
         imagem_tempo.fillAmount = 0;
+        audio = GetComponent<AudioSource>();
+
     }
 
     void Update()
@@ -64,6 +67,7 @@ public class Rajadadevento : MonoBehaviour
     void Ataque()
     {
         sistema_particulas.Play();
+        audio.Play();
         qtd_mana.value -= mana_necessario;
         nextFireTime = Time.time + cooldownTime;
         timer = Time.time + 0.05f;

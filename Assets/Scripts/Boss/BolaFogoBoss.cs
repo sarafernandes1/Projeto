@@ -6,7 +6,7 @@ public class BolaFogoBoss : MonoBehaviour
 {
     public ParticleSystem sistema_particulas, explosao;
 
-    //AudioSource audio;
+    public AudioSource audio_explosao;
     bool explosion_active = false;
     public static float nextFireTime = 0;
 
@@ -56,7 +56,7 @@ public class BolaFogoBoss : MonoBehaviour
                 explosion.gameObject.SetActive(true);
                 explosion_active = true;
                 explosion.Play();
-
+                audio_explosao.Play();
                 StartCoroutine(waiter(explosion));
             }
         }

@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class ParededePedra : MonoBehaviour
 {
-    public GameObject parede, parede_ataque;
-    public GameObject player;
+    public GameObject parede, parede_ataque, explosao, player;
     public InputController inputController;
-    bool parede_ativa = false;
+    public AudioSource audio;
     public Slider qtd_mana;
-    bool can_atack, cooldown;
     public Image imagem_tempo;
+    public Rigidbody rigidbody;
 
     public static float cooldownTime = 4;
     
     float nextFireTime = 0;
+    bool can_atack, cooldown;
+    bool parede_ativa = false;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class ParededePedra : MonoBehaviour
             if (inputController.GetFeiticoNumber() == 3 && !parede_ativa && qtd_mana.value >= 0.4f && LuzBastao.numero_feitico == -1
                     || inputController.GetFeiticoNumber() == 3 && !parede_ativa && qtd_mana.value >= 0.4f && LuzBastao.numero_feitico == 5)
             {
+                rigidbody.isKinematic = false;
                 if(LuzBastao.numero_feitico!=5) LuzBastao.numero_feitico = 3;
                 AtivarParede();
                 if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
@@ -56,21 +58,33 @@ public class ParededePedra : MonoBehaviour
         }
     }
 
+    IEnumerator espera()
+    {
+        yield return new WaitForSeconds(4);
+        rigidbody.isKinematic = true;
+        parar();
+    }
+
+    IEnumerator parar()
+    {
+        yield return new WaitForSeconds(5);
+        explosao.SetActive(false);
+    }
+
     void AtivarParede()
     {
         parede_ativa = true;
         qtd_mana.value -= 0.4f;
         parede.SetActive(true);
-
-        Vector3 playerPosition = player.transform.position;
+        Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
         Vector3 playerDirection = player.transform.forward;
         Quaternion playerRotation = player.transform.rotation;
-        float spawnDistance = 4.0f;
+        float spawnDistance = 6.0f;
         Vector3 posicao_parede = playerPosition + playerDirection * spawnDistance;
         transform.rotation = playerRotation;
-        transform.position = posicao_parede;
-
-        nextFireTime = Time.time + cooldownTime;
-        
+        transform.position =new Vector3( posicao_parede.x,posicao_parede.y, posicao_parede.z);
+        explosao.SetActive(true);
+        audio.Play();
+        StartCoroutine(espera());
     }
 }
