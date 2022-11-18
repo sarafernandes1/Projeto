@@ -14,6 +14,7 @@ TagManager:
   - ManaSlider
   - BolaFogoExplosao
   - Rajada
+  - AtaqueEspecial
   layers:
   - Default
   - TransparentFX

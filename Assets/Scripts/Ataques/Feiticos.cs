@@ -13,7 +13,7 @@ public class Feiticos : MonoBehaviour
     public Image imagem_tempo_BF, imagem_tempo_AN, imagem_tempo_RE;
 
     Vector3 destination;
-    float cooldownTime_bolafogo = 2, cooldownTime_ataquenormal = 0.8f, cooldownTime_raioeletrico;
+    float cooldownTime_bolafogo = 2, cooldownTime_ataquenormal = 0.8f, cooldownTime_raioeletrico=2.5f;
     public static float nextFireTime_bolafogo = 0, nextFireTime_ataquenormal = 0.0f, nextFireTime_raioeletrico=0;
     bool can_atack, cooldown;
     bool can_ataque_an, cooldown_an; // ataque normal

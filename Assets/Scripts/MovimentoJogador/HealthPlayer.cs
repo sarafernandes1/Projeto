@@ -85,21 +85,35 @@ public class HealthPlayer : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.name == "Fogo")
-        {
-            if (!segunda_parte)
-            {
-                qtd_vida.value -= 0.01f * Time.deltaTime;
-            }
-            else
-            {
-                qtd_vida.value -= 0.05f * Time.deltaTime;
-            }
-        }
+        //if (other.name == "Fogo")
+        //{
+        //    if (!segunda_parte)
+        //    {
+        //        qtd_vida.value -= 0.01f * Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        qtd_vida.value -= 0.05f * Time.deltaTime;
+        //    }
+        //}
 
         if (other.tag == "Vida")
         {
             qtd_vida.value += 0.05f * Time.deltaTime;
+        }
+
+        if (other.tag == "AtaqueEspecial")
+        {
+            qtd_vida.value -= 0.08f * Time.deltaTime;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name=="FogoBoss(Clone)")
+        {
+            qtd_vida.value -= 0.05f;
+
         }
     }
 
