@@ -8,14 +8,14 @@ public class ControlarBoss : MonoBehaviour
     Animator animator;
     Transform player;
     Slider vida;
-    public ParticleSystem particle;
+    public ParticleSystem particle, portal_segundaronda;
     public Rigidbody particle_normal, boladefogo;
 
     bool normal, procura, ataque;
     float distanceToPlayer, distance;
     
-    float nextAtaqueEspecial = 0, cooldownAtaqueEspecial = 6;
-    float nextAtaqueNormal = 0, cooldownAtaqueNormal = 3;
+    float nextAtaqueEspecial = 0, cooldownAtaqueEspecial = 6, cooldownAtaqueSegundaRonda=7;
+    float nextAtaqueNormal = 0, cooldownAtaqueNormal = 3, nextFireAtaqueSR=0;
 
 
     void Start()
@@ -39,11 +39,17 @@ public class ControlarBoss : MonoBehaviour
 
             transform.position += transform.forward * 2.0f * Time.deltaTime;
             distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            if (distanceToPlayer <= 25.0f)
+            if (distanceToPlayer <= 40.0f)
             {
-                procura = false;
-                ataque = true;
-                IdleCombat();
+                if (Time.time > nextFireAtaqueSR)
+                {
+                    IdleCombat();
+                    AtaqueSegundaRonda();
+                }
+                else
+                {
+                    animator.SetBool("attack_short_001", false);
+                }
             }
         }
 
@@ -126,6 +132,13 @@ public class ControlarBoss : MonoBehaviour
 
         StartCoroutine(destruirParticula(particle1.gameObject));
         StartCoroutine(destruirParticula(particle2.gameObject));
+    }
+
+    public void AtaqueSegundaRonda()
+    {
+        portal_segundaronda.gameObject.SetActive(true);
+        portal_segundaronda.gameObject.GetComponent<ParticleSystem>().Play();
+        nextFireAtaqueSR = Time.time + cooldownAtaqueSegundaRonda;
     }
 
     public void Move()

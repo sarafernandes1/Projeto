@@ -97,6 +97,11 @@ public class HealthPlayer : MonoBehaviour
         //    }
         //}
 
+        if (other.gameObject.name == "Portal2Ronda")
+        {
+            qtd_vida.value -= 0.01f * Time.deltaTime;
+        }
+
         if (other.tag == "Vida")
         {
             qtd_vida.value += 0.05f * Time.deltaTime;
