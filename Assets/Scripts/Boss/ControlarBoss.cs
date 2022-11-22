@@ -13,8 +13,9 @@ public class ControlarBoss : MonoBehaviour
 
     bool normal, procura, ataque;
     float distanceToPlayer, distance;
-    
-    float nextAtaqueEspecial = 0, cooldownAtaqueEspecial = 6, cooldownAtaqueSegundaRonda=7;
+    float speed = 2.0f;
+
+    float nextAtaqueEspecial = 0, cooldownAtaqueEspecial = 7, cooldownAtaqueSegundaRonda=9;
     float nextAtaqueNormal = 0, cooldownAtaqueNormal = 3, nextFireAtaqueSR=0;
 
 
@@ -37,37 +38,41 @@ public class ControlarBoss : MonoBehaviour
             transform.LookAt(player.position);
             Move();
 
-            transform.position += transform.forward * 2.0f * Time.deltaTime;
             distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            if (distanceToPlayer <= 40.0f)
+            if (distanceToPlayer >= 30.0f)
             {
-                if (Time.time > nextFireAtaqueSR)
-                {
-                    IdleCombat();
-                    AtaqueSegundaRonda();
-                }
-                else
-                {
-                    animator.SetBool("attack_short_001", false);
-                }
+                animator.SetBool("move_forward", false);
+                animator.SetBool("move_forward_fast", true);
+                speed = 4.0f;
             }
-        }
+            else
+            {
+                animator.SetBool("move_forward", true);
+                animator.SetBool("move_forward_fast", false);
+                speed = 2.0f;
+            }
+            transform.position += transform.forward * speed * Time.deltaTime;
 
-        if (procura && vida.value >= 0.5f)
-        {
-            IdleCombat();
-            ataque = true;
-            procura = false;
+            if (Time.time > nextFireAtaqueSR)
+            {
+                animator.SetBool("attack_short_001", true);
+                animator.SetBool("idle_combat", false);
+
+                AtaqueSegundaRonda();
+            }
         }
 
         if (ataque && vida.value < 0.5f)
         {
             procura = true;
             ataque = false;
+            animator.SetBool("idle_normal", true);
+            animator.SetBool("idle_combat", false);
         }
 
         if (ataque)
         {
+            IdleCombat();
             transform.LookAt(player.position);
 
             distance = Vector3.Distance(transform.position, player.position);
@@ -87,6 +92,7 @@ public class ControlarBoss : MonoBehaviour
             {
                 animator.SetBool("attack_short_001", false);
             }
+
             if (Time.time > nextAtaqueEspecial)
             {
                 AtaqueEspecial();
@@ -95,6 +101,7 @@ public class ControlarBoss : MonoBehaviour
 
         if (BossHealth.isdead)
         {
+            procura = false;
             animator.SetBool("dead", true);
         }
     }
@@ -103,6 +110,13 @@ public class ControlarBoss : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
         Destroy(p.gameObject);
+    }
+
+    IEnumerator pararAtaque()
+    {
+        yield return new WaitForSeconds(2);
+        animator.SetBool("attack_short_001", false);
+        animator.SetBool("move_forward", true);
     }
 
     public void AtaqueNormal()
@@ -136,14 +150,22 @@ public class ControlarBoss : MonoBehaviour
 
     public void AtaqueSegundaRonda()
     {
-        portal_segundaronda.gameObject.SetActive(true);
-        portal_segundaronda.gameObject.GetComponent<ParticleSystem>().Play();
+        Vector3 position = portal_segundaronda.transform.position;
+        Quaternion rotation = portal_segundaronda.transform.rotation;
+        var portal = Instantiate(portal_segundaronda, position, rotation);
+        portal.gameObject.SetActive(true);
+        portal.Play();
+
         nextFireAtaqueSR = Time.time + cooldownAtaqueSegundaRonda;
+
+        StartCoroutine(pararAtaque());
+        StartCoroutine(destruirParticula(portal.gameObject));
     }
 
     public void Move()
     {
         animator.SetBool("idle_normal", false);
+        animator.SetBool("idle_combat", false);
         animator.SetBool("move_forward", true);
     }
 
@@ -155,9 +177,9 @@ public class ControlarBoss : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && !ataque)
+        if (other.gameObject.tag == "Player" && !procura)
         {
-            procura = true;
+            ataque = true;
         }
     }
 }

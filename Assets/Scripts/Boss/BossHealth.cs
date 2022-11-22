@@ -25,16 +25,15 @@ public class BossHealth : MonoBehaviour
     {
         if (collision.gameObject.name == "AtaqueNormal(Clone)")
         {
-            qtd_vida.value -= 0.1f;
+            qtd_vida.value -= 0.3f*Time.deltaTime;
         }
         if (collision.gameObject.name == "Boladefogo(Clone)")
         {
-            qtd_vida.value -= 0.1f;
-
+            qtd_vida.value -= 0.4f * Time.deltaTime;
         }
         if (collision.gameObject.name == "RaioEletrico(Clone)")
         {
-            qtd_vida.value -= 0.1f;
+            qtd_vida.value -= 0.4f * Time.deltaTime;
         }
     }
 
@@ -43,7 +42,7 @@ public class BossHealth : MonoBehaviour
     {
         if (other.gameObject.name == "Rajadadevento")
         {
-            qtd_vida.value -= 0.3f*Time.deltaTime;
+            qtd_vida.value -= 0.05f*Time.deltaTime;
         }
     }
 

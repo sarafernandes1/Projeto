@@ -17,7 +17,7 @@ public class EnemyBullet : MonoBehaviour
         else
         {
             ataque_boss = true;
-            damage = 8.0f;
+            damage = 4.0f;
         }
     }
 

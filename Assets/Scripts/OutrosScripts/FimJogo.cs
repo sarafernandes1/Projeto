@@ -18,9 +18,15 @@ public class FimJogo : MonoBehaviour
     {
         if (qtd_vida_boss.value <= 0)
         {
-            Cursor.visible = true;
-            fim_jogo.enabled = true;
+            StartCoroutine(espera());
         }
+    }
+
+    IEnumerator espera()
+    {
+        yield return new WaitForSeconds(6);
+        fim_jogo.enabled = true;
+        Cursor.visible = true;
     }
 
     public void Continuar()

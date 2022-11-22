@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Dimuir mana necess\xE1ria\n\t\t\t2 recursos"
+  m_Text: "Dimuir mana necess\xE1ria\n\t\t\t3 recursos"
 --- !u!1 &811841150
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Aumento do tempo de dura\xE7\xE3o\n\t\t\t\t2 recursos"
+  m_Text: "Aumento do tempo de dura\xE7\xE3o\n\t\t\t\t5 recursos"
 --- !u!1 &992287012
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Diminuir tempo de cooldown\n\t\t\t2 recursos"
+  m_Text: "Diminuir tempo de cooldown\n\t\t\t4 recursos"
 --- !u!1 &994470285
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Aumento do tempo de regenera\xE7\xE3o\n\t\t\t\t\t2 recursos"
+  m_Text: "Aumento do tempo de regenera\xE7\xE3o\n\t\t\t\t\t5 recursos"
 --- !u!1 &1654252475
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Aumento do valor de dano\n\t\t\t2 recursos"
+  m_Text: "Aumento do valor de dano\n\t\t\t4 recursos"
 --- !u!1 &1768996502
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,8 +508,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6, y: -29.06458}
-  m_SizeDelta: {x: 160, y: 48.3292}
+  m_AnchoredPosition: {x: 28.174316, y: -29.06458}
+  m_SizeDelta: {x: 228.3486, y: 48.3292}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1768996505
 CanvasRenderer:
@@ -552,7 +552,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Aumento raio do vento\n\t\t 2 recursos"
+  m_Text: "Aumento da intensidade do vento\n\t\t 3 recursos"
 --- !u!1 &1850170801149526509
 GameObject:
   m_ObjectHideFlags: 0

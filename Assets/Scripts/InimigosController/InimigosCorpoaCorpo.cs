@@ -7,6 +7,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 {
     public Rigidbody bulletPrefab;
     public GameObject player;
+    public Transform arco;
     float speed, dist_max;
     bool inimigo_corpoacorpo, inimigo_alcance, inimigo_corpoBoss, inimigo_alcanceBoss;
     bool player_in_area, rajada_on;
@@ -14,7 +15,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     Rigidbody rigidbody_;
     Vector3 inicial_position;
 
-    float cooldownTime = 2, tempo_rajada = 0.5f, cooldownataque=2; //tempo de animação ataque
+    float cooldownTime = 2, tempo_rajada = 0.6f, cooldownataque=2; //tempo de animação ataque
     public static float thrust=500.0f;
     float thrust_inicial = 0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
@@ -24,33 +25,40 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         player = GameObject.Find("Player");
         inicial_position = transform.position;
 
+        #region InimigoCorpoaCorpo
         if (transform.tag == "InimigoCorpoaCorpo")
         {
-            speed = 3.2f;
+            speed = 3.0f;
             dist_max = 22.0f;
             inimigo_corpoacorpo = true;
         }
+        #endregion
 
+        #region InimigoAlcance
         if (transform.tag == "InimigoAlcance")
         {
             speed = 0.7f;
             dist_max = 22.0f;
             inimigo_alcance = true;
-            if (transform.name == "AlcanceInimigo(Clone)")
+            if (transform.name == "InimigoAlcanceBoss(Clone)")
             {
                 inimigo_alcance = false;
                 inimigo_alcanceBoss = true;
-                speed = 1.0f;
+                speed = 1.5f;
             }
         }
+        #endregion
 
+        #region InimigoCorpoBoss
         if (transform.tag == "InimigoBoss")
         {
             inimigo_corpoBoss = true;
             inimigo_corpoacorpo = false;
             inimigo_alcance = false;
             speed = 3.2f;
+            thrust = 700.0f;
         }
+        #endregion
 
         if (inimigo_corpoacorpo || inimigo_corpoBoss)
         {
@@ -62,7 +70,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     void Update()
     {
         Vector3 look = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        if (inimigo_alcance || inimigo_alcanceBoss) look = player.transform.position;
+        if (inimigo_alcance /*|| inimigo_alcanceBoss*/) look = player.transform.position;
         transform.LookAt(look);
 
         //Inimigo Corpo a Corpo
@@ -72,9 +80,9 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         }
 
         //Inimigo Alcance
-        if (inimigo_alcance && player_in_area)
+        if (inimigo_alcance)
         {
-            if (Time.time > nextFireTime)
+            if (Time.time > nextFireTime && player_in_area)
             {
                 AtaqueAlcance();
             }
@@ -93,11 +101,12 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         //Inimigo alcance área boss
         if (inimigo_alcanceBoss)
         {
-            if (Time.time > nextFireTime && player_in_area)
+            Perseguir();
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            if (Time.time > nextFireTime && distanceToPlayer < 40.0f)
             {
                 AtaqueAlcance();
             }
-            Perseguir();
         }
 
         //Impacto Vento
@@ -110,7 +119,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
                 thrust_inicial = thrust;
                 if (Time.time > timer)
                 {
-                    thrust = 0.0f;
+                    thrust_inicial = 0.0f;
                     rajada_on = false;
                 };
             }
@@ -180,9 +189,9 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     void AtaqueAlcance()
     {
-        Vector3 position=transform.position;
-        Vector3 forward = transform.forward;
-        var projectile = Instantiate(bulletPrefab, position, transform.rotation);
+        Vector3 position=arco.position;
+        Vector3 forward = arco.forward;
+        var projectile = Instantiate(bulletPrefab, position, arco.rotation);
         projectile.velocity = forward * 100;
         nextFireTime = Time.time + cooldownTime;
     }
