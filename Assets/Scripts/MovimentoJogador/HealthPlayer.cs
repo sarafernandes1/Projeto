@@ -113,7 +113,7 @@ public class HealthPlayer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "AtaqueFogo")
+        if (collision.gameObject.name == "FogoBoss(Clone)")
         {
             qtd_vida.value -= 0.03f;
         }

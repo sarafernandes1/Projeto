@@ -150,7 +150,7 @@ public class ControlarBoss : MonoBehaviour
 
     public void AtaqueSegundaRonda()
     {
-        Vector3 position = portal_segundaronda.transform.position;
+        Vector3 position = player.transform.position;
         Quaternion rotation = portal_segundaronda.transform.rotation;
         var portal = Instantiate(portal_segundaronda, position, rotation);
         portal.gameObject.SetActive(true);

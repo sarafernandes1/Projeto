@@ -25,7 +25,9 @@ public class BossHealth : MonoBehaviour
     {
         if (collision.gameObject.name == "AtaqueNormal(Clone)")
         {
-            qtd_vida.value -= 0.3f*Time.deltaTime;
+            //qtd_vida.value -= 0.3f*Time.deltaTime;
+            qtd_vida.value -= 0.3f ;
+
         }
         if (collision.gameObject.name == "Boladefogo(Clone)")
         {
