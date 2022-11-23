@@ -8,10 +8,10 @@ public class ControlarBoss : MonoBehaviour
     Animator animator;
     Transform player;
     Slider vida;
-    public ParticleSystem particle, portal_segundaronda;
+    public ParticleSystem ataque_especial, portal_segundaronda;
     public Rigidbody particle_normal, boladefogo;
 
-    bool normal, procura, ataque;
+    bool normal, procura, combate, ataque;
     float distanceToPlayer, distance;
     float speed = 2.0f;
 
@@ -53,7 +53,7 @@ public class ControlarBoss : MonoBehaviour
             }
             transform.position += transform.forward * speed * Time.deltaTime;
 
-            if (Time.time > nextFireAtaqueSR)
+            if (Time.time > nextFireAtaqueSR && !animator.GetBool("damage_002"))
             {
                 animator.SetBool("attack_short_001", true);
                 animator.SetBool("idle_combat", false);
@@ -62,23 +62,23 @@ public class ControlarBoss : MonoBehaviour
             }
         }
 
-        if (ataque && vida.value < 0.5f)
+        if (combate && vida.value < 0.5f)
         {
             procura = true;
-            ataque = false;
+            combate = false;
             animator.SetBool("idle_normal", true);
             animator.SetBool("idle_combat", false);
         }
 
-        if (ataque)
+        if (combate)
         {
             IdleCombat();
             transform.LookAt(player.position);
 
             distance = Vector3.Distance(transform.position, player.position);
-            if (distance <= 20.0f)
+            if (distance <= 30.0f)
             {
-                if (Time.time > nextAtaqueNormal)
+                if (Time.time > nextAtaqueNormal && !animator.GetBool("damage_001"))
                 {
                     animator.SetBool("attack_short_001", true);
                     AtaqueNormal();
@@ -121,8 +121,6 @@ public class ControlarBoss : MonoBehaviour
 
     public void AtaqueNormal()
     {
-        particle_normal.gameObject.SetActive(true);
-        particle_normal.gameObject.GetComponent<ParticleSystem>().Play();
         var bolaFogo = Instantiate(boladefogo, boladefogo.transform.position, Quaternion.identity);
         bolaFogo.gameObject.SetActive(true);
         bolaFogo.gameObject.GetComponent<ParticleSystem>().Play();
@@ -132,13 +130,13 @@ public class ControlarBoss : MonoBehaviour
 
     public void AtaqueEspecial()
     {
-        Vector3 position_particle1 = new Vector3(Random.Range(-60, -100), 8.0f, Random.Range(8, 25));
-        Vector3 position_particle2 = new Vector3(Random.Range(-50, -110), 8.0f, Random.Range(50, 70));
+        Vector3 position_particle1 = new Vector3(Random.Range(-60, -100), 3.0f, Random.Range(8, 25));
+        Vector3 position_particle2 = new Vector3(Random.Range(-50, -110), 3.0f, Random.Range(50, 70));
 
-        var particle1 = Instantiate(particle, position_particle1, particle.transform.rotation);
+        var particle1 = Instantiate(ataque_especial, position_particle1, ataque_especial.transform.rotation);
         particle1.gameObject.SetActive(true);
         particle1.Play();
-        var particle2 = Instantiate(particle, position_particle2, particle.transform.rotation);
+        var particle2 = Instantiate(ataque_especial, position_particle2, ataque_especial.transform.rotation);
         particle2.gameObject.SetActive(true);
         particle2.Play();
 
@@ -179,7 +177,7 @@ public class ControlarBoss : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && !procura)
         {
-            ataque = true;
+            combate = true;
         }
     }
 }

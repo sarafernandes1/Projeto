@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class HealthPlayer : MonoBehaviour
 {
     public static Slider qtd_vida;
-    Transform player;
     public Text recursos_text;
     Canvas canvas_defeat;
     public Transform[] pontos_respawn;
@@ -16,7 +15,7 @@ public class HealthPlayer : MonoBehaviour
 
     public Canvas boss_vida;
 
-    bool isdead, segunda_parte;
+    bool isdead;
     public static float vida;
 
     void Start()
@@ -28,9 +27,8 @@ public class HealthPlayer : MonoBehaviour
             qtd_vida.value = vida;
 
         }
-        player = GameObject.Find("Player").GetComponent<Transform>();
         qtd_vida = GameObject.Find("HealthBar").GetComponent<Slider>();
-       if(vida>0) qtd_vida.value = vida;
+        if(vida>0) qtd_vida.value = vida;
         canvas_defeat = GameObject.Find("GameOver").GetComponent<Canvas>();
 
     }
@@ -38,11 +36,6 @@ public class HealthPlayer : MonoBehaviour
     void Update()
     {
         vida = qtd_vida.value;
-        GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
-        if (inimigos == null)
-        {
-            segunda_parte = true;
-        }
 
         if (qtd_vida.value <= 0)
         {

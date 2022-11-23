@@ -10,6 +10,7 @@ public class BossController : MonoBehaviour
     public Rigidbody enemy, ataque_especial;
     public Rigidbody enemy_alcance;
     public Slider qtd_vida;
+    public Canvas canvas;
     public ParticleSystem particle1;
 
     float distanceToPlayer;
@@ -30,7 +31,8 @@ public class BossController : MonoBehaviour
 
         if (distanceToPlayer<=80.0f)
         {
-            qtd_vida.gameObject.SetActive(true);
+            //qtd_vida.gameObject.SetActive(true);
+            canvas.enabled = true;
             collider.enabled = true;
             if (Time.time > nextenemy && n_inimigos <= 4)
             {

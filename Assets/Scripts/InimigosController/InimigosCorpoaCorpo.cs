@@ -16,7 +16,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     Vector3 inicial_position;
 
     float cooldownTime = 2, tempo_rajada = 0.6f, cooldownataque=2; //tempo de animação ataque
-    public static float thrust=500.0f;
+    public static float thrust=700.0f;
     float thrust_inicial = 0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
 
@@ -29,7 +29,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         if (transform.tag == "InimigoCorpoaCorpo")
         {
             speed = 3.0f;
-            dist_max = 22.0f;
+            dist_max = 24.0f;
             inimigo_corpoacorpo = true;
         }
         #endregion
@@ -55,7 +55,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             inimigo_corpoBoss = true;
             inimigo_corpoacorpo = false;
             inimigo_alcance = false;
-            speed = 3.2f;
+            speed = 3.0f;
             thrust = 700.0f;
         }
         #endregion
