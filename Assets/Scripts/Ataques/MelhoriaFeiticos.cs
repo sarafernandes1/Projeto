@@ -69,7 +69,7 @@ public class MelhoriaFeiticos : MonoBehaviour
 
     public void ButtonAN()
     {
-        if (RecursosSuficientes(2,0))
+        if (RecursosSuficientes(4,0))
         {
             ataquenormal.value -= 0.5f;
             EnemyHealth.dano_atqnormal += 0.5f; // aumentar dano do ataque
@@ -100,7 +100,7 @@ public class MelhoriaFeiticos : MonoBehaviour
 
     public void ButtonF2()
     {
-        if (RecursosSuficientes(2,2))
+        if (RecursosSuficientes(3,2))
         {
             //Raio elétrico
             raio.value -= 0.5f;
@@ -117,7 +117,7 @@ public class MelhoriaFeiticos : MonoBehaviour
 
     public void ButtonF3()
     {
-        if (RecursosSuficientes(2,3))
+        if (RecursosSuficientes(4,3))
         {
             //Parede
             parede.value -= 0.5f;
@@ -133,7 +133,7 @@ public class MelhoriaFeiticos : MonoBehaviour
 
     public void ButtonF4()
     {
-        if (RecursosSuficientes(2,4))
+        if (RecursosSuficientes(3,4))
         {
             //Rajada de vento
             rajada.value -= 0.5f;
@@ -149,7 +149,7 @@ public class MelhoriaFeiticos : MonoBehaviour
 
     public void ButtonF5()
     {
-        if (RecursosSuficientes(2,5))
+        if (RecursosSuficientes(5,5))
         {
             //Fúria ancestral
             furia.value -= 0.5f;
@@ -166,7 +166,7 @@ public class MelhoriaFeiticos : MonoBehaviour
     //Mana leva menos tempo a recarregar 
     public void ButtonManaPressed()
     {
-        if (RecursosSuficientes(2,6))
+        if (RecursosSuficientes(5,6))
         {
             mana.value -= 0.5f;
             ManaControlador.speed += 0.1f;

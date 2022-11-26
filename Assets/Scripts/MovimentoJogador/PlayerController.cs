@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private bool groundedPlayer;
     public float gravityValue = -9.81f;
 
+    public Canvas pausa;
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -56,7 +57,12 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-       
+        if (inputController.GetPlayerSairEsc())
+        {
+            pausa.enabled = true;
+            Time.timeScale = 0.0f;
+
+        }
     }
 
  

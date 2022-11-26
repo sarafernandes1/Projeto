@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class ControlarMenu : MonoBehaviour
 {
     // Start is called before the first frame update
+
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -27,5 +27,18 @@ public class ControlarMenu : MonoBehaviour
     {
         Debug.Log("exit click");
         Application.Quit(); //Fecha a aplicação; não corre no editor
+    }
+
+    public void VoltaraJogo()
+    {
+        Canvas canvas = GetComponent<Canvas>();
+        canvas.enabled = false;
+        Time.timeScale = 1.0f;
+
+    }
+
+    public void Sair()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -9,7 +9,7 @@ public class HealthPlayer : MonoBehaviour
     public Text recursos_text;
     Canvas canvas_defeat;
     public Transform[] pontos_respawn;
-    public ParticleSystem regeneracao_efeito;
+   // public ParticleSystem regeneracao_efeito;
 
     Vector3 position=new Vector3();
 
@@ -81,28 +81,28 @@ public class HealthPlayer : MonoBehaviour
     {
         if (other.gameObject.name == "Portal2Ronda(Clone)")
         {
+            qtd_vida.value -= 0.03f * Time.deltaTime;
+        }
+
+        if (other.gameObject.name == "PortalAtaqueEspecial(Clone)")
+        {
             qtd_vida.value -= 0.02f * Time.deltaTime;
         }
 
-        if (other.tag == "Vida" && qtd_vida.value<1)
+        if (other.tag == "Vida" && qtd_vida.value < 1)
         {
             qtd_vida.value += 0.05f * Time.deltaTime;
-            regeneracao_efeito.Play();
-        }
-
-        if (other.tag == "AtaqueEspecial")
-        {
-            qtd_vida.value -= 0.05f * Time.deltaTime;
+            //regeneracao_efeito.Play();
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Vida")
-        {
-            regeneracao_efeito.Stop();
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.tag == "Vida")
+    //    {
+    //        regeneracao_efeito.Stop();
+    //    }
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {

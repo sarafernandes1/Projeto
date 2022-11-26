@@ -15,7 +15,7 @@ public class ControlarBoss : MonoBehaviour
     float distanceToPlayer, distance;
     float speed = 2.0f;
 
-    float nextAtaqueEspecial = 0, cooldownAtaqueEspecial = 7, cooldownAtaqueSegundaRonda=9;
+    float nextAtaqueEspecial = 0, cooldownAtaqueEspecial = 8, cooldownAtaqueSegundaRonda=9;
     float nextAtaqueNormal = 0, cooldownAtaqueNormal = 3, nextFireAtaqueSR=0;
 
 
@@ -33,6 +33,7 @@ public class ControlarBoss : MonoBehaviour
             animator.SetBool("idle_normal", true);
         }
 
+        //Segunda Ronda
         if (procura)
         {
             transform.LookAt(player.position);
@@ -43,7 +44,7 @@ public class ControlarBoss : MonoBehaviour
             {
                 animator.SetBool("move_forward", false);
                 animator.SetBool("move_forward_fast", true);
-                speed = 4.0f;
+                speed = 4.5f;
             }
             else
             {
@@ -53,15 +54,17 @@ public class ControlarBoss : MonoBehaviour
             }
             transform.position += transform.forward * speed * Time.deltaTime;
 
-            if (Time.time > nextFireAtaqueSR && !animator.GetBool("damage_002"))
-            {
-                animator.SetBool("attack_short_001", true);
-                animator.SetBool("idle_combat", false);
+                if (Time.time > nextFireAtaqueSR)
+                {
+                    animator.SetBool("attack_short_001", true);
+                    animator.SetBool("idle_combat", false);
 
-                AtaqueSegundaRonda();
-            }
+                    AtaqueSegundaRonda();
+                }
+            
         }
 
+        //Passagem da primeira ronda para a segunda ronda
         if (combate && vida.value < 0.5f)
         {
             procura = true;
@@ -70,6 +73,7 @@ public class ControlarBoss : MonoBehaviour
             animator.SetBool("idle_combat", false);
         }
 
+        //Primeira ronda
         if (combate)
         {
             IdleCombat();
@@ -78,7 +82,7 @@ public class ControlarBoss : MonoBehaviour
             distance = Vector3.Distance(transform.position, player.position);
             if (distance <= 30.0f)
             {
-                if (Time.time > nextAtaqueNormal && !animator.GetBool("damage_001"))
+                if (Time.time > nextAtaqueNormal)
                 {
                     animator.SetBool("attack_short_001", true);
                     AtaqueNormal();
@@ -114,7 +118,7 @@ public class ControlarBoss : MonoBehaviour
 
     IEnumerator pararAtaque()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         animator.SetBool("attack_short_001", false);
         animator.SetBool("move_forward", true);
     }
@@ -130,13 +134,15 @@ public class ControlarBoss : MonoBehaviour
 
     public void AtaqueEspecial()
     {
-        Vector3 position_particle1 = new Vector3(Random.Range(-60, -100), 3.0f, Random.Range(8, 25));
-        Vector3 position_particle2 = new Vector3(Random.Range(-50, -110), 3.0f, Random.Range(50, 70));
+        Vector3 position_particle1 = ataque_especial.transform.position;
+        Vector3 position_particle2 = new Vector3(Random.Range(-80, -63), 3.0f, Random.Range(11, 57));
 
-        var particle1 = Instantiate(ataque_especial, position_particle1, ataque_especial.transform.rotation);
+        var particle1 = Instantiate(ataque_especial, position_particle1, Quaternion.identity);
+        particle1.gameObject.transform.Rotate(90,0,0);
         particle1.gameObject.SetActive(true);
         particle1.Play();
-        var particle2 = Instantiate(ataque_especial, position_particle2, ataque_especial.transform.rotation);
+        var particle2 = Instantiate(ataque_especial, position_particle2, Quaternion.identity);
+        particle2.gameObject.transform.Rotate(90, 0, 0);
         particle2.gameObject.SetActive(true);
         particle2.Play();
 
@@ -148,7 +154,7 @@ public class ControlarBoss : MonoBehaviour
 
     public void AtaqueSegundaRonda()
     {
-        Vector3 position = player.transform.position;
+        Vector3 position = new Vector3(player.transform.position.x,3.0f, player.transform.position.z) ;
         Quaternion rotation = portal_segundaronda.transform.rotation;
         var portal = Instantiate(portal_segundaronda, position, rotation);
         portal.gameObject.SetActive(true);
