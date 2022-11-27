@@ -152,7 +152,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             }
         }
 
-        if (distanceToPlayer <= dist_max && inimigo_corpoacorpo)
+        if (distanceToPlayer<=15.0f)
         {
             Perseguir();
         }

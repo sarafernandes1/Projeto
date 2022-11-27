@@ -19,11 +19,11 @@ public class CristalCura : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        particula.Play();
+        if(other.tag=="Player") particula.Play();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        particula.Stop();
+        if (other.tag == "Player") particula.Stop();
     }
 }
