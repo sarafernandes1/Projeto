@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class AbrirPortaCenaPrincipal : MonoBehaviour
 {
-    //GameObject chave;
-    public GameObject e1, e2, e3;
+    public GameObject e1, e2, e3, e4;
     bool player_defeat_enemy;
-    MeshRenderer porta;
-    //GameObject player;
+    public Animator portao1, portao2;
 
     void Start()
     {
-        porta = gameObject.GetComponentInChildren<MeshRenderer>();
-        //player = GameObject.Find("Player");
     }
 
     void Update()
@@ -25,20 +21,10 @@ public class AbrirPortaCenaPrincipal : MonoBehaviour
 
         if (player_defeat_enemy)
         {
-            Collider collider_objeto = gameObject.GetComponent<Collider>();
-            collider_objeto.enabled = false;
-            porta.enabled = false;
-            //chave.SetActive(true);
+            portao1.SetBool("abrir_portao1", true);
+            portao2.SetBool("abrir_portao2", true);
         }
 
-        //float distanceToChave = Vector3.Distance(player.transform.position, chave.transform.position);
-        //if (distanceToChave <= 2.0f)
-        //{
-        //    chave.SetActive(false);
-        //    porta.enabled = false;
-        //    Collider collider_objeto = gameObject.GetComponent<Collider>();
-        //    collider_objeto.enabled = false;
-        //}
     }
 
 }

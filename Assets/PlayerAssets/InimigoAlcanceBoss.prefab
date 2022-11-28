@@ -875,4 +875,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 100
-  cube: {fileID: 4460689768607613617, guid: 56d9e81c18ecde74f9e474e31709cc95, type: 3}
+  cube: {fileID: 1012644659782495157, guid: bfd5bd731d5374b4186b4281a4caa05c, type: 3}
