@@ -15,7 +15,7 @@ public class ControlarBoss : MonoBehaviour
     float distanceToPlayer, distance;
     float speed = 2.0f;
 
-    float nextAtaqueEspecial = 0, cooldownAtaqueEspecial = 8, cooldownAtaqueSegundaRonda=9;
+    float nextAtaqueEspecial = 0, cooldownAtaqueEspecial = 8, cooldownAtaqueSegundaRonda=10;
     float nextAtaqueNormal = 0, cooldownAtaqueNormal = 3, nextFireAtaqueSR=0;
 
 

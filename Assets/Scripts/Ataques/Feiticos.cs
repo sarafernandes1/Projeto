@@ -19,6 +19,8 @@ public class Feiticos : MonoBehaviour
     bool can_ataque_an, cooldown_an; // ataque normal
     bool can_atack_re, cooldown_re; //raio elétrico
 
+    public static float mana_raio = 0.35f;
+
     void Start()
     {
         imagem_tempo_BF.fillAmount = 0;
@@ -62,12 +64,12 @@ public class Feiticos : MonoBehaviour
 
         if (Time.time > nextFireTime_raioeletrico)
         {
-            PodesAtacar(0.35f);
+            PodesAtacar(mana_raio);
 
             if (inputController.GetFeiticoNumber() == 2 && can_atack && LuzBastao.numero_feitico == -1
                 || inputController.GetFeiticoNumber() == 2 && LuzBastao.numero_feitico == 5)
             {
-                qtd_mana.value -= 0.35f;
+                qtd_mana.value -= mana_raio;
 
                 nextFireTime_raioeletrico = Time.time + cooldownTime_raioeletrico;
                 cooldown_re = true;

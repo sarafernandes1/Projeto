@@ -38,6 +38,12 @@ public class InputController : MonoBehaviour
         return _playerControls.Player.SairEsc.triggered;
     }
     
+    public bool GetCameraZoom()
+    {
+        return _playerControls.Player.ZoomCamera.IsPressed();
+
+    }
+
     public int GetFeiticoNumber()
     {
         if (_playerControls.Player.Feiticos1.triggered) return 1;

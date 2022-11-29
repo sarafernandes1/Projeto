@@ -125,6 +125,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ZoomCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""54b13a09-af64-46d4-a4a8-032334040222"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""AbrirMelhoria"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77a756b3-aeb4-4556-a068-70fa8e4f9001"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90f5720e-50be-467f-8b5b-164c182c3906"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +342,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Feiticos5 = m_Player.FindAction("Feiticos5", throwIfNotFound: true);
         m_Player_AtaqueNormal = m_Player.FindAction("AtaqueNormal", throwIfNotFound: true);
         m_Player_AbrirMelhoria = m_Player.FindAction("AbrirMelhoria", throwIfNotFound: true);
+        m_Player_ZoomCamera = m_Player.FindAction("ZoomCamera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -381,6 +413,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Feiticos5;
     private readonly InputAction m_Player_AtaqueNormal;
     private readonly InputAction m_Player_AbrirMelhoria;
+    private readonly InputAction m_Player_ZoomCamera;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -396,6 +429,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Feiticos5 => m_Wrapper.m_Player_Feiticos5;
         public InputAction @AtaqueNormal => m_Wrapper.m_Player_AtaqueNormal;
         public InputAction @AbrirMelhoria => m_Wrapper.m_Player_AbrirMelhoria;
+        public InputAction @ZoomCamera => m_Wrapper.m_Player_ZoomCamera;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -438,6 +472,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @AbrirMelhoria.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbrirMelhoria;
                 @AbrirMelhoria.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbrirMelhoria;
                 @AbrirMelhoria.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbrirMelhoria;
+                @ZoomCamera.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoomCamera;
+                @ZoomCamera.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoomCamera;
+                @ZoomCamera.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoomCamera;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -475,6 +512,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @AbrirMelhoria.started += instance.OnAbrirMelhoria;
                 @AbrirMelhoria.performed += instance.OnAbrirMelhoria;
                 @AbrirMelhoria.canceled += instance.OnAbrirMelhoria;
+                @ZoomCamera.started += instance.OnZoomCamera;
+                @ZoomCamera.performed += instance.OnZoomCamera;
+                @ZoomCamera.canceled += instance.OnZoomCamera;
             }
         }
     }
@@ -492,5 +532,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnFeiticos5(InputAction.CallbackContext context);
         void OnAtaqueNormal(InputAction.CallbackContext context);
         void OnAbrirMelhoria(InputAction.CallbackContext context);
+        void OnZoomCamera(InputAction.CallbackContext context);
     }
 }

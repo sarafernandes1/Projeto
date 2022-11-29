@@ -103,8 +103,8 @@ public class MelhoriaFeiticos : MonoBehaviour
         if (RecursosSuficientes(3,2))
         {
             //Raio elétrico
-            raio.value -= 0.5f;
-            RaioEletrico.mana_gasto -= 0.1f; // diminuir a mana necessária
+            raio.value -= 0.05f;
+            Feiticos.mana_raio -= 0.2f; // diminuir a mana necessária
         }
 
         if (raio.value == 0)

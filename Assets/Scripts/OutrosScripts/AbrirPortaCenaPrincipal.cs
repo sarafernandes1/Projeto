@@ -14,7 +14,7 @@ public class AbrirPortaCenaPrincipal : MonoBehaviour
 
     void Update()
     {
-        if(e1==null && e2==null && e3 == null)
+        if(e1==null && e2==null && e3 == null && e4==null)
         {
             player_defeat_enemy = true;
         }

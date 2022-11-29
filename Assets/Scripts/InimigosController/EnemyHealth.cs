@@ -34,7 +34,7 @@ public class EnemyHealth : MonoBehaviour
             else
             {
                 inimigo2 = true;
-                vida = 25;
+                vida = 20;
             }
         }
 

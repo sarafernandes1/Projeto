@@ -31,8 +31,11 @@ public class Tutorial : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        canvas.enabled = true;
-        Time.timeScale = 0.0f;
+        if (other.tag == "Player")
+        {
+            canvas.enabled = true;
+            Time.timeScale = 0.0f;
+        }
     }
     
 }

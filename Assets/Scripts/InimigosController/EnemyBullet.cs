@@ -60,7 +60,7 @@ public class EnemyBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.name == "Chão" || collision.gameObject.name=="Cave" || collision.gameObject.name=="Arena")
+        if (collision.gameObject.name == "Plane.001" || collision.gameObject.name=="Cave" || collision.gameObject.name=="Arena")
         {
             Destroy(gameObject);
         }
