@@ -9,7 +9,7 @@ public class MudarCena : MonoBehaviour
     public static bool cena_boss;
     public GameObject guardar, update;
     public InputController inputController;
-    bool activate_newcene=false;
+    bool activate_newcene=true;
     public Text text;
     public static int n_inimigos = 0;
     Canvas canvas;

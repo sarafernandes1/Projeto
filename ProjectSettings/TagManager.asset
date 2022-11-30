@@ -12,9 +12,9 @@ TagManager:
   - AtaqueInimigo
   - InimigoBoss
   - ManaSlider
-  - BolaFogoExplosao
   - Rajada
   - AtaqueEspecial
+  - BolaFogoExplosao
   layers:
   - Default
   - TransparentFX

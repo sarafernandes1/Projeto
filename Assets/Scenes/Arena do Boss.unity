@@ -11511,6 +11511,10 @@ PrefabInstance:
       value: Paredes
       objectReference: {fileID: 0}
     - target: {fileID: 6535203637694938295, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
+      propertyPath: rocha
+      value: 
+      objectReference: {fileID: 1118564219}
+    - target: {fileID: 6535203637694938295, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 697311707}
@@ -11528,6 +11532,11 @@ PrefabInstance:
       objectReference: {fileID: 1641898607}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
+--- !u!1 &1118564219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132148009541168, guid: 4082be9e7a8c0da41b6d41c47255e43c, type: 3}
+  m_PrefabInstance: {fileID: 1118564218}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128586754 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 008b98ebeb8ec184098f1bc3dca36285, type: 3}
@@ -29671,6 +29680,10 @@ PrefabInstance:
     - target: {fileID: 3030196937083558204, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: near clip plane
       value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780031627373029593, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4780031627373029593, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: m_TagString

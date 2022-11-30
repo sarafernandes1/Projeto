@@ -80,6 +80,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.gameObject.name == "AtaqueNormal(Clone)")
         {
+            if (GuardarInformacao.dano_ataquenormal != 2) dano_atqnormal = GuardarInformacao.dano_ataquenormal;
             vida -= dano_atqnormal;
         }
         if (collision.gameObject.name == "Boladefogo(Clone)")

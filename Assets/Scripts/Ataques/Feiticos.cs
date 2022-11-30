@@ -26,6 +26,9 @@ public class Feiticos : MonoBehaviour
         imagem_tempo_BF.fillAmount = 0;
         imagem_tempo_AN.fillAmount = 0;
         imagem_tempo_RE.fillAmount = 0;
+
+        if (GuardarInformacao.qtd_mana_raio != 0.35f)
+            mana_raio = GuardarInformacao.qtd_mana_raio;
     }
 
 

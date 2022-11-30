@@ -64,6 +64,9 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         {
             rigidbody_ = gameObject.GetComponent<Rigidbody>();
         }
+
+        if (GuardarInformacao.thrust != 700.0f)
+            thrust = GuardarInformacao.thrust;
     }
 
 
@@ -137,22 +140,22 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         Ray inimigo_ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward * 6.0f));
-
+        
         if (Physics.Raycast(inimigo_ray, 8.0f))
         {
             speed = 5.0f;
         }
-
-        if (Physics.Raycast(inimigo_ray, 2.0f))
+       
+        if (Physics.Raycast(inimigo_ray, 3.0f))
         {
-            speed = 1.0f;
+            Normal();
             if (Time.time > timer_ataque)
             {
                 Ataque();
             }
         }
 
-        if (distanceToPlayer<=15.0f)
+        if (distanceToPlayer<=15.0f && distanceToPlayer>=3.0f)
         {
             Perseguir();
         }
@@ -170,6 +173,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         {
             if (hit.collider.tag == "Player")
             {
+                speed = 0.0f;
                 HealthPlayer.TakeDamage(2.5f);
                 timer_ataque = Time.time + cooldownataque;
             }

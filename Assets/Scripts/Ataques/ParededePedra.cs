@@ -5,23 +5,33 @@ using UnityEngine.UI;
 
 public class ParededePedra : MonoBehaviour
 {
-    public GameObject parede, parede_ataque, explosao, player;
+    public GameObject parede, parede_ataque, explosao, player, rocha;
     public InputController inputController;
     public AudioSource audio;
     public Slider qtd_mana;
     public Image imagem_tempo;
     public Rigidbody rigidbody;
 
+    public static GameObject objeto;
     public static float cooldownTime = 4;
     
     float nextFireTime = 0;
     bool can_atack, cooldown;
     bool parede_ativa = false;
+    public GameObject p;
 
     void Start()
     {
         imagem_tempo.fillAmount = 0;
         parede_ataque = parede;
+        objeto = parede;
+        if (MelhoriaFeiticos.mudanca_parede && p==null)
+        {
+            objeto = rocha;
+        }
+
+        if (GuardarInformacao.tempo_cooldownparede != 4)
+            cooldownTime = GuardarInformacao.tempo_cooldownparede;
     }
 
     void Update()
@@ -35,7 +45,7 @@ public class ParededePedra : MonoBehaviour
             if (inputController.GetFeiticoNumber() == 3 && !parede_ativa && qtd_mana.value >= 0.4f && LuzBastao.numero_feitico == -1
                     || inputController.GetFeiticoNumber() == 3 && !parede_ativa && qtd_mana.value >= 0.4f && LuzBastao.numero_feitico == 5)
             {
-                rigidbody.isKinematic = false;
+                //rigidbody.isKinematic = false;
                 if(LuzBastao.numero_feitico!=5) LuzBastao.numero_feitico = 3;
                 AtivarParede();
                 if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
@@ -53,14 +63,14 @@ public class ParededePedra : MonoBehaviour
                 cooldown = false;
                 can_atack = true;
                 parede_ativa = false;
-                parede_ataque.SetActive(false);
+                objeto.SetActive(false);
             }
         }
     }
 
     IEnumerator espera()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(0.5f);
         rigidbody.isKinematic = true;
         parar();
     }
@@ -73,9 +83,11 @@ public class ParededePedra : MonoBehaviour
 
     void AtivarParede()
     {
+
+        StartCoroutine(espera());
         parede_ativa = true;
         qtd_mana.value -= 0.4f;
-        parede.SetActive(true);
+        objeto.SetActive(true);
         Vector3 playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
         Vector3 playerDirection = player.transform.forward;
         Quaternion playerRotation = player.transform.rotation;
@@ -85,6 +97,5 @@ public class ParededePedra : MonoBehaviour
         transform.position =new Vector3( posicao_parede.x,posicao_parede.y, posicao_parede.z);
         explosao.SetActive(true);
         audio.Play();
-        StartCoroutine(espera());
     }
 }

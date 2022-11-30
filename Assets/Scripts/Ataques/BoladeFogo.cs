@@ -11,7 +11,7 @@ public class BoladeFogo : MonoBehaviour
     public AudioSource audio_bolafogo, audio_explosao;
 
     public static bool ataque;
-
+    SphereCollider explosao_collider;
     float cooldownTime = 2;
     bool explosion_active = false;
     public static float nextFireTime = 0;
@@ -19,6 +19,9 @@ public class BoladeFogo : MonoBehaviour
     void Start()
     {
         audio_bolafogo.Play();
+        explosao_collider = explosao.GetComponent<SphereCollider>();
+        if (GuardarInformacao.raio_explosao != 5)
+            explosao_collider.radius = GuardarInformacao.raio_explosao;
     }
 
     void Update()

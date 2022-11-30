@@ -10,13 +10,15 @@ public class MelhoriaFeiticos : MonoBehaviour
     public Text recursos;
     public InputController inputController;
     public Slider mana, qtd_mana, parede, furia, ataquenormal, bolafogo, raio, rajada;
-    public SphereCollider explosao_collider, rajada_collider;
+    public SphereCollider explosao_collider;
     public Button[] buttons;
-    public GameObject rajada_particle;
-    public ParticleSystem rajada_;
+    public GameObject rajada_particle, objeto_parede;
 
     public int qtd_recursos;
     public int a;
+
+    public static bool mudanca_parede=false;
+    public static float explosao_collider_raio=5f;
 
     void Start()
     {
@@ -29,10 +31,8 @@ public class MelhoriaFeiticos : MonoBehaviour
         {
             recursos = GameObject.FindGameObjectWithTag("Recurso").GetComponent<Text>();
             qtd_mana = GameObject.FindGameObjectWithTag("ManaSlider").GetComponent<Slider>();
-            explosao_collider = GameObject.FindGameObjectWithTag("BolaFogoExplosao").GetComponent<ParticleSystem>().GetComponent<SphereCollider>();
+            explosao_collider = GameObject.Find("Explosao").GetComponent<SphereCollider>();
             rajada_particle = GameObject.FindGameObjectWithTag("Rajada");
-            rajada_ = GameObject.FindGameObjectWithTag("Rajada").GetComponent<ParticleSystem>();
-            rajada_collider = GameObject.FindGameObjectWithTag("Rajada").GetComponent<SphereCollider>();
 
         }
 
@@ -67,12 +67,12 @@ public class MelhoriaFeiticos : MonoBehaviour
         }
     }
 
-    public void ButtonAN()
+    public void ButtonAN() //MUDANÇA CENA COMPLETA
     {
         if (RecursosSuficientes(4,0))
         {
             ataquenormal.value -= 0.5f;
-            EnemyHealth.dano_atqnormal += 0.5f; // aumentar dano do ataque
+            EnemyHealth.dano_atqnormal += 0.7f; // aumentar dano do ataque
         }
         if (ataquenormal.value == 0)
         {
@@ -82,13 +82,14 @@ public class MelhoriaFeiticos : MonoBehaviour
 
     }
 
-    public void ButtonF1()
+    public void ButtonF1() //MUDANÇA CENA COMPLETA
     {
         if (RecursosSuficientes(2, 1))
         {
             //Bola de fogo
             bolafogo.value -= 0.5f;
             explosao_collider.radius += 1.0f; // aumentar raio de dano
+            explosao_collider_raio = explosao_collider.radius;
         }
         if (bolafogo.value == 0)
         {
@@ -98,13 +99,13 @@ public class MelhoriaFeiticos : MonoBehaviour
 
     }
 
-    public void ButtonF2()
+    public void ButtonF2() //MUDANÇA CENA COMPLETA
     {
         if (RecursosSuficientes(3,2))
         {
             //Raio elétrico
-            raio.value -= 0.05f;
-            Feiticos.mana_raio -= 0.2f; // diminuir a mana necessária
+            raio.value -= 0.5f;
+            Feiticos.mana_raio -= 0.1f; // diminuir a mana necessária
         }
 
         if (raio.value == 0)
@@ -115,29 +116,31 @@ public class MelhoriaFeiticos : MonoBehaviour
 
     }
 
-    public void ButtonF3()
+    public void ButtonF3() //MUDANÇA CENA COMPLETA
     {
         if (RecursosSuficientes(4,3))
         {
             //Parede
             parede.value -= 0.5f;
-            ParededePedra.cooldownTime -= 0.2f;
+            ParededePedra.cooldownTime -= 0.5f;
         }
         if (parede.value == 0)
         {
+            mudanca_parede = true;
+            ParededePedra.objeto = objeto_parede;
             buttons[3].interactable = false;
             buttons[3].name = "bloqueado";
         }
 
     }
 
-    public void ButtonF4()
+    public void ButtonF4() //MUDANÇA CENA COMPLETA
     {
         if (RecursosSuficientes(3,4))
         {
             //Rajada de vento
             rajada.value -= 0.5f;
-            InimigosCorpoaCorpo.thrust += 100+500;
+            InimigosCorpoaCorpo.thrust += 100;
         }
 
         if (rajada.value == 0)
@@ -147,13 +150,13 @@ public class MelhoriaFeiticos : MonoBehaviour
         }
     }
 
-    public void ButtonF5()
+    public void ButtonF5() //MUDANÇA CENA COMPLETA
     {
         if (RecursosSuficientes(5,5))
         {
             //Fúria ancestral
             furia.value -= 0.5f;
-            FuriaAncestral.cooldownTime += 0.3f; // aumentar tempo de duração
+            FuriaAncestral.cooldownTime += 0.5f; // aumentar tempo de duração
         }
         if (furia.value == 0)
         {
@@ -164,7 +167,7 @@ public class MelhoriaFeiticos : MonoBehaviour
     }
 
     //Mana leva menos tempo a recarregar 
-    public void ButtonManaPressed()
+    public void ButtonManaPressed() //MUDANÇA CENA COMPLETA
     {
         if (RecursosSuficientes(5,6))
         {
