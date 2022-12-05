@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public float vida = 15;
     bool inimigo1,inimigo1_1, inimigo2, inimigo3;
     public GameObject cube;
+    GameObject player;
     public static float dano_atqnormal=2;
 
     void Start()
@@ -44,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
             inimigo3 = true;
         }
 
-
+        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -61,7 +62,7 @@ public class EnemyHealth : MonoBehaviour
         if (inimigo1 || inimigo3)
         {
             MudarCena.n_inimigos += 1;
-            var drop = Instantiate(cube, new Vector3(transform.position.x, 6.0f, transform.position.z), cube.transform.rotation);
+            var drop = Instantiate(cube, new Vector3(transform.position.x, player.transform.position.y, transform.position.z), cube.transform.rotation);
             float numero_random = Random.value;
                 drop.tag = "Recurso";
         }
