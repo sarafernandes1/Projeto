@@ -36,7 +36,7 @@ public class Feiticos : MonoBehaviour
     {
         destination= DestinoFeitico(destination);
 
-        if (Time.time > nextFireTime_bolafogo)
+        if (Time.time > nextFireTime_bolafogo && !MelhoriaFeiticos.gamePaused)
         {
             PodesAtacar(0.3f);
 
@@ -65,7 +65,7 @@ public class Feiticos : MonoBehaviour
             BoladeFogo.ataque = false;
         }
 
-        if (Time.time > nextFireTime_raioeletrico)
+        if (Time.time > nextFireTime_raioeletrico && !MelhoriaFeiticos.gamePaused)
         {
             PodesAtacar(mana_raio);
 
@@ -94,7 +94,7 @@ public class Feiticos : MonoBehaviour
             RaioEletrico.ataque = false;
         }
 
-        if (Time.time > nextFireTime_ataquenormal)
+        if (Time.time > nextFireTime_ataquenormal && !MelhoriaFeiticos.gamePaused)
         {
             if (inputController.GetFeiticoNumber() == 0 && LuzBastao.numero_feitico == -1
                 || inputController.GetFeiticoNumber() == 0 && LuzBastao.numero_feitico == 5)

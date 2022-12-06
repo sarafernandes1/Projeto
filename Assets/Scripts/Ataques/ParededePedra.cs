@@ -37,7 +37,7 @@ public class ParededePedra : MonoBehaviour
     void Update()
     {
         
-        if (Time.time > nextFireTime)
+        if (Time.time > nextFireTime && !MelhoriaFeiticos.gamePaused) 
         {
             if (qtd_mana.value > 0.4f) can_atack = true;
             else can_atack = false;

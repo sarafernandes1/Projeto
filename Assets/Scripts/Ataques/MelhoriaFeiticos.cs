@@ -18,6 +18,7 @@ public class MelhoriaFeiticos : MonoBehaviour
     public int a;
 
     public static bool mudanca_parede=false;
+    public static bool gamePaused = false;
     public static float explosao_collider_raio=5f;
 
     void Start()
@@ -44,10 +45,13 @@ public class MelhoriaFeiticos : MonoBehaviour
             if (melhoria_canvas.enabled)
             {
                 Time.timeScale = 0.0f;
+                gamePaused = true;
             }
             else
             {
                 Time.timeScale = 1.0f;
+                gamePaused = false;
+
             }
         }
 

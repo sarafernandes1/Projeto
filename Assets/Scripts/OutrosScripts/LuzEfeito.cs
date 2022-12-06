@@ -6,22 +6,24 @@ public class LuzEfeito : MonoBehaviour
 {
     Light luz;
     bool crescer, decrescer=true;
+    float intensidade_inicial;
 
     void Start()
     {
         luz = GetComponent<Light>();
+        intensidade_inicial = luz.intensity;
     }
 
 
     void Update()
     {
-        if (luz.intensity <= 0)
+        if (luz.intensity <= 0.3f)
         {
             decrescer = false;
             crescer = true;
         }
 
-        if (luz.intensity >= 0.5f)
+        if (luz.intensity >= intensidade_inicial)
         {
             decrescer = true;
             crescer = false;
@@ -29,12 +31,12 @@ public class LuzEfeito : MonoBehaviour
 
         if (decrescer)
         {
-            luz.intensity -= 0.1f * Time.deltaTime;
+            luz.intensity -= 0.2f * Time.deltaTime;
         }
 
         if (crescer)
         {
-            luz.intensity += 0.1f *Time.deltaTime;
+            luz.intensity += 0.2f *Time.deltaTime;
         }
     }
 }
