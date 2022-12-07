@@ -73,7 +73,7 @@ public class EnemyHealth : MonoBehaviour
     { 
         if (other.gameObject.name == "Rajadadevento")
         {
-            vida -= 10*Time.deltaTime;
+            vida -= 0.5f*Time.deltaTime;
         }
     }
 

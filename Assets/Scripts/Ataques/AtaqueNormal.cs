@@ -46,9 +46,14 @@ public class AtaqueNormal : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+
     private void OnParticleCollision(GameObject other)
     {
-        sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        if (other.layer == 3 || other.layer == 8 || other.layer == 10)
+        {
+            sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+        else Destroy(this.gameObject);
     }
 
 }

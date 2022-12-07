@@ -15,10 +15,12 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     Rigidbody rigidbody_;
     Vector3 inicial_position;
 
-    float cooldownTime = 2, tempo_rajada = 0.6f, cooldownataque=2; //tempo de animação ataque
-    public static float thrust=700.0f;
+    float cooldownTime = 2, tempo_rajada = 0.10f, cooldownataque=2; //tempo de animação ataque
+    public static float thrust=10.0f;
     float thrust_inicial = 0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
+
+    public Animator animator;
 
     void Start()
     {
@@ -73,7 +75,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     void Update()
     {
         Vector3 look = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        if (inimigo_alcance /*|| inimigo_alcanceBoss*/) look = player.transform.position;
+        //if (inimigo_alcance /*|| inimigo_alcanceBoss*/) look = player.transform.position;
         transform.LookAt(look);
 
         //Inimigo Corpo a Corpo
@@ -85,7 +87,9 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         //Inimigo Alcance
         if (inimigo_alcance)
         {
-            if (Time.time > nextFireTime && player_in_area)
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+            if (Time.time > nextFireTime && distanceToPlayer<=20.0f)
             {
                 AtaqueAlcance();
             }
@@ -115,14 +119,11 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         //Impacto Vento
         if (inimigo_corpoacorpo || inimigo_corpoBoss)
         {
-            Vector3 forward = new Vector3(-transform.forward.x, 0.0f, -transform.forward.z);
-            rigidbody_.AddForce(forward * thrust_inicial*Time.deltaTime);
             if (rajada_on)
             {
-                thrust_inicial = thrust;
+                transform.position -= transform.forward * Time.deltaTime * 20.0f;
                 if (Time.time > timer)
                 {
-                    thrust_inicial = 0.0f;
                     rajada_on = false;
                 };
             }
@@ -153,30 +154,45 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             {
                 Ataque();
             }
+            else
+            {
+                animator.SetBool("ataque", false);
+            }
         }
 
-        if (distanceToPlayer<=15.0f && distanceToPlayer>=3.0f)
+        if (distanceToPlayer<=25.0f && distanceToPlayer>=3.0f)
         {
+            animator.SetBool("correr", true);
+            animator.SetBool("idle", false);
+
             Perseguir();
         }
         else
         {
-            Normal();
+            if (distanceToPlayer > 25.0f)
+            {
+                Normal();
+                animator.SetBool("idle", true);
+                animator.SetBool("correr", false);
+            }
         }
+    }
+
+    IEnumerator damage()
+    {
+        yield return new WaitForSeconds(0.5f);
+        HealthPlayer.TakeDamage(2.5f);
     }
 
     void Ataque()
     {
-        RaycastHit hit;
-        Ray inimigo_ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward * 2.0f));
-        if (Physics.Raycast(inimigo_ray, out hit))
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        if (distance <= 4.0f)
         {
-            if (hit.collider.tag == "Player")
-            {
-                speed = 0.0f;
-                HealthPlayer.TakeDamage(2.5f);
-                timer_ataque = Time.time + cooldownataque;
-            }
+            animator.SetBool("ataque", true);
+            speed = 0.0f;
+            StartCoroutine(damage());
+            timer_ataque = Time.time + cooldownataque;
         }
     }
 
@@ -193,11 +209,12 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     void AtaqueAlcance()
     {
-        Vector3 position=arco.position;
-        Vector3 forward = arco.forward;
-        var projectile = Instantiate(bulletPrefab, position, arco.rotation);
-        projectile.velocity = forward * 100;
-        nextFireTime = Time.time + cooldownTime;
+        animator.SetBool("ataque", true);
+        //Vector3 position=arco.position;
+        //Vector3 forward = arco.forward;
+        //var projectile = Instantiate(bulletPrefab, position, arco.rotation);
+        //projectile.velocity = forward * 100;
+        //nextFireTime = Time.time + cooldownTime;
     }
 
     private void OnParticleCollision(GameObject other)
