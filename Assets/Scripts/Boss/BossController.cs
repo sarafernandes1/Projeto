@@ -7,7 +7,7 @@ public class BossController : MonoBehaviour
 {
     public GameObject player;
     public GameObject[] pocisionamento_inimigo;
-    public Rigidbody enemy, ataque_especial;
+    public Rigidbody enemy, enemy2, ataque_especial;
     public Rigidbody enemy_alcance;
     public Canvas qtd_vida;
     public Canvas canvas;
@@ -17,6 +17,7 @@ public class BossController : MonoBehaviour
     float distanceToPlayer;
     int n_inimigos, p_numero=0;
     float cooldownTime = 10, nextenemy = 0;
+    float random;
 
     void Start()
     {
@@ -33,12 +34,12 @@ public class BossController : MonoBehaviour
         {
             qtd_vida.enabled = true;
             collider.enabled = true;
-            //if (Time.time > nextenemy && n_inimigos <= 4)
-            //{
-            //    PosicionarInimigo();
-            //    p_numero++;
-            //    if (p_numero >= 5) p_numero = 1;
-            //}
+            if (Time.time > nextenemy && n_inimigos <= 8)
+            {
+                PosicionarInimigo();
+                p_numero++;
+                if (p_numero >= 5) p_numero = 1;
+            }
         }
     }
 
@@ -49,10 +50,18 @@ public class BossController : MonoBehaviour
 
         Vector3 posicao = pocisionamento_inimigo[p_numero].transform.position;
         Quaternion rotacao = pocisionamento_inimigo[p_numero].transform.rotation;
-        var inimigo_chamdo1 = Instantiate(enemy, posicao,rotacao);
-        var inimigo_chamdo2 = Instantiate(enemy_alcance, posicao,rotacao);
-       // inimigo_chamdo1.velocity = transform.forward * 20;
-       // inimigo_chamdo2.velocity = transform.forward * 30;
+        random = Random.Range(-10,10);
+        if (random <= 0f)
+        {
+            var inimigo_chamdo1 = Instantiate(enemy, posicao, rotacao);
+           // inimigo_chamdo1.velocity = transform.forward * 20;
+        }
+        else
+        {
+            var inimigo_chamdo1 = Instantiate(enemy, posicao, rotacao);
+        }
+        // var inimigo_chamdo2 = Instantiate(enemy_alcance, posicao,rotacao);
+        // inimigo_chamdo2.velocity = transform.forward * 30;
         nextenemy = Time.time + cooldownTime;
     }
 }

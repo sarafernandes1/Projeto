@@ -8,6 +8,8 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     public Rigidbody bulletPrefab;
     public GameObject player;
     public Transform arco;
+    public Transform machado;
+
     float speed, dist_max;
     bool inimigo_corpoacorpo, inimigo_alcance, inimigo_corpoBoss, inimigo_alcanceBoss;
     bool player_in_area, rajada_on;
@@ -15,7 +17,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     Rigidbody rigidbody_;
     Vector3 inicial_position;
 
-    float cooldownTime = 2, tempo_rajada = 0.10f, cooldownataque=2; //tempo de animação ataque
+    float cooldownTime = 8, tempo_rajada = 0.10f, cooldownataque=2; //tempo de animação ataque
     public static float thrust=10.0f;
     float thrust_inicial = 0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
@@ -94,16 +96,17 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             {
                 AtaqueAlcance();
             }
+
+            if (distanceToPlayer > 20.0f)
+            {
+                animator.SetBool("ataque", false);
+            }
         }
 
         // Inimigo Corpo a corpo área boss
         if (inimigo_corpoBoss)
         {
-            Perseguir();
-            if (Time.time > timer_ataque)
-            {
-                Ataque();
-            }
+            AtaqueCorpoaCorpo();
         }
         
         //Inimigo alcance área boss
@@ -115,6 +118,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             {
                 AtaqueAlcance();
             }
+
         }
 
         //Impacto Vento
@@ -161,7 +165,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             }
         }
 
-        if ((distanceToPlayer<=25.0f && distanceToPlayer>=3.0f) || atingido && distanceToPlayer>=3.0f)
+        if ((distanceToPlayer<=25.0f && distanceToPlayer>=3.0f) || atingido && distanceToPlayer>=3.0f || inimigo_corpoBoss && distanceToPlayer>=3.0f)
         {
             animator.SetBool("correr", true);
             animator.SetBool("idle", false);
@@ -182,7 +186,8 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     IEnumerator damage()
     {
         yield return new WaitForSeconds(0.5f);
-        HealthPlayer.TakeDamage(2.5f);
+        if(!machado) HealthPlayer.TakeDamage(3.5f);
+        else HealthPlayer.TakeDamage(2.5f);
     }
 
     void Ataque()
@@ -207,7 +212,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         transform.position += transform.forward * 0 * Time.deltaTime;
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
-
     void AtaqueAlcance()
     {
         animator.SetBool("ataque", true);
