@@ -27,7 +27,7 @@ public class DropVidaRecursos : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Poçao_Drop Variant(Clone)")
+        if (other.name == "Poçao_Drop Variant(Clone)" )
         {
             if (other.tag == "Recurso")
             {

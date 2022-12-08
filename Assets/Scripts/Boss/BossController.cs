@@ -9,17 +9,17 @@ public class BossController : MonoBehaviour
     public GameObject[] pocisionamento_inimigo;
     public Rigidbody enemy, ataque_especial;
     public Rigidbody enemy_alcance;
-    public Slider qtd_vida;
+    public Canvas qtd_vida;
     public Canvas canvas;
     public ParticleSystem particle1;
 
+    Vector3 position;
     float distanceToPlayer;
     int n_inimigos, p_numero=0;
     float cooldownTime = 10, nextenemy = 0;
 
     void Start()
     {
-        
     }
 
     void Update()
@@ -29,19 +29,19 @@ public class BossController : MonoBehaviour
         GameObject parede = GameObject.Find("ParedeCave");
         Collider collider = parede.transform.GetComponent<Collider>();
 
-        if (distanceToPlayer<=80.0f)
+        if (distanceToPlayer<=90.0f)
         {
-            //qtd_vida.gameObject.SetActive(true);
-            canvas.enabled = true;
+            qtd_vida.enabled = true;
             collider.enabled = true;
-            if (Time.time > nextenemy && n_inimigos <= 4)
-            {
-                PosicionarInimigo();
-                p_numero++;
-                if (p_numero >= 5) p_numero = 1;
-            }
+            //if (Time.time > nextenemy && n_inimigos <= 4)
+            //{
+            //    PosicionarInimigo();
+            //    p_numero++;
+            //    if (p_numero >= 5) p_numero = 1;
+            //}
         }
     }
+
 
     void PosicionarInimigo()
     {

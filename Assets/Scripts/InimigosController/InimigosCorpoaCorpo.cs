@@ -20,6 +20,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     float thrust_inicial = 0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
 
+    bool atingido;
     public Animator animator;
 
     void Start()
@@ -160,7 +161,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             }
         }
 
-        if (distanceToPlayer<=25.0f && distanceToPlayer>=3.0f)
+        if ((distanceToPlayer<=25.0f && distanceToPlayer>=3.0f) || atingido && distanceToPlayer>=3.0f)
         {
             animator.SetBool("correr", true);
             animator.SetBool("idle", false);
@@ -210,11 +211,18 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     void AtaqueAlcance()
     {
         animator.SetBool("ataque", true);
-        //Vector3 position=arco.position;
-        //Vector3 forward = arco.forward;
-        //var projectile = Instantiate(bulletPrefab, position, arco.rotation);
-        //projectile.velocity = forward * 100;
-        //nextFireTime = Time.time + cooldownTime;
+        var bolaFogo = Instantiate(bulletPrefab, arco.transform.position, Quaternion.identity);
+        bolaFogo.velocity = (player.transform.position - arco.transform.position).normalized * 50.0f;
+        nextFireTime = Time.time + cooldownTime;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "AtaqueNormal(Clone)")
+        {
+            atingido = true;
+        }
+       
     }
 
     private void OnParticleCollision(GameObject other)

@@ -11,14 +11,14 @@ public class InimigoBossController : MonoBehaviour
     public ParticleSystem ataque_especial, portal_segundaronda;
     public Rigidbody particle_normal, boladefogo;
 
-    public bool normal=true, procura, combate, segunda_ronda;
-    float distanceToPlayer, distance;
-    float speed = 3.0f;
+    bool normal=true, procura=false, combate, segunda_ronda;
+    float  distance;
+    float speed = 2.0f;
 
     int numero = 0;
     float nextAtaqueEspecial = 0, cooldownAtaqueEspecial = 8, cooldownAtaqueSegundaRonda = 10;
     float nextAtaqueNormal = 0, cooldownAtaqueNormal = 3, nextFireAtaqueSR = 2f;
-
+    float distanceToPlayer;
 
     void Start()
     {
@@ -29,6 +29,13 @@ public class InimigoBossController : MonoBehaviour
 
     void Update()
     {
+         distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        if (distanceToPlayer <= 70.0f)
+        {
+            procura = true;
+        }
+
         if (normal)
         {
             animator.SetBool("idle_normal", true);
@@ -45,19 +52,16 @@ public class InimigoBossController : MonoBehaviour
             transform.LookAt(player.position);
             Move();
             transform.position += transform.forward * speed * Time.deltaTime;
-        }
-
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-
-        if (distanceToPlayer<=60.0f && Time.time > nextFireAtaqueSR)
-        {
-            combate = true;
-            procura = false;
-        }
-        else
-        {
-            combate = false;
-            procura = true;
+            if (distanceToPlayer <= 60.0f && Time.time > nextFireAtaqueSR && procura)
+            {
+                combate = true;
+                procura = false;
+            }
+            else
+            {
+                combate = false;
+                procura = true;
+            }
         }
 
         if (combate)
@@ -138,12 +142,5 @@ public class InimigoBossController : MonoBehaviour
         animator.SetBool("move_forward", false);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player" && numero==0)
-        {
-            numero = 1;
-            procura = true;
-        }
-    }
+   
 }

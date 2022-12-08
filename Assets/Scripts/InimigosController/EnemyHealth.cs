@@ -67,6 +67,7 @@ public class EnemyHealth : MonoBehaviour
                 drop.tag = "Recurso";
         }
         GameObject.Destroy(gameObject);
+
     }
 
     private void OnParticleCollision(GameObject other)
