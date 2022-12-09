@@ -8,7 +8,7 @@ public class BossController : MonoBehaviour
     public GameObject player;
     public GameObject[] pocisionamento_inimigo;
     public Rigidbody enemy, enemy2, ataque_especial;
-    public Rigidbody enemy_alcance;
+    public Rigidbody enemy_alcance, enemy_alcance2;
     public Canvas qtd_vida;
     public Canvas canvas;
     public ParticleSystem particle1;
@@ -54,14 +54,22 @@ public class BossController : MonoBehaviour
         if (random <= 0f)
         {
             var inimigo_chamdo1 = Instantiate(enemy, posicao, rotacao);
-           // inimigo_chamdo1.velocity = transform.forward * 20;
+            // inimigo_chamdo1.velocity = transform.forward * 20;
         }
         else
         {
-            var inimigo_chamdo1 = Instantiate(enemy, posicao, rotacao);
+            var inimigo_chamdo1 = Instantiate(enemy2, posicao, rotacao);
         }
-        // var inimigo_chamdo2 = Instantiate(enemy_alcance, posicao,rotacao);
-        // inimigo_chamdo2.velocity = transform.forward * 30;
+
+        random = Random.Range(-1, 1);
+        if (random < 0)
+        {
+            var inimigo_chamdo2 = Instantiate(enemy_alcance, posicao, rotacao);
+        }
+        else
+        {
+            var inimigo_chamdo2 = Instantiate(enemy_alcance2, posicao, rotacao);
+        }
         nextenemy = Time.time + cooldownTime;
     }
 }

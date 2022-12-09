@@ -5112,7 +5112,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1024848
+  m_Name: pb_Mesh1002376
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8552,15 +8552,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3895865957201750374, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -41.680283
+      value: 87.90971
       objectReference: {fileID: 0}
     - target: {fileID: 3895865957201750374, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.329999
+      value: 1.7899992
       objectReference: {fileID: 0}
     - target: {fileID: 3895865957201750374, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.55653
+      value: -28.43347
       objectReference: {fileID: 0}
     - target: {fileID: 3895865957201750374, guid: 2fb401a08bc8f594e83c75d24f7fbd89, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10093,6 +10093,7 @@ MonoBehaviour:
   enemy2: {fileID: 0}
   ataque_especial: {fileID: 3675368962317968151, guid: b396072bda4a89a40a4ef82204f06963, type: 3}
   enemy_alcance: {fileID: 9139525177328749601, guid: 4934d061ae850d24484a3e866ea18437, type: 3}
+  enemy_alcance2: {fileID: 0}
   qtd_vida: {fileID: 0}
   canvas: {fileID: 0}
   particle1: {fileID: 1065942297}
@@ -28972,7 +28973,8 @@ MonoBehaviour:
   enemy: {fileID: 1975242023, guid: 4a2bdcc7b63b9e4459d7db5ab8f740ea, type: 3}
   enemy2: {fileID: 1692679157, guid: 90ced9944213a2c4d87b4ed332aceff1, type: 3}
   ataque_especial: {fileID: 3675368962317968151, guid: b396072bda4a89a40a4ef82204f06963, type: 3}
-  enemy_alcance: {fileID: 1692679157, guid: 90ced9944213a2c4d87b4ed332aceff1, type: 3}
+  enemy_alcance: {fileID: 4905264271483112896, guid: 8c6ff6ecd2abe6f48ab498d282979b77, type: 3}
+  enemy_alcance2: {fileID: 402661161, guid: 02637867b9fa3d84a98d74fff4df06c7, type: 3}
   qtd_vida: {fileID: 1582893136}
   canvas: {fileID: 1582893136}
   particle1: {fileID: 7353050949201869319, guid: 89bd0156beffd364b8bc761ff8bfff73, type: 3}
@@ -28983,7 +28985,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827602847}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2296c67d132f1d4a845a019e57babad, type: 3}
   m_Name: 
@@ -31162,15 +31164,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3030196936912262671, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -333.65
+      value: -204.06
       objectReference: {fileID: 0}
     - target: {fileID: 3030196936912262671, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.64
+      value: -5.18
       objectReference: {fileID: 0}
     - target: {fileID: 3030196936912262671, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 80.14
+      value: 16.15
       objectReference: {fileID: 0}
     - target: {fileID: 3030196936912262671, guid: 960a8a501575e574a86a1c879743cf21, type: 3}
       propertyPath: m_LocalRotation.w

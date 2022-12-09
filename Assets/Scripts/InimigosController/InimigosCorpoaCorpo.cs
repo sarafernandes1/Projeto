@@ -22,7 +22,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     float thrust_inicial = 0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
 
-    bool atingido;
+    bool atingido, pode_atacar=false;
     public Animator animator;
 
     void Start()
@@ -45,11 +45,12 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             speed = 0.7f;
             dist_max = 22.0f;
             inimigo_alcance = true;
-            if (transform.name == "InimigoAlcanceBoss(Clone)")
+            if (transform.name == "Skeleton_Ranged_1_Fixed (1) Variant(Clone)"
+                || transform.name == "Skeleton_Ranged_2_Fixed Variant(Clone)")
             {
                 inimigo_alcance = false;
                 inimigo_alcanceBoss = true;
-                speed = 1.5f;
+                speed = 2.5f;
             }
         }
         #endregion
@@ -91,15 +92,26 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         if (inimigo_alcance)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            if (distanceToPlayer <= 50.0f)
+            {
+                animator.SetBool("combate", true);
+            }
 
             if (Time.time > nextFireTime && distanceToPlayer<=20.0f)
             {
-                AtaqueAlcance();
+                animator.SetBool("ataque", true);
+                StartCoroutine(espera2());
+                if(pode_atacar) AtaqueAlcance();
+            }
+            else
+            {
+                pode_atacar = false;
             }
 
             if (distanceToPlayer > 20.0f)
             {
                 animator.SetBool("ataque", false);
+                animator.SetBool("combate", false);
             }
         }
 
@@ -112,13 +124,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         //Inimigo alcance área boss
         if (inimigo_alcanceBoss)
         {
-            Perseguir();
-            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (Time.time > nextFireTime && distanceToPlayer < 40.0f)
-            {
-                AtaqueAlcance();
-            }
-
+            AtaqueInimigoAlcance();
         }
 
         //Impacto Vento
@@ -183,11 +189,55 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         }
     }
 
+    void AtaqueInimigoAlcance()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        if (distanceToPlayer <= 60.0f && distanceToPlayer >= 6.0f)
+        {
+            animator.SetBool("correr", true);
+            Perseguir();
+        }
+
+        if (Time.time > nextFireTime && distanceToPlayer <6.0f && distanceToPlayer>=5.0f)
+        {
+            animator.SetBool("ataque", true);
+            StartCoroutine(espera3());
+            if (pode_atacar) AtaqueAlcance();
+        }
+        else
+        {
+            pode_atacar = false;
+        }
+
+
+    }
+
     IEnumerator damage()
     {
         yield return new WaitForSeconds(0.5f);
         if(!machado) HealthPlayer.TakeDamage(3.5f);
         else HealthPlayer.TakeDamage(2.5f);
+    }
+
+    IEnumerator espera()
+    {
+        yield return new WaitForSeconds(0.7f);
+        animator.SetBool("ataque", false);
+    }
+
+    IEnumerator espera3()
+    {
+        yield return new WaitForSeconds(2.0f);
+        pode_atacar = true;
+
+    }
+
+    IEnumerator espera2()
+    {
+        yield return new WaitForSeconds(1.3f);
+        pode_atacar = true;
+
     }
 
     void Ataque()
@@ -214,9 +264,9 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     }
     void AtaqueAlcance()
     {
-        animator.SetBool("ataque", true);
         var bolaFogo = Instantiate(bulletPrefab, arco.transform.position, Quaternion.identity);
         bolaFogo.velocity = (player.transform.position - arco.transform.position).normalized * 50.0f;
+        StartCoroutine(espera());
         nextFireTime = Time.time + cooldownTime;
     }
 
@@ -226,7 +276,16 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         {
             atingido = true;
         }
-       
+        if (collision.gameObject.name == "Boladefogo(Clone)")
+        {
+            atingido = true;
+
+        }
+        if (collision.gameObject.name == "RaioEletrico(Clone)")
+        {
+            atingido = true;
+
+        }
     }
 
     private void OnParticleCollision(GameObject other)
