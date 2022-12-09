@@ -22,6 +22,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     float thrust_inicial = 0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
 
+    public static float forca = 20.0f;
     bool atingido, pode_atacar=false;
     public Animator animator;
 
@@ -92,12 +93,12 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         if (inimigo_alcance)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer <= 50.0f)
+            if (distanceToPlayer <= 70.0f)
             {
                 animator.SetBool("combate", true);
             }
 
-            if (Time.time > nextFireTime && distanceToPlayer<=20.0f)
+            if (Time.time > nextFireTime && distanceToPlayer<=40.0f)
             {
                 animator.SetBool("ataque", true);
                 StartCoroutine(espera2());
@@ -132,7 +133,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         {
             if (rajada_on)
             {
-                transform.position -= transform.forward * Time.deltaTime * 20.0f;
+                transform.position -= transform.forward * Time.deltaTime * forca;
                 if (Time.time > timer)
                 {
                     rajada_on = false;

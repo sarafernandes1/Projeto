@@ -17,6 +17,7 @@ public class Rajadadevento : MonoBehaviour
 
     float cooldownTime = 2;
     float nextFireTime = 0, timer=0;
+    public Animator animator;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class Rajadadevento : MonoBehaviour
             if (inputController.GetFeiticoNumber() == 4 && can_atack && LuzBastao.numero_feitico==-1
                 || inputController.GetFeiticoNumber() == 4 && LuzBastao.numero_feitico == 5)
             {
+                animator.Play("Magia_Rajada_De_Vento");
                 if ( LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = 4;
                 Ataque();
                 cooldown = true;

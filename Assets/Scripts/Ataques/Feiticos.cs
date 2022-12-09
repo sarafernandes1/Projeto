@@ -18,8 +18,11 @@ public class Feiticos : MonoBehaviour
     bool can_atack, cooldown;
     bool can_ataque_an, cooldown_an; // ataque normal
     bool can_atack_re, cooldown_re; //raio elétrico
-
+    public Animator animator;
     public static float mana_raio = 0.35f;
+
+    bool descer, subir = true;
+    public Vector3 p;
 
     void Start()
     {
@@ -34,7 +37,21 @@ public class Feiticos : MonoBehaviour
 
     void Update()
     {
-        destination= DestinoFeitico(destination);
+        if (descer)
+        {
+            transform.position-=new Vector3(0.0f, 0.005f * Time.deltaTime,0.0f);
+            StartCoroutine(espera());
+        }
+
+        if (subir)
+        {
+            transform.position+= new Vector3(0.0f, 0.005f * Time.deltaTime, 0.0f);
+            StartCoroutine(espera1());
+
+        }
+
+
+        destination = DestinoFeitico(destination);
 
         if (Time.time > nextFireTime_bolafogo && !MelhoriaFeiticos.gamePaused)
         {
@@ -48,7 +65,9 @@ public class Feiticos : MonoBehaviour
                 nextFireTime_bolafogo = Time.time + cooldownTime_bolafogo;
                 cooldown = true;
                 BoladeFogo.ataque = true;
-                DispararFeitico(bolafogo,1);
+                animator.Play("Magia_Bola_de_Fogo");
+
+                DispararFeitico(bolafogo, 1, 30, "bolafogo");
             }
         }
 
@@ -77,7 +96,9 @@ public class Feiticos : MonoBehaviour
                 nextFireTime_raioeletrico = Time.time + cooldownTime_raioeletrico;
                 cooldown_re = true;
                 RaioEletrico.ataque = true;
-                DispararFeitico(raioeletico, 2, 65.0f);
+                animator.Play("Magia_Raio_Eletrico");
+
+                DispararFeitico(raioeletico, 2, 65.0f, "raio");
             }
         }
 
@@ -102,7 +123,8 @@ public class Feiticos : MonoBehaviour
                 nextFireTime_ataquenormal = Time.time + cooldownTime_ataquenormal;
                 cooldown_an = true;
                 AtaqueNormal.ataque = true;
-                DispararFeitico(ataquenormal,0);
+                animator.Play("Magia_Normal");
+                 DispararFeitico(ataquenormal,0,30, "normal");
             }
         }
 
@@ -119,8 +141,22 @@ public class Feiticos : MonoBehaviour
             AtaqueNormal.ataque = false;
         }
 
-      
     }
+
+    IEnumerator espera()
+    {
+        yield return new WaitForSeconds(2f);
+        subir = true;
+        descer = false;
+    }
+
+    IEnumerator espera1()
+    {
+        yield return new WaitForSeconds(2f);
+        subir = false;
+        descer = true;
+    }
+
 
     public Vector3 DestinoFeitico(Vector3 destination)
     {
@@ -140,7 +176,7 @@ public class Feiticos : MonoBehaviour
         else can_atack = false;
     }
 
-    public void DispararFeitico(Rigidbody rigidbody, int num_feitico, float speed=30.0f)
+    public void DispararFeitico(Rigidbody rigidbody, int num_feitico, float speed, string nome)
     {
         if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = num_feitico;
 
@@ -148,7 +184,6 @@ public class Feiticos : MonoBehaviour
         projectile.gameObject.SetActive(true);
         projectile.gameObject.GetComponent<ParticleSystem>().Play();
         projectile.velocity = (destination - ponto.position).normalized * speed;
-
     }
   
 }

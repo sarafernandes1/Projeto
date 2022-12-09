@@ -144,7 +144,7 @@ public class MelhoriaFeiticos : MonoBehaviour
         {
             //Rajada de vento
             rajada.value -= 0.5f;
-            InimigosCorpoaCorpo.thrust += 100;
+            InimigosCorpoaCorpo.forca += 5;
         }
 
         if (rajada.value == 0)

@@ -9,7 +9,7 @@ public class FuriaAncestral : MonoBehaviour
     public InputController inputController;
     public ParticleSystem sistema_particulas;
     bool can_atack, cooldown;
-
+    public Animator animator;
     AudioSource audio;
 
     public Image imagem_tempo;
@@ -32,6 +32,7 @@ public class FuriaAncestral : MonoBehaviour
 
             if (inputController.GetFeiticoNumber() == 5 && can_atack)
             {
+                animator.Play("Magia_Furia_Ancestral");
                 LuzBastao.numero_feitico = 5;
                 Ataque();
                 cooldown = true;

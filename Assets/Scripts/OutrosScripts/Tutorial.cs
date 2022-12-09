@@ -44,6 +44,7 @@ public class Tutorial : MonoBehaviour
             if (gameObject.name == "TutotialTrigger4")
             {
                 ManaControlador.speed = 0.1f;
+                HealthPlayer.TakeDamage(-100.0f);
             }
         }
     }

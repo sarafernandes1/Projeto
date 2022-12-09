@@ -19,6 +19,7 @@ public class ParededePedra : MonoBehaviour
     bool can_atack, cooldown;
     bool parede_ativa = false;
     public GameObject p;
+    public Animator animator;
 
     void Start()
     {
@@ -45,6 +46,7 @@ public class ParededePedra : MonoBehaviour
             if (inputController.GetFeiticoNumber() == 3 && !parede_ativa && qtd_mana.value >= 0.4f && LuzBastao.numero_feitico == -1
                     || inputController.GetFeiticoNumber() == 3 && !parede_ativa && qtd_mana.value >= 0.4f && LuzBastao.numero_feitico == 5)
             {
+                animator.Play("Magia_Parede_de_Pedra");
                 //rigidbody.isKinematic = false;
                 if(LuzBastao.numero_feitico!=5) LuzBastao.numero_feitico = 3;
                 AtivarParede();
