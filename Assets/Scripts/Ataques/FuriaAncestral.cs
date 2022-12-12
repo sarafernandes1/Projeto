@@ -16,6 +16,9 @@ public class FuriaAncestral : MonoBehaviour
 
     public static float cooldownTime = 4;
     float nextFireTime = 0;
+    public Text tempo;
+    float timer = 30;
+    bool indisponivel=false, fim=false;
 
     void Start()
     {
@@ -25,7 +28,7 @@ public class FuriaAncestral : MonoBehaviour
 
     void Update()
     {
-        if (Time.time > nextFireTime && !MelhoriaFeiticos.gamePaused)
+        if (Time.time > nextFireTime && !MelhoriaFeiticos.gamePaused && !indisponivel)
         {
             if (qtd_mana.value > 0.5f) can_atack = true;
             else can_atack = false;
@@ -48,6 +51,25 @@ public class FuriaAncestral : MonoBehaviour
                 imagem_tempo.fillAmount = 0;
                 cooldown = false;
                 LuzBastao.numero_feitico = -2;
+                fim = true;
+            }
+        }
+
+        if (!cooldown && fim)
+        {
+            indisponivel = true;
+            if (timer < 0)
+            {
+                indisponivel = false;
+                tempo.text = "";
+                fim = false;
+                timer = 30;
+            }
+            if (indisponivel)
+            {
+                int t = (int)timer;
+                tempo.text =t.ToString();
+                timer -= 1*Time.deltaTime;
             }
         }
     }

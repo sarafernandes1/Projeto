@@ -61,7 +61,7 @@ public class BoladeFogo : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        if (collision.gameObject.layer != 11) sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
         if (collision.gameObject.layer == 9)
         {
@@ -69,7 +69,7 @@ public class BoladeFogo : MonoBehaviour
         }
         else
         {
-            if (!explosion_active)
+            if (!explosion_active && collision.gameObject.layer!=11)
             {
                 var explosion = Instantiate(explosao, transform.position, transform.rotation);
                 explosion.gameObject.SetActive(true);
