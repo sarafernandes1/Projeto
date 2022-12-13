@@ -32,25 +32,13 @@ public class Feiticos : MonoBehaviour
 
         if (GuardarInformacao.qtd_mana_raio != 0.35f)
             mana_raio = GuardarInformacao.qtd_mana_raio;
+
     }
 
 
     void Update()
     {
-        if (descer)
-        {
-            transform.position-=new Vector3(0.0f, 0.005f * Time.deltaTime,0.0f);
-            StartCoroutine(espera());
-        }
-
-        if (subir)
-        {
-            transform.position+= new Vector3(0.0f, 0.005f * Time.deltaTime, 0.0f);
-            StartCoroutine(espera1());
-
-        }
-
-
+        
         destination = DestinoFeitico(destination);
 
         if (Time.time > nextFireTime_bolafogo && !MelhoriaFeiticos.gamePaused)

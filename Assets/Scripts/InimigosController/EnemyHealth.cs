@@ -62,9 +62,12 @@ public class EnemyHealth : MonoBehaviour
         if (inimigo1 || inimigo3)
         {
             MudarCena.n_inimigos += 1;
-            var drop = Instantiate(cube, new Vector3(transform.position.x, player.transform.position.y, transform.position.z), cube.transform.rotation);
+            if (cube != null)
+            {
+                var drop = Instantiate(cube, new Vector3(transform.position.x, player.transform.position.y, transform.position.z), cube.transform.rotation);
+            }
             float numero_random = Random.value;
-                drop.tag = "Recurso";
+               // drop.tag = "Recurso";
         }
         GameObject.Destroy(gameObject);
 
