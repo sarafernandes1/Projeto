@@ -13,11 +13,13 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     float speed, dist_max;
     bool inimigo_corpoacorpo, inimigo_alcance, inimigo_corpoBoss, inimigo_alcanceBoss;
     bool player_in_area, rajada_on;
+    bool ataque=false;
+    float t = 0;
 
     Rigidbody rigidbody_;
     Vector3 inicial_position;
 
-    float cooldownTime = 8, tempo_rajada = 0.10f, cooldownataque=2; //tempo de animação ataque
+    float cooldownTime = 4, tempo_rajada = 0.10f, cooldownataque=2; //tempo de animação ataque
     public static float thrust=10.0f;
     float thrust_inicial = 0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
@@ -158,25 +160,39 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         {
             speed = 5.0f;
         }
-       
-        if (Physics.Raycast(inimigo_ray, 3.0f))
+
+        if (Physics.Raycast(inimigo_ray, 4.0f) && distanceToPlayer<4.0f)
         {
             Normal();
+            animator.SetBool("correr", false);
+            animator.SetBool("combate", true);
+          
+
             if (Time.time > timer_ataque)
             {
-                Ataque();
+                animator.SetBool("ataque", true);
+
+                StartCoroutine(espera4());
+                if (pode_atacar)
+                    Ataque();
+              
+                //ataque = true;
             }
             else
             {
+                pode_atacar = false;
                 animator.SetBool("ataque", false);
             }
         }
 
-        if ((distanceToPlayer<=25.0f && distanceToPlayer>=3.0f) || atingido && distanceToPlayer>=3.0f || inimigo_corpoBoss && distanceToPlayer>=3.0f)
+        if ((distanceToPlayer<=25.0f && distanceToPlayer>=4.0f) || atingido && distanceToPlayer>=4.0f || inimigo_corpoBoss && distanceToPlayer>=4.0f)
         {
             animator.SetBool("correr", true);
             animator.SetBool("idle", false);
-
+            animator.SetBool("combate", false);
+            //animator.SetBool("ataque", false);
+            
+            ataque = false;
             Perseguir();
         }
         else
@@ -186,6 +202,9 @@ public class InimigosCorpoaCorpo : MonoBehaviour
                 Normal();
                 animator.SetBool("idle", true);
                 animator.SetBool("correr", false);
+                animator.SetBool("combate", false);
+                animator.SetBool("ataque", false);
+
             }
         }
     }
@@ -225,6 +244,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f);
         animator.SetBool("ataque", false);
+
     }
 
     IEnumerator espera3()
@@ -234,6 +254,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     }
 
+    
     IEnumerator espera2()
     {
         yield return new WaitForSeconds(1.3f);
@@ -241,16 +262,25 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     }
 
+    IEnumerator espera4()
+    {
+        yield return new WaitForSeconds(0.5f);
+        pode_atacar = true;
+
+    }
+
     void Ataque()
     {
-        float distance = Vector3.Distance(player.transform.position, transform.position);
-        if (distance <= 4.0f)
-        {
+        //float distance = Vector3.Distance(player.transform.position, transform.position);
+        //if (distance <= 3.5f)
+        //{
             animator.SetBool("ataque", true);
             speed = 0.0f;
-            StartCoroutine(damage());
-            timer_ataque = Time.time + cooldownataque;
-        }
+        if (!machado) HealthPlayer.TakeDamage(3.5f);
+        else HealthPlayer.TakeDamage(2.5f);
+        //  StartCoroutine(damage());
+        timer_ataque = Time.time + cooldownataque;
+        //}
     }
 
     void Perseguir()

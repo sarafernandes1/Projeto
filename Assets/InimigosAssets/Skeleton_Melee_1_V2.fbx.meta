@@ -105,7 +105,7 @@ ModelImporter:
       name: Attack_SKLT_1
       takeName: Attack_SKLT_1
       internalID: 0
-      firstFrame: 0
+      firstFrame: 0.01
       lastFrame: 51
       wrapMode: 0
       orientationOffsetY: 0

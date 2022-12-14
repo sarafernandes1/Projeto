@@ -8,6 +8,7 @@ public class BossHealth : MonoBehaviour
     public Slider qtd_vida;
     public static bool isdead;
     public Animator animator;
+    public static bool Atingido=false;
 
     void Start()
     {
@@ -26,16 +27,21 @@ public class BossHealth : MonoBehaviour
         if (collision.gameObject.name == "AtaqueNormal(Clone)")
         {
             qtd_vida.value -= 0.1f;
+            Atingido = true;
             //qtd_vida.value -= 0.3f*Time.deltaTime
         }
         if (collision.gameObject.name == "Boladefogo(Clone)")
         {
             qtd_vida.value -= 0.4f * Time.deltaTime;
+            Atingido = true;
+
 
         }
         if (collision.gameObject.name == "RaioEletrico(Clone)")
         {
             qtd_vida.value -= 0.4f * Time.deltaTime;
+            Atingido = true;
+
         }
     }
 
@@ -45,6 +51,8 @@ public class BossHealth : MonoBehaviour
         if (other.gameObject.name == "Rajadadevento")
         {
             qtd_vida.value -= 0.05f*Time.deltaTime;
+            Atingido = true;
+
         }
     }
 
@@ -53,6 +61,8 @@ public class BossHealth : MonoBehaviour
         if (other.name == "Explosao(Clone)")
         {
             qtd_vida.value -= 0.3f * Time.deltaTime;
+            Atingido = true;
+
         }
     }
 

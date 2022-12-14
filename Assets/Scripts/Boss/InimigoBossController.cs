@@ -31,7 +31,7 @@ public class InimigoBossController : MonoBehaviour
     {
          distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-        if (distanceToPlayer <= 70.0f)
+        if (distanceToPlayer <= 60.0f || BossHealth.Atingido)
         {
             procura = true;
         }

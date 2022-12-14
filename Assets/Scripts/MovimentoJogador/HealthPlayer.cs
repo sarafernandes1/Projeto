@@ -88,9 +88,9 @@ public class HealthPlayer : MonoBehaviour
             qtd_vida.value -= 0.02f * Time.deltaTime;
         }
 
-        if (other.tag == "Vida" && qtd_vida.value < 1)
+        if (other.tag == "Vida" && qtd_vida.value < 1 && CristalCura.Cura)
         {
-            qtd_vida.value += 0.05f * Time.deltaTime;
+            qtd_vida.value += 0.03f * Time.deltaTime;
         }
     }
 
