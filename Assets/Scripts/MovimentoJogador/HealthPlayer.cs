@@ -55,7 +55,7 @@ public class HealthPlayer : MonoBehaviour
                     min_dist = distancia;
                 }
             }
-            position = new Vector3(position.x, 4.0f, position.z);
+            position = new Vector3(position.x, 6.0f, position.z);
             GetComponent<CharacterController>().enabled = false;
             transform.position = position;
             GetComponent<CharacterController>().enabled = true;

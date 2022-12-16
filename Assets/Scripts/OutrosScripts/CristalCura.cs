@@ -21,7 +21,7 @@ public class CristalCura : MonoBehaviour
     {
         if (player_in_area)
         {
-            if(Cura) luz.intensity -= 1.0f * Time.deltaTime;
+            if(Cura) luz.intensity -= 0.8f * Time.deltaTime;
         }
 
         if (luz.intensity <= 0)

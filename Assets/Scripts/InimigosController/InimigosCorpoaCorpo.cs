@@ -12,9 +12,8 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     float speed, dist_max;
     bool inimigo_corpoacorpo, inimigo_alcance, inimigo_corpoBoss, inimigo_alcanceBoss;
-    bool player_in_area, rajada_on;
+   bool player_in_area, rajada_on;
     bool ataque=false;
-    float t = 0;
 
     Rigidbody rigidbody_;
     Vector3 inicial_position;
@@ -82,7 +81,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     void Update()
     {
         Vector3 look = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        //if (inimigo_alcance /*|| inimigo_alcanceBoss*/) look = player.transform.position;
         transform.LookAt(look);
 
         //Inimigo Corpo a Corpo
@@ -95,12 +93,12 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         if (inimigo_alcance)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer <= 70.0f)
+            if (/*distanceToPlayer <= 70.0f*/ player_in_area)
             {
                 animator.SetBool("combate", true);
             }
 
-            if (Time.time > nextFireTime && distanceToPlayer<=40.0f)
+            if (Time.time > nextFireTime && player_in_area)
             {
                 animator.SetBool("ataque", true);
                 StartCoroutine(espera2());
@@ -111,7 +109,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
                 pode_atacar = false;
             }
 
-            if (distanceToPlayer > 20.0f)
+            if (!player_in_area)
             {
                 animator.SetBool("ataque", false);
                 animator.SetBool("combate", false);
@@ -190,7 +188,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             animator.SetBool("correr", true);
             animator.SetBool("idle", false);
             animator.SetBool("combate", false);
-            //animator.SetBool("ataque", false);
+            animator.SetBool("ataque", false);
             
             ataque = false;
             Perseguir();
@@ -257,7 +255,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     
     IEnumerator espera2()
     {
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.8f);
         pode_atacar = true;
 
     }
@@ -295,7 +293,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     }
     void AtaqueAlcance()
     {
-        var bolaFogo = Instantiate(bulletPrefab, arco.transform.position, Quaternion.identity);
+        var bolaFogo = Instantiate(bulletPrefab, arco.transform.position, /*Quaternion.identity*/ arco.transform.rotation);
         bolaFogo.velocity = (player.transform.position - arco.transform.position).normalized * 50.0f;
         StartCoroutine(espera());
         nextFireTime = Time.time + cooldownTime;
@@ -317,6 +315,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             atingido = true;
 
         }
+
     }
 
     private void OnParticleCollision(GameObject other)
@@ -331,11 +330,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player") player_in_area = true;
-        if (other.gameObject.name == "Rajadadevento" && !rajada_on)
-        {
-            rajada_on = true;
-            timer = Time.time + tempo_rajada;
-        }
     }
 
     private void OnTriggerExit(Collider other)

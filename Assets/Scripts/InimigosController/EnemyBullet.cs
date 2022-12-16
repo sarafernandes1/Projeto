@@ -23,24 +23,6 @@ public class EnemyBullet : MonoBehaviour
 
     void Update()
     {
-        if (ataque_boss) 
-        {
-            GameObject inimigos = GameObject.Find("InimigoBoss(Clone)");
-            if (inimigos == null)
-            {
-                segunda_parte = true;
-            }
-
-            if (!segunda_parte)
-            {
-                damage = 1.0f;
-            }
-            else
-            {
-                damage =2.0f;
-            }
-        }
-
         Ray ray = new Ray(transform.position, transform.forward * 2.0f);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -60,7 +42,8 @@ public class EnemyBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.name == "Plane.001" || collision.gameObject.name=="Cave" || collision.gameObject.name=="Arena")
+        if (collision.gameObject.name == "Plane.001" || collision.gameObject.name=="Cave" || collision.gameObject.name=="Arena"
+            || collision.gameObject.layer==8)
         {
             Destroy(gameObject);
         }
