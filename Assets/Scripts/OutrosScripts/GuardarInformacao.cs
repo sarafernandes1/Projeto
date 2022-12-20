@@ -13,7 +13,7 @@ public class GuardarInformacao : MonoBehaviour
     public static float dano_ataquenormal=2.0f;
     public static float tempo_cooldownparede = 4.0f;
     public static float qtd_mana_raio = 0.35f;
-    public static float thrust = 700.0f;
+    public static float thrust = 20.0f;
     public static float furia_cooldown = 4.0f;
     public static float raio_explosao;
 
@@ -23,7 +23,7 @@ public class GuardarInformacao : MonoBehaviour
         dano_ataquenormal = EnemyHealth.dano_atqnormal;
         tempo_cooldownparede = ParededePedra.cooldownTime;
         qtd_mana_raio = Feiticos.mana_raio;
-        thrust = InimigosCorpoaCorpo.thrust;
+        thrust = InimigosCorpoaCorpo.forca;
         furia_cooldown = FuriaAncestral.cooldownTime;
         raio_explosao = MelhoriaFeiticos.explosao_collider_raio;
     }

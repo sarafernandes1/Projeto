@@ -27,6 +27,8 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     bool atingido, pode_atacar=false;
     public Animator animator;
 
+    AudioSource audio;
+
     void Start()
     {
         player = GameObject.Find("Player");
@@ -73,8 +75,10 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             rigidbody_ = gameObject.GetComponent<Rigidbody>();
         }
 
-        if (GuardarInformacao.thrust != 700.0f)
-            thrust = GuardarInformacao.thrust;
+        if (GuardarInformacao.thrust != 20.0f)
+            forca = GuardarInformacao.thrust;
+
+        audio = GetComponent<AudioSource>();
     }
 
 
@@ -172,8 +176,11 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
                 StartCoroutine(espera4());
                 if (pode_atacar)
+                {
+                    audio.Play();
+
                     Ataque();
-              
+                }
                 //ataque = true;
             }
             else
@@ -293,6 +300,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     }
     void AtaqueAlcance()
     {
+        audio.Play();
         var bolaFogo = Instantiate(bulletPrefab, arco.transform.position, /*Quaternion.identity*/ arco.transform.rotation);
         bolaFogo.velocity = (player.transform.position - arco.transform.position).normalized * 50.0f;
         StartCoroutine(espera());
