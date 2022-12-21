@@ -30,7 +30,7 @@ public class MudarCena : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (activate_newcene)
+        if (activate_newcene && other.gameObject.tag=="Player")
         {
             GuardarInformacao.SaveDadosPlayer();
             DontDestroyOnLoad(guardar);

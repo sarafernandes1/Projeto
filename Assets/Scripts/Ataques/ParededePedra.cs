@@ -50,7 +50,7 @@ public class ParededePedra : MonoBehaviour
                 //rigidbody.isKinematic = false;
                 if(LuzBastao.numero_feitico!=5) LuzBastao.numero_feitico = 3;
                 AtivarParede();
-                if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
+                StartCoroutine(esper1());
                 cooldown = true;
             }
         }
@@ -75,6 +75,12 @@ public class ParededePedra : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         rigidbody.isKinematic = true;
         parar();
+    }
+
+    IEnumerator esper1()
+    {
+        yield return new WaitForSeconds(1.0f);
+        if (LuzBastao.numero_feitico != 5) LuzBastao.numero_feitico = -1;
     }
 
     IEnumerator parar()

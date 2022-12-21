@@ -6,13 +6,15 @@ public class LuzBastao : MonoBehaviour
 {
     public InputController inputController;
     public Material luzbranca, luzazul, luzvermelha, luzamarela, luzlaranja, luzvento, luzverde;
-    MeshRenderer luz;
+    Material luz;
+    public Material material;
+    public SkinnedMeshRenderer skinned;
 
     public static int numero_feitico;
 
     void Start()
     {
-        luz = GameObject.Find("Gema").GetComponent<MeshRenderer>();
+        luz = gameObject.GetComponent<Material>();
         numero_feitico = -1;
     }
 
@@ -33,22 +35,28 @@ public class LuzBastao : MonoBehaviour
                 TempoLuz();
                 break;
             case 0:
-                luz.material = luzazul;
+               //material = luzazul;
+                skinned.materials[1].CopyPropertiesFromMaterial(luzazul);
                 break;
             case 1:
-                luz.material = luzvermelha;
+                //  material = luzvermelha;
+                skinned.materials[1].CopyPropertiesFromMaterial(luzvermelha);
                 break;
             case 2:
-                luz.material = luzamarela;
+                //material = luzamarela;
+                skinned.materials[1].CopyPropertiesFromMaterial(luzamarela);
                 break;
             case 3:
-                luz.material = luzlaranja;
+                //material = luzlaranja;
+                skinned.materials[1].CopyPropertiesFromMaterial(luzlaranja);
                 break;
             case 4:
-                luz.material = luzvento;
+                //material = luzvento;
+                skinned.materials[1].CopyPropertiesFromMaterial(luzvento);
                 break;
             case 5:
-                luz.material = luzverde;
+                //material = luzverde;
+                skinned.materials[1].CopyPropertiesFromMaterial(luzverde);
                 break;
         }
     }
@@ -56,6 +64,7 @@ public class LuzBastao : MonoBehaviour
     //Passar da cor dos feitiços para a cor normal (cor branca)
     public void TempoLuz()
     {
-        luz.material = luzbranca;
+        //material = luzbranca;
+        skinned.materials[1].CopyPropertiesFromMaterial(luzbranca);
     }
 }
