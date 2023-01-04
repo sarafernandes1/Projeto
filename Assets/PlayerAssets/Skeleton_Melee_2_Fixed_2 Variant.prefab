@@ -426,8 +426,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 4, z: 3}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 2, y: 6.158442, z: 3}
+  m_Center: {x: 0, y: 3.0791986, z: 0}
 --- !u!114 &1692679155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,4 +457,5 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   player: {fileID: 0}
   arco: {fileID: 0}
+  machado: {fileID: 0}
   animator: {fileID: 580620847186188172}

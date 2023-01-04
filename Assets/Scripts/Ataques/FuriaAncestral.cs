@@ -28,7 +28,7 @@ public class FuriaAncestral : MonoBehaviour
 
     void Update()
     {
-        if (Time.time > nextFireTime && !MelhoriaFeiticos.gamePaused && !indisponivel)
+        if (Time.time > nextFireTime && !MelhoriaFeiticos.gamePaused && !indisponivel && !PlayerController.GamePaused)
         {
             if (qtd_mana.value > 0.5f) can_atack = true;
             else can_atack = false;

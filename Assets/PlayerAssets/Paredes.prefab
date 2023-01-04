@@ -44164,6 +44164,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -2211366235034958442, guid: 7f85892b1e000024bb6a16ffc3df1b24, type: 3}
   m_PrefabInstance: {fileID: 922894344409170291}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &2184565383812987183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4413808499293218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 8, z: 4}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!65 &1717517330
 BoxCollider:
   m_ObjectHideFlags: 0

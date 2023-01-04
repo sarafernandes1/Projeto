@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ControlarMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-
+    public Canvas config, menu, pausa;
     void Start()
     {
     }
@@ -29,16 +28,30 @@ public class ControlarMenu : MonoBehaviour
         Application.Quit(); //Fecha a aplicação; não corre no editor
     }
 
+    public void Configuracao()
+    {
+        menu.enabled = false;
+        config.enabled = true;
+    }
+
+    public void Voltar()
+    {
+        config.enabled = false;
+        menu.enabled = true;
+    }
+
     public void VoltaraJogo()
     {
-        Canvas canvas = GetComponent<Canvas>();
-        canvas.enabled = false;
+        pausa.enabled = false;
         Time.timeScale = 1.0f;
-
+        Cursor.visible = false;
+        PlayerController.GamePaused = false;
     }
 
     public void Sair()
     {
+
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(0);
     }
 }

@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public float gravityValue = -9.81f;
 
     public Canvas pausa;
+    public static bool GamePaused=false;
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -60,8 +62,9 @@ public class PlayerController : MonoBehaviour
         if (inputController.GetPlayerSairEsc())
         {
             pausa.enabled = true;
+            GamePaused = true;
             Time.timeScale = 0.0f;
-
+            Cursor.visible = true;
         }
     }
 
