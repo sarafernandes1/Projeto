@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,11 +20,15 @@ public class PlayerController : MonoBehaviour
     public Canvas pausa;
     public static bool GamePaused=false;
 
+    Vector3 lastPosition;
+    AudioSource audio;
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-
+        audio = GetComponent<AudioSource>();
         Cursor.visible = false;
+        lastPosition = transform.position;
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -66,6 +71,18 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 0.0f;
             Cursor.visible = true;
         }
+
+      
+            if (transform.position!=lastPosition)
+            {
+                audio.mute=false;
+            }
+            else
+            {
+                audio.mute=true;
+            }
+        
+        lastPosition =transform.position;
     }
 
  

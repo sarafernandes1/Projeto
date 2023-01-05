@@ -27,7 +27,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     bool atingido, pode_atacar=false;
     public Animator animator;
 
-    AudioSource audio;
+    public AudioSource audio, andar;
 
     void Start()
     {
@@ -78,7 +78,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         if (GuardarInformacao.thrust != 20.0f)
             forca = GuardarInformacao.thrust;
 
-        audio = GetComponent<AudioSource>();
+       // audio = GetComponent<AudioSource>();
     }
 
 
@@ -168,7 +168,8 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             Normal();
             animator.SetBool("correr", false);
             animator.SetBool("combate", true);
-          
+                andar.mute = true;
+
 
             if (Time.time > timer_ataque)
             {
@@ -204,6 +205,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         {
             if (distanceToPlayer > 25.0f)
             {
+                andar.mute = true;
                 Normal();
                 animator.SetBool("idle", true);
                 animator.SetBool("correr", false);
@@ -290,6 +292,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     void Perseguir()
     {
+        andar.mute = false;
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 
