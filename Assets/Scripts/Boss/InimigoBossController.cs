@@ -20,6 +20,7 @@ public class InimigoBossController : MonoBehaviour
     float nextAtaqueNormal = 0, cooldownAtaqueNormal = 3, nextFireAtaqueSR = 2f;
     float distanceToPlayer;
 
+    public AudioSource andar, ataque;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -49,10 +50,11 @@ public class InimigoBossController : MonoBehaviour
 
         if (procura)
         {
+            andar.mute = false;
             transform.LookAt(player.position);
             Move();
             transform.position += transform.forward * speed * Time.deltaTime;
-            if (distanceToPlayer <= 60.0f && Time.time > nextFireAtaqueSR && procura)
+            if (distanceToPlayer <= 60.0f && Time.time > nextFireAtaqueSR && procura && distanceToPlayer>=4)
             {
                 combate = true;
                 procura = false;
@@ -66,18 +68,21 @@ public class InimigoBossController : MonoBehaviour
 
         if (combate)
         {
-                transform.LookAt(player.position);
+            andar.mute = true;
+
+            transform.LookAt(player.position);
 
             distance = Vector3.Distance(transform.position, player.position);
             if (distance > 30.0f)
             {
                 animator.SetBool("attack_short_001", true);
-
+                ataque.Play();
                 AtaqueSegundaRonda();
             }
 
             if (distance <= 30.0f)
             {
+                ataque.Play();
                 animator.SetBool("attack_short_001", true);
                 AtaqueNormal();
             }

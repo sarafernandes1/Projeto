@@ -27,9 +27,10 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         audio = GetComponent<AudioSource>();
+
         Cursor.visible = false;
         lastPosition = transform.position;
-        //Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     void Update()
@@ -68,12 +69,14 @@ public class PlayerController : MonoBehaviour
         {
             pausa.enabled = true;
             GamePaused = true;
+            Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0.0f;
             Cursor.visible = true;
         }
 
-      
-            if (transform.position!=lastPosition)
+
+
+        if (transform.position!=lastPosition)
             {
                 audio.mute=false;
             }

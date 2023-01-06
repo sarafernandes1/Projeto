@@ -44,11 +44,15 @@ public class MelhoriaFeiticos : MonoBehaviour
             Cursor.visible = !Cursor.visible;
             if (melhoria_canvas.enabled)
             {
+                Cursor.lockState = CursorLockMode.None;
+
                 Time.timeScale = 0.0f;
                 gamePaused = true;
             }
             else
             {
+                Cursor.lockState = CursorLockMode.Locked;
+
                 Time.timeScale = 1.0f;
                 gamePaused = false;
 

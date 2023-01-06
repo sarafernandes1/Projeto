@@ -19,6 +19,8 @@ public class ControlarMenu : MonoBehaviour
     public void NewGameClick() //função a ser chamada atarvés do inspector do Botão (ver Button na Scene)
     {
         Debug.Log("new game click");
+
+        Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene(1); //SceneManager.LoadScene("SampleScene"); //faz load de uma nova Scene
     }
 
@@ -38,6 +40,7 @@ public class ControlarMenu : MonoBehaviour
     {
         config.enabled = false;
         menu.enabled = true;
+
     }
 
     public void VoltaraJogo()
@@ -45,6 +48,8 @@ public class ControlarMenu : MonoBehaviour
         pausa.enabled = false;
         Time.timeScale = 1.0f;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         PlayerController.GamePaused = false;
     }
 
