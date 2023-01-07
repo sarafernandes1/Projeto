@@ -49,13 +49,15 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             speed = 0.7f;
             dist_max = 22.0f;
             inimigo_alcance = true;
-            if (transform.name == "Skeleton_Ranged_1_Fixed (1) Variant(Clone)"
-                || transform.name == "Skeleton_Ranged_2_Fixed Variant(Clone)")
-            {
-                inimigo_alcance = false;
-                inimigo_alcanceBoss = true;
-                speed = 2.5f;
-            }
+           
+        }
+
+        if (transform.tag == "AlcanceBoss"
+               || transform.name == "Skeleton_Ranged_2_Fixed Variant(Clone)")
+        {
+            inimigo_alcance = false;
+            inimigo_alcanceBoss = true;
+            speed = 2.5f;
         }
         #endregion
 
@@ -220,17 +222,29 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-        if (distanceToPlayer <= 60.0f && distanceToPlayer >= 6.0f)
+        if (distanceToPlayer <= 60.0f && distanceToPlayer >= 7.0f)
         {
             animator.SetBool("correr", true);
+            animator.SetBool("ataque", false);
+            animator.SetBool("combate", false);
+
             Perseguir();
         }
 
-        if (Time.time > nextFireTime && distanceToPlayer <6.0f && distanceToPlayer>=5.0f)
+        if (distanceToPlayer < 6.0f)
         {
-            animator.SetBool("ataque", true);
+            andar.mute = true;
+        }
+
+        if (Time.time > nextFireTime && distanceToPlayer <7.0f)
+        {
+
+            animator.SetBool("combate", true);
             StartCoroutine(espera3());
-            if (pode_atacar) AtaqueAlcance();
+            if (pode_atacar)
+            {
+                AtaqueAlcance();
+            }
         }
         else
         {
@@ -256,6 +270,8 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     IEnumerator espera3()
     {
+
+        animator.SetBool("ataque", true);
         yield return new WaitForSeconds(2.0f);
         pode_atacar = true;
 
@@ -305,7 +321,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     {
         audio.Play();
         var bolaFogo = Instantiate(bulletPrefab, arco.transform.position, /*Quaternion.identity*/ arco.transform.rotation);
-        bolaFogo.velocity = (player.transform.position - arco.transform.position).normalized * 50.0f;
+        bolaFogo.velocity = (player.transform.position - arco.transform.position).normalized * 60.0f;
         StartCoroutine(espera());
         nextFireTime = Time.time + cooldownTime;
     }

@@ -15,6 +15,7 @@ TagManager:
   - Rajada
   - AtaqueEspecial
   - BolaFogoExplosao
+  - AlcanceBoss
   layers:
   - Default
   - TransparentFX

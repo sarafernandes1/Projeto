@@ -87,15 +87,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b9774ba6de0c594f9832fdb7cd3f689, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 342.15106
+      value: 82.16211
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b9774ba6de0c594f9832fdb7cd3f689, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6299577
+      value: 0.85146976
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b9774ba6de0c594f9832fdb7cd3f689, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.744967
+      value: -21.403116
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b9774ba6de0c594f9832fdb7cd3f689, type: 3}
       propertyPath: m_LocalRotation.w
@@ -451,7 +451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2b9774ba6de0c594f9832fdb7cd3f689, type: 3}
       propertyPath: m_TagString
-      value: InimigoAlcance
+      value: AlcanceBoss
       objectReference: {fileID: 0}
     - target: {fileID: 922173098024521353, guid: 2b9774ba6de0c594f9832fdb7cd3f689, type: 3}
       propertyPath: m_LocalPosition.x
