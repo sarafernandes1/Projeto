@@ -97,7 +97,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
         if (inimigo_alcance)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (/*distanceToPlayer <= 70.0f*/ player_in_area)
+            if (distanceToPlayer <= 70.0f || player_in_area)
             {
                 animator.SetBool("combate", true);
             }

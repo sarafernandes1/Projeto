@@ -60,6 +60,10 @@ public class InputController : MonoBehaviour
         return _playerControls.Player.AbrirMelhoria.triggered;
     }
 
+    public bool Captura()
+    {
+        return _playerControls.Player.Captura.triggered;
+    }
 
     private void OnDisable()
     {

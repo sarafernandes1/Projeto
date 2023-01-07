@@ -26,6 +26,8 @@ public class FimJogo : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
         fim_jogo.enabled = true;
+        Time.timeScale = 0.0f;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 

@@ -26,7 +26,7 @@ public class BossHealth : MonoBehaviour
     {
         if (collision.gameObject.name == "AtaqueNormal(Clone)")
         {
-            qtd_vida.value -= 0.1f;
+            qtd_vida.value -= 0.2f*Time.deltaTime;
             Atingido = true;
             //qtd_vida.value -= 0.3f*Time.deltaTime
         }

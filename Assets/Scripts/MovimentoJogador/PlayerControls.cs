@@ -134,6 +134,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Captura"",
+                    ""type"": ""Button"",
+                    ""id"": ""ec5970c8-47ff-4cbb-8e72-2d748a331c8a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -323,6 +332,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""ZoomCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cbf0216f-9a26-495a-a031-20612bde01e3"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Captura"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -343,6 +363,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_AtaqueNormal = m_Player.FindAction("AtaqueNormal", throwIfNotFound: true);
         m_Player_AbrirMelhoria = m_Player.FindAction("AbrirMelhoria", throwIfNotFound: true);
         m_Player_ZoomCamera = m_Player.FindAction("ZoomCamera", throwIfNotFound: true);
+        m_Player_Captura = m_Player.FindAction("Captura", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -414,6 +435,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_AtaqueNormal;
     private readonly InputAction m_Player_AbrirMelhoria;
     private readonly InputAction m_Player_ZoomCamera;
+    private readonly InputAction m_Player_Captura;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -430,6 +452,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @AtaqueNormal => m_Wrapper.m_Player_AtaqueNormal;
         public InputAction @AbrirMelhoria => m_Wrapper.m_Player_AbrirMelhoria;
         public InputAction @ZoomCamera => m_Wrapper.m_Player_ZoomCamera;
+        public InputAction @Captura => m_Wrapper.m_Player_Captura;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -475,6 +498,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ZoomCamera.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoomCamera;
                 @ZoomCamera.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoomCamera;
                 @ZoomCamera.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoomCamera;
+                @Captura.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCaptura;
+                @Captura.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCaptura;
+                @Captura.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCaptura;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -515,6 +541,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ZoomCamera.started += instance.OnZoomCamera;
                 @ZoomCamera.performed += instance.OnZoomCamera;
                 @ZoomCamera.canceled += instance.OnZoomCamera;
+                @Captura.started += instance.OnCaptura;
+                @Captura.performed += instance.OnCaptura;
+                @Captura.canceled += instance.OnCaptura;
             }
         }
     }
@@ -533,5 +562,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnAtaqueNormal(InputAction.CallbackContext context);
         void OnAbrirMelhoria(InputAction.CallbackContext context);
         void OnZoomCamera(InputAction.CallbackContext context);
+        void OnCaptura(InputAction.CallbackContext context);
     }
 }
