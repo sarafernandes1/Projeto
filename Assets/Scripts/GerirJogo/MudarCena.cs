@@ -9,7 +9,7 @@ public class MudarCena : MonoBehaviour
     public static bool cena_boss;
     public GameObject guardar, update;
     public InputController inputController;
-    bool activate_newcene=true;
+    bool activate_newcene;
     public Text text;
     public static int n_inimigos = 0;
     Canvas canvas;
@@ -39,7 +39,7 @@ public class MudarCena : MonoBehaviour
             SceneManager.LoadScene(2);
             cena_boss = true;
         }
-        else
+        else if(other.gameObject.tag=="Player")
         {
             canvas.enabled = true;
             int inimigos_faltam = 41 - n_inimigos;

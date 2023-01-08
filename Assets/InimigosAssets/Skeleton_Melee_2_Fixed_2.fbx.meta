@@ -50,7 +50,7 @@ ModelImporter:
       name: Running_SKLT_2
       takeName: Running_SKLT_2
       internalID: 0
-      firstFrame: 0
+      firstFrame: 0.3
       lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0

@@ -165,12 +165,13 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             speed = 5.0f;
         }
 
+        if (distanceToPlayer <= 5.0f) andar.mute = true;
+
         if (Physics.Raycast(inimigo_ray, 4.0f) && distanceToPlayer<4.0f)
         {
             Normal();
             animator.SetBool("correr", false);
             animator.SetBool("combate", true);
-                andar.mute = true;
 
 
             if (Time.time > timer_ataque)
@@ -199,7 +200,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             animator.SetBool("idle", false);
             animator.SetBool("combate", false);
             animator.SetBool("ataque", false);
-            
+            if(distanceToPlayer>=6.0f) andar.mute = false;
             ataque = false;
             Perseguir();
         }
@@ -280,7 +281,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     
     IEnumerator espera2()
     {
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(2.0f);
         pode_atacar = true;
 
     }
@@ -308,7 +309,6 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
     void Perseguir()
     {
-        andar.mute = false;
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 

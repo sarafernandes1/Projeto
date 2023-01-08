@@ -39,6 +39,7 @@ public class HealthPlayer : MonoBehaviour
         if (qtd_vida.value <= 0)
         {
             isDead();
+            qtd_vida.value += 1.0f;
             isdead = true;
         }
 
@@ -68,7 +69,10 @@ public class HealthPlayer : MonoBehaviour
     {
         if(MudarCena.cena_boss) boss_vida.enabled = false;
         canvas_defeat.enabled = true;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Time.timeScale = 0.0f;
+
     }
 
     public static void TakeDamage(float damage)
@@ -106,6 +110,9 @@ public class HealthPlayer : MonoBehaviour
     {
         qtd_vida.value = 1.0f;
         canvas_defeat.enabled = false;
+        Time.timeScale = 1.0f;
+        Cursor.lockState = CursorLockMode.Locked;
+
         Cursor.visible = false;
 
         if(MudarCena.cena_boss) boss_vida.enabled = true;
