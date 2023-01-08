@@ -223,7 +223,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-        if (distanceToPlayer <= 60.0f && distanceToPlayer >= 7.0f)
+        if (distanceToPlayer <= 60.0f && distanceToPlayer >= 8.0f)
         {
             animator.SetBool("correr", true);
             animator.SetBool("ataque", false);
@@ -232,12 +232,12 @@ public class InimigosCorpoaCorpo : MonoBehaviour
             Perseguir();
         }
 
-        if (distanceToPlayer < 6.0f)
+        if (distanceToPlayer < 7.0f)
         {
             andar.mute = true;
         }
 
-        if (Time.time > nextFireTime && distanceToPlayer <7.0f)
+        if (Time.time > nextFireTime && distanceToPlayer <8.0f)
         {
 
             animator.SetBool("combate", true);
@@ -321,7 +321,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     {
         audio.Play();
         var bolaFogo = Instantiate(bulletPrefab, arco.transform.position, /*Quaternion.identity*/ arco.transform.rotation);
-        bolaFogo.velocity = (player.transform.position - arco.transform.position).normalized * 60.0f;
+        bolaFogo.velocity = (player.transform.position - arco.transform.position).normalized * 80.0f;
         StartCoroutine(espera());
         nextFireTime = Time.time + cooldownTime;
     }

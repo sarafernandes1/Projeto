@@ -84,12 +84,12 @@ public class HealthPlayer : MonoBehaviour
     {
         if (other.gameObject.name == "Portal2Ronda(Clone)")
         {
-            qtd_vida.value -= 0.03f * Time.deltaTime;
+            qtd_vida.value -= 0.01f * Time.deltaTime;
         }
 
         if (other.gameObject.name == "PortalAtaqueEspecial(Clone)")
         {
-            qtd_vida.value -= 0.02f * Time.deltaTime;
+            qtd_vida.value -= 0.01f * Time.deltaTime;
         }
 
         if (other.tag == "Vida" && qtd_vida.value < 1 && CristalCura.Cura)
