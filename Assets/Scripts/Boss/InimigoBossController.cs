@@ -53,7 +53,7 @@ public class InimigoBossController : MonoBehaviour
             andar.mute = false;
             transform.LookAt(player.position);
             Move();
-            if(distance>=12.0f)transform.position += transform.forward * speed * Time.deltaTime;
+            if(distanceToPlayer>=12.0f)transform.position += transform.forward * speed * Time.deltaTime;
             if (distanceToPlayer <= 60.0f && Time.time > nextFireAtaqueSR && procura && distanceToPlayer>=4)
             {
                 combate = true;

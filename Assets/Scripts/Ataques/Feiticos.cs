@@ -86,7 +86,7 @@ public class Feiticos : MonoBehaviour
                 RaioEletrico.ataque = true;
                 animator.Play("Magia_Raio_Eletrico");
 
-                DispararFeitico(raioeletico, 2, 65.0f, "raio");
+                DispararFeitico(raioeletico, 2, 45.0f, "raio");
             }
         }
 

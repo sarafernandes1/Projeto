@@ -21,7 +21,7 @@ public class MudarCena : MonoBehaviour
 
     void Update()
     {
-        if (n_inimigos == 41)
+        if (n_inimigos == 35)
         {
             activate_newcene = true;
         }

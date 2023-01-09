@@ -18,7 +18,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
     Rigidbody rigidbody_;
     Vector3 inicial_position;
 
-    float cooldownTime = 4, tempo_rajada = 0.10f, cooldownataque=2; //tempo de animação ataque
+    float cooldownTime = 3, tempo_rajada = 0.10f, cooldownataque=2; //tempo de animação ataque
     public static float thrust=10.0f;
     float thrust_inicial = 0.0f;
     float nextFireTime = 0, timer=0, timer_ataque=0;
@@ -167,7 +167,7 @@ public class InimigosCorpoaCorpo : MonoBehaviour
 
         if (distanceToPlayer <= 5.0f) andar.mute = true;
 
-        if (Physics.Raycast(inimigo_ray, 4.0f) && distanceToPlayer<4.0f)
+        if (/*Physics.Raycast(inimigo_ray, 4.0f) &&*/ distanceToPlayer<4.0f)
         {
             Normal();
             animator.SetBool("correr", false);

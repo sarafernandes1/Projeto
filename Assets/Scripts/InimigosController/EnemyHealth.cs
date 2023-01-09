@@ -59,8 +59,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void IsDead()
     {
-        if (inimigo1 || inimigo3)
-        {
+        //if (inimigo1 || inimigo3)
+        //{
             MudarCena.n_inimigos += 1;
             if (cube != null)
             {
@@ -68,7 +68,13 @@ public class EnemyHealth : MonoBehaviour
             }
             float numero_random = Random.value;
                // drop.tag = "Recurso";
-        }
+        //}
+
+        //if (inimigo2)
+        //{
+        //    MudarCena.n_inimigos += 1;
+        //}
+
         GameObject.Destroy(gameObject);
 
     }

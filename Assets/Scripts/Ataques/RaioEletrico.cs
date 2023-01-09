@@ -42,10 +42,15 @@ public class RaioEletrico : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnParticleCollision(GameObject other)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer==10) Destroy(this.gameObject);
+    }
+
+        private void OnParticleCollision(GameObject other)
     {
         if (other.layer == 3 || other.layer == 8 || other.layer == 8) sistema_particulas.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        else Destroy(this.gameObject);
+        else if(other.gameObject.layer != 10) Destroy(this.gameObject);
     }
 
     void Ataque()
